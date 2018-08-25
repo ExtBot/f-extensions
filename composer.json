@@ -1,0 +1,13 @@
+{
+	"require": {
+		"reflar/uncache": "*",
+		"reflar/gamification": "*",
+		"reflar/koseki": "*",
+		"sijad/flarum-ext-recaptcha": "*"
+	},
+	"replace": {
+		"flarum/core": "*"
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true
+}
