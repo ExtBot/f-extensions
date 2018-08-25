@@ -8,6 +8,8 @@ $baseDir = dirname($vendorDir);
 return array(
     'Sijad\\ReCaptcha\\' => array($vendorDir . '/sijad/flarum-ext-recaptcha/src'),
     'Reflar\\UnCache\\' => array($vendorDir . '/reflar/uncache/src'),
+    'Reflar\\Polls\\' => array($vendorDir . '/reflar/polls/src'),
+    'Reflar\\NightMode\\' => array($vendorDir . '/reflar/nightmode/src'),
     'Reflar\\Koseki\\' => array($vendorDir . '/reflar/koseki/src'),
     'Reflar\\Gamification\\' => array($vendorDir . '/reflar/gamification/src'),
     'ReCaptcha\\' => array($vendorDir . '/google/recaptcha/src/ReCaptcha'),

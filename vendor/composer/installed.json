@@ -486,6 +486,123 @@
         ]
     },
     {
+        "name": "reflar/polls",
+        "version": "1.2.6",
+        "version_normalized": "1.2.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ReFlar/polls.git",
+            "reference": "ccaee3ce698ed9ad3ebf5bdf0610ef8a7b5ce81b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ReFlar/polls/zipball/ccaee3ce698ed9ad3ebf5bdf0610ef8a7b5ce81b",
+            "reference": "ccaee3ce698ed9ad3ebf5bdf0610ef8a7b5ce81b",
+            "shasum": ""
+        },
+        "require": {
+            "flarum/core": "^0.1.0-beta.7"
+        },
+        "time": "2018-06-07T04:47:37+00:00",
+        "type": "flarum-extension",
+        "extra": {
+            "flarum-extension": {
+                "title": "ReFlar Polls",
+                "icon": {
+                    "name": "signal",
+                    "backgroundColor": "#263238",
+                    "color": "#ffffff"
+                }
+            },
+            "flagrow": {
+                "discuss": "https://discuss.flarum.org/d/9762-poll"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Reflar\\Polls\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Shahiem Seymor",
+                "email": "shahiem.seymor@reflar.email",
+                "homepage": "https://reflar.io"
+            }
+        ],
+        "description": "A poll extension for your flarum Forum.",
+        "keywords": [
+            "answer",
+            "extension",
+            "flarum",
+            "poll",
+            "polls",
+            "reflar"
+        ]
+    },
+    {
+        "name": "reflar/nightmode",
+        "version": "0.1.6",
+        "version_normalized": "0.1.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ReFlar/nightmode.git",
+            "reference": "a3f2017aea306b4fb94b823d84ada914c163a4e2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ReFlar/nightmode/zipball/a3f2017aea306b4fb94b823d84ada914c163a4e2",
+            "reference": "a3f2017aea306b4fb94b823d84ada914c163a4e2",
+            "shasum": ""
+        },
+        "require": {
+            "flarum/core": "^0.1.0-beta.7"
+        },
+        "time": "2018-08-18T17:20:18+00:00",
+        "type": "flarum-extension",
+        "extra": {
+            "flarum-extension": {
+                "title": "ReFlar Night mode",
+                "icon": {
+                    "name": "moon-o",
+                    "backgroundColor": "#263238",
+                    "color": "#ffff00"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Reflar\\NightMode\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Shahiem Seymor",
+                "email": "shahiem.seymor@reflar.email",
+                "homepage": "https://reflar.io"
+            }
+        ],
+        "description": "Turn your flarum forum to dark as user",
+        "keywords": [
+            "extension",
+            "flarum",
+            "mode",
+            "moon",
+            "night",
+            "reflar"
+        ]
+    },
+    {
         "name": "google/recaptcha",
         "version": "1.2.1",
         "version_normalized": "1.2.1.0",

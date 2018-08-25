@@ -3,6 +3,8 @@
 		"reflar/uncache": "*",
 		"reflar/gamification": "*",
 		"reflar/koseki": "*",
+		"reflar/polls": "*",
+		"reflar/nightmode": "*",
 		"sijad/flarum-ext-recaptcha": "*"
 	},
 	"replace": {
