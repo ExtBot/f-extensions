@@ -5,6 +5,9 @@
 		"reflar/koseki": "*",
 		"reflar/polls": "*",
 		"reflar/nightmode": "*",
+		"reflar/level-ranks": "*",
+		"reflar/reactions": "*",
+		"reflar/enso-theme": "*",
 		"sijad/flarum-ext-recaptcha": "*"
 	},
 	"replace": {
