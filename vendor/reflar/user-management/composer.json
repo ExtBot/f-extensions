@@ -19,9 +19,9 @@
         },
 
         {
-            "name": "Charlie K",
-            "email": "issyrocks12@reflar.email",
-            "homepage": "https://reflar.io"
+          "name": "Charlie K",
+          "email": "issyrocks12@reflar.email",
+          "homepage": "https://reflar.io"
         }
     ],
     "support": {
@@ -31,10 +31,7 @@
     "require": {
         "flarum/core": "^0.1.0-beta.6"
     },
-    "conflict": {
-        "flagrow/terms": ">=0.1.0"
-    },
-    "autoload": {
+      "autoload": {
         "psr-4": {
             "Reflar\\UserManagement\\": "src/"
         }
