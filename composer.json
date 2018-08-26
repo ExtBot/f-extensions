@@ -11,11 +11,12 @@
 		"zaptech/cookie-consent": "*",
 		"reflar/user-management": "*",
 		"reflar/pretty-mail": "*",
+		"flagrow/sitemap": "*",
 		"sijad/flarum-ext-recaptcha": "*"
 		},
 	"replace": {
 		"flarum/core": "*"
 	},
-	"minimum-stability": "beta",
+	"minimum-stability": "dev",
 	"prefer-stable": true
 }

@@ -31,4 +31,5 @@ return array(
     'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
     'Flarum\\Tags\\' => array($vendorDir . '/flarum/flarum-ext-tags/src'),
     'Flarum\\Core\\' => array($vendorDir . '/reflar/pretty-mail/src/Overrides'),
+    'Flagrow\\Sitemap\\' => array($vendorDir . '/flagrow/sitemap/src'),
 );

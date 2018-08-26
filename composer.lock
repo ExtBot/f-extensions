@@ -4,8 +4,64 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a30019097e0402eaee950a713e6827c3",
+    "content-hash": "d05d44938fc17371b759d0771281e4a9",
     "packages": [
+        {
+            "name": "flagrow/sitemap",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/flagrow/sitemap.git",
+                "reference": "dd679aa19bd6b904aa75876ce11d0ef6647377e9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/flagrow/sitemap/zipball/dd679aa19bd6b904aa75876ce11d0ef6647377e9",
+                "reference": "dd679aa19bd6b904aa75876ce11d0ef6647377e9",
+                "shasum": ""
+            },
+            "require": {
+                "flarum/core": "^0.1.0-beta.7"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "Flagrow Sitemap",
+                    "icon": {
+                        "name": "sitemap",
+                        "backgroundColor": "#f4f4f4",
+                        "color": "#5f4bb6"
+                    }
+                },
+                "flagrow": {
+                    "discuss": "https://discuss.flarum.org/d/14941-flagrow-sitemap"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Flagrow\\Sitemap\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Clark Winkelmann",
+                    "email": "clark.winkelmann@gmail.com",
+                    "homepage": "https://clarkwinkelmann.com/"
+                }
+            ],
+            "description": "Generate a sitemap",
+            "keywords": [
+                "Sitemap",
+                "extension",
+                "flagrow",
+                "flarum"
+            ],
+            "time": "2018-08-08T21:56:29+00:00"
+        },
         {
             "name": "flarum/flarum-ext-tags",
             "version": "v0.1.0-beta.8",
@@ -1369,7 +1425,7 @@
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "beta",
+    "minimum-stability": "dev",
     "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
