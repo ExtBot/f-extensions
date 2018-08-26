@@ -30,7 +30,8 @@
 		"sijad/flarum-ext-recaptcha": "*"
 		},
 	"replace": {
-		"flarum/core": "*"
+		"flarum/core": "*",
+		"s9e/text-formatter": "*"
 	},
 	"minimum-stability": "dev",
 	"prefer-stable": true

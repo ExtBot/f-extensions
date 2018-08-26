@@ -6,7 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    's9e\\TextFormatter\\' => array($vendorDir . '/s9e/text-formatter/src'),
     'ZapTech\\CConsent\\' => array($vendorDir . '/zaptech/cookie-consent/src'),
     'Twilio\\' => array($vendorDir . '/twilio/sdk/Twilio'),
     'Symfony\\Polyfill\\Util\\' => array($vendorDir . '/symfony/polyfill-util'),
