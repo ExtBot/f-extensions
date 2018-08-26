@@ -1,0 +1,1410 @@
+[
+    {
+        "name": "psr/http-message",
+        "version": "1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/php-fig/http-message.git",
+            "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363",
+            "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2016-08-06T14:39:51+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Psr\\Http\\Message\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "PHP-FIG",
+                "homepage": "http://www.php-fig.org/"
+            }
+        ],
+        "description": "Common interface for HTTP messages",
+        "homepage": "https://github.com/php-fig/http-message",
+        "keywords": [
+            "http",
+            "http-message",
+            "psr",
+            "psr-7",
+            "request",
+            "response"
+        ]
+    },
+    {
+        "name": "guzzlehttp/psr7",
+        "version": "1.4.2",
+        "version_normalized": "1.4.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/guzzle/psr7.git",
+            "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/guzzle/psr7/zipball/f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
+            "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0",
+            "psr/http-message": "~1.0"
+        },
+        "provide": {
+            "psr/http-message-implementation": "1.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.0"
+        },
+        "time": "2017-03-20T17:10:46+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "GuzzleHttp\\Psr7\\": "src/"
+            },
+            "files": [
+                "src/functions_include.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Michael Dowling",
+                "email": "mtdowling@gmail.com",
+                "homepage": "https://github.com/mtdowling"
+            },
+            {
+                "name": "Tobias Schultze",
+                "homepage": "https://github.com/Tobion"
+            }
+        ],
+        "description": "PSR-7 message implementation that also provides common utility methods",
+        "keywords": [
+            "http",
+            "message",
+            "request",
+            "response",
+            "stream",
+            "uri",
+            "url"
+        ]
+    },
+    {
+        "name": "guzzlehttp/promises",
+        "version": "v1.3.1",
+        "version_normalized": "1.3.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/guzzle/promises.git",
+            "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/guzzle/promises/zipball/a59da6cf61d80060647ff4d3eb2c03a2bc694646",
+            "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^4.0"
+        },
+        "time": "2016-12-20T10:07:11+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "GuzzleHttp\\Promise\\": "src/"
+            },
+            "files": [
+                "src/functions_include.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Michael Dowling",
+                "email": "mtdowling@gmail.com",
+                "homepage": "https://github.com/mtdowling"
+            }
+        ],
+        "description": "Guzzle promises library",
+        "keywords": [
+            "promise"
+        ]
+    },
+    {
+        "name": "guzzlehttp/guzzle",
+        "version": "6.3.3",
+        "version_normalized": "6.3.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/guzzle/guzzle.git",
+            "reference": "407b0cb880ace85c9b63c5f9551db498cb2d50ba"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/guzzle/guzzle/zipball/407b0cb880ace85c9b63c5f9551db498cb2d50ba",
+            "reference": "407b0cb880ace85c9b63c5f9551db498cb2d50ba",
+            "shasum": ""
+        },
+        "require": {
+            "guzzlehttp/promises": "^1.0",
+            "guzzlehttp/psr7": "^1.4",
+            "php": ">=5.5"
+        },
+        "require-dev": {
+            "ext-curl": "*",
+            "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.4 || ^7.0",
+            "psr/log": "^1.0"
+        },
+        "suggest": {
+            "psr/log": "Required for using the Log middleware"
+        },
+        "time": "2018-04-22T15:46:56+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "6.3-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "src/functions_include.php"
+            ],
+            "psr-4": {
+                "GuzzleHttp\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Michael Dowling",
+                "email": "mtdowling@gmail.com",
+                "homepage": "https://github.com/mtdowling"
+            }
+        ],
+        "description": "Guzzle is a PHP HTTP client library",
+        "homepage": "http://guzzlephp.org/",
+        "keywords": [
+            "client",
+            "curl",
+            "framework",
+            "http",
+            "http client",
+            "rest",
+            "web service"
+        ]
+    },
+    {
+        "name": "paragonie/random_compat",
+        "version": "v2.0.17",
+        "version_normalized": "2.0.17.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/paragonie/random_compat.git",
+            "reference": "29af24f25bab834fcbb38ad2a69fa93b867e070d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/paragonie/random_compat/zipball/29af24f25bab834fcbb38ad2a69fa93b867e070d",
+            "reference": "29af24f25bab834fcbb38ad2a69fa93b867e070d",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.*|5.*"
+        },
+        "suggest": {
+            "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
+        },
+        "time": "2018-07-04T16:31:37+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "lib/random.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Paragon Initiative Enterprises",
+                "email": "security@paragonie.com",
+                "homepage": "https://paragonie.com"
+            }
+        ],
+        "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
+        "keywords": [
+            "csprng",
+            "polyfill",
+            "pseudorandom",
+            "random"
+        ]
+    },
+    {
+        "name": "reflar/uncache",
+        "version": "0.1.0-beta.3",
+        "version_normalized": "0.1.0.0-beta3",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ReFlar/UnCache.git",
+            "reference": "ab716bbc68adb336f0eb55929a81144444864170"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ReFlar/UnCache/zipball/ab716bbc68adb336f0eb55929a81144444864170",
+            "reference": "ab716bbc68adb336f0eb55929a81144444864170",
+            "shasum": ""
+        },
+        "require": {
+            "flarum/core": "^0.1.0-beta-7",
+            "guzzlehttp/guzzle": "^6.2.2"
+        },
+        "time": "2018-08-22T20:05:42+00:00",
+        "type": "flarum-extension",
+        "extra": {
+            "flarum-extension": {
+                "title": "ReFlar UnCache",
+                "icon": {
+                    "name": "archive",
+                    "backgroundColor": "#263238",
+                    "color": "#fff"
+                }
+            },
+            "flagrow": {
+                "discuss": ""
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Reflar\\UnCache\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "CDK2020",
+                "email": "CDK2020@reflar.email",
+                "homepage": "https://redevs.org",
+                "role": "Developer"
+            }
+        ],
+        "description": "No more cache related problems!",
+        "keywords": [
+            "cache",
+            "clear",
+            "flarum",
+            "reflar",
+            "uncache"
+        ]
+    },
+    {
+        "name": "reflar/gamification",
+        "version": "3.0.10",
+        "version_normalized": "3.0.10.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ReFlar/gamification.git",
+            "reference": "9c28317dafb774819149a97990e20def7a1d0b34"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ReFlar/gamification/zipball/9c28317dafb774819149a97990e20def7a1d0b34",
+            "reference": "9c28317dafb774819149a97990e20def7a1d0b34",
+            "shasum": ""
+        },
+        "require": {
+            "flarum/core": "^0.1.0-beta.7"
+        },
+        "time": "2018-08-08T23:53:44+00:00",
+        "type": "flarum-extension",
+        "extra": {
+            "flarum-extension": {
+                "title": "ReFlar Gamification",
+                "icon": {
+                    "name": "thumbs-up",
+                    "backgroundColor": "#263238",
+                    "color": "#fff"
+                }
+            },
+            "flagrow": {
+                "discuss": "https://discuss.flarum.org/d/5588-gamification-by-reflar"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Reflar\\Gamification\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Christian Lopez",
+                "email": "Christian.Lopez@redevs.org",
+                "homepage": "https://redevs.org"
+            },
+            {
+                "name": "Charlie K",
+                "email": "Charlie.K@redevs.org",
+                "homepage": "https://redevs.org"
+            }
+        ],
+        "description": "Upvotes and downvotes for your Flarum community",
+        "keywords": [
+            "Gamification",
+            "Settings",
+            "flarum",
+            "misc",
+            "points",
+            "reflar"
+        ]
+    },
+    {
+        "name": "flarum/flarum-ext-tags",
+        "version": "v0.1.0-beta.8",
+        "version_normalized": "0.1.0.0-beta8",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/flarum/flarum-ext-tags.git",
+            "reference": "f40a053f8a5196e6aa354c20d011364982f7dc4a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/flarum/flarum-ext-tags/zipball/f40a053f8a5196e6aa354c20d011364982f7dc4a",
+            "reference": "f40a053f8a5196e6aa354c20d011364982f7dc4a",
+            "shasum": ""
+        },
+        "require": {
+            "flarum/core": "^0.1.0-beta.7"
+        },
+        "time": "2017-07-22T02:45:22+00:00",
+        "type": "flarum-extension",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "0.1.x-dev"
+            },
+            "flarum-extension": {
+                "title": "Tags",
+                "icon": {
+                    "name": "tags",
+                    "backgroundColor": "#F28326",
+                    "color": "#fff"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Flarum\\Tags\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Toby Zerner",
+                "email": "toby.zerner@gmail.com"
+            }
+        ],
+        "description": "Organize discussions into a hierarchy of tags and categories.",
+        "keywords": [
+            "discussion"
+        ]
+    },
+    {
+        "name": "reflar/koseki",
+        "version": "0.1.8",
+        "version_normalized": "0.1.8.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ReFlar/koseki.git",
+            "reference": "ca832163db57478ba720434810ee41f709eb2f37"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ReFlar/koseki/zipball/ca832163db57478ba720434810ee41f709eb2f37",
+            "reference": "ca832163db57478ba720434810ee41f709eb2f37",
+            "shasum": ""
+        },
+        "require": {
+            "flarum/core": "^0.1.0-beta.7",
+            "flarum/flarum-ext-tags": "*"
+        },
+        "time": "2018-08-19T22:58:40+00:00",
+        "type": "flarum-extension",
+        "extra": {
+            "flarum-extension": {
+                "title": "ReFlar Koseki",
+                "icon": {
+                    "name": "th-list",
+                    "backgroundColor": "#263238",
+                    "color": "#FFF"
+                }
+            },
+            "flagrow": {
+                "discuss": ""
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Reflar\\Koseki\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Daniël Klabbers",
+                "email": "daniel@klabbers.email",
+                "homepage": "http://luceos.com"
+            },
+            {
+                "name": "Shahiem Seymor",
+                "email": "shahiem.seymor@reflar.email",
+                "homepage": "https://shahiemseymor.com"
+            }
+        ],
+        "description": "Tidy up your Flarum forum with a structured hierarchical layout.",
+        "keywords": [
+            "categories",
+            "category",
+            "classic hierarchy",
+            "extension",
+            "flagrow",
+            "flarum",
+            "reflar"
+        ]
+    },
+    {
+        "name": "reflar/polls",
+        "version": "1.2.6",
+        "version_normalized": "1.2.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ReFlar/polls.git",
+            "reference": "ccaee3ce698ed9ad3ebf5bdf0610ef8a7b5ce81b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ReFlar/polls/zipball/ccaee3ce698ed9ad3ebf5bdf0610ef8a7b5ce81b",
+            "reference": "ccaee3ce698ed9ad3ebf5bdf0610ef8a7b5ce81b",
+            "shasum": ""
+        },
+        "require": {
+            "flarum/core": "^0.1.0-beta.7"
+        },
+        "time": "2018-06-07T04:47:37+00:00",
+        "type": "flarum-extension",
+        "extra": {
+            "flarum-extension": {
+                "title": "ReFlar Polls",
+                "icon": {
+                    "name": "signal",
+                    "backgroundColor": "#263238",
+                    "color": "#ffffff"
+                }
+            },
+            "flagrow": {
+                "discuss": "https://discuss.flarum.org/d/9762-poll"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Reflar\\Polls\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Shahiem Seymor",
+                "email": "shahiem.seymor@reflar.email",
+                "homepage": "https://reflar.io"
+            }
+        ],
+        "description": "A poll extension for your flarum Forum.",
+        "keywords": [
+            "answer",
+            "extension",
+            "flarum",
+            "poll",
+            "polls",
+            "reflar"
+        ]
+    },
+    {
+        "name": "reflar/nightmode",
+        "version": "0.1.6",
+        "version_normalized": "0.1.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ReFlar/nightmode.git",
+            "reference": "a3f2017aea306b4fb94b823d84ada914c163a4e2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ReFlar/nightmode/zipball/a3f2017aea306b4fb94b823d84ada914c163a4e2",
+            "reference": "a3f2017aea306b4fb94b823d84ada914c163a4e2",
+            "shasum": ""
+        },
+        "require": {
+            "flarum/core": "^0.1.0-beta.7"
+        },
+        "time": "2018-08-18T17:20:18+00:00",
+        "type": "flarum-extension",
+        "extra": {
+            "flarum-extension": {
+                "title": "ReFlar Night mode",
+                "icon": {
+                    "name": "moon-o",
+                    "backgroundColor": "#263238",
+                    "color": "#ffff00"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Reflar\\NightMode\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Shahiem Seymor",
+                "email": "shahiem.seymor@reflar.email",
+                "homepage": "https://reflar.io"
+            }
+        ],
+        "description": "Turn your flarum forum to dark as user",
+        "keywords": [
+            "extension",
+            "flarum",
+            "mode",
+            "moon",
+            "night",
+            "reflar"
+        ]
+    },
+    {
+        "name": "reflar/level-ranks",
+        "version": "1.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ReFlar/level-ranks.git",
+            "reference": "725df7086401b74040e0a1139df290002dad4fea"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ReFlar/level-ranks/zipball/725df7086401b74040e0a1139df290002dad4fea",
+            "reference": "725df7086401b74040e0a1139df290002dad4fea",
+            "shasum": ""
+        },
+        "require": {
+            "flarum/core": "^0.1.0-beta.7"
+        },
+        "time": "2018-08-11T21:40:58+00:00",
+        "type": "flarum-extension",
+        "extra": {
+            "flarum-extension": {
+                "title": "ReFlar Level Ranks",
+                "icon": {
+                    "name": "percent",
+                    "backgroundColor": "#f4f4f4",
+                    "color": "#000"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Reflar\\LevelRanks\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "Shahiem Seymor",
+                "email": "s.seymor@live.nl",
+                "homepage": "http://shahiemseymor.com/"
+            }
+        ],
+        "description": "Add a level/expierence bar to your flarum Forum.",
+        "keywords": [
+            "experience",
+            "extension",
+            "flarum",
+            "level",
+            "xp"
+        ]
+    },
+    {
+        "name": "reflar/reactions",
+        "version": "1.0.0-beta.4.1",
+        "version_normalized": "1.0.0.0-beta4.1",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ReFlar/reactions.git",
+            "reference": "366075a97b87777eb8c33dc10a09b976a7480cd5"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ReFlar/reactions/zipball/366075a97b87777eb8c33dc10a09b976a7480cd5",
+            "reference": "366075a97b87777eb8c33dc10a09b976a7480cd5",
+            "shasum": ""
+        },
+        "require": {
+            "flarum/core": "^0.1.0-beta-7"
+        },
+        "time": "2018-05-19T23:53:25+00:00",
+        "type": "flarum-extension",
+        "extra": {
+            "flarum-extension": {
+                "title": "ReFlar Reactions",
+                "icon": {
+                    "name": "smile-o",
+                    "backgroundColor": "#263238",
+                    "color": "#FFF"
+                }
+            },
+            "flagrow": {
+                "discuss": "https://discuss.flarum.org/d/6542-reactions-by-reflar"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Reflar\\Reactions\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "David Sevilla Martín",
+                "email": "dsevilla192@icloud.com",
+                "homepage": "https://redevs.org",
+                "role": "Developer"
+            },
+            {
+                "name": "Charlie K",
+                "email": "issyrocks12@reflar.email",
+                "homepage": "https://redevs.org",
+                "role": "Developer"
+            }
+        ],
+        "description": "Reactions for Flarum",
+        "keywords": [
+            "Settings",
+            "flarum",
+            "misc",
+            "reactions",
+            "reflar"
+        ]
+    },
+    {
+        "name": "twilio/sdk",
+        "version": "5.21.3",
+        "version_normalized": "5.21.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/twilio/twilio-php.git",
+            "reference": "b87bde9642a34da9f2ce0417e1aaf572bfd2aec0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/twilio/twilio-php/zipball/b87bde9642a34da9f2ce0417e1aaf572bfd2aec0",
+            "reference": "b87bde9642a34da9f2ce0417e1aaf572bfd2aec0",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.0"
+        },
+        "require-dev": {
+            "apigen/apigen": "^4.1",
+            "phpunit/phpunit": "4.5.*"
+        },
+        "time": "2018-08-23T18:50:56+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Twilio\\": "Twilio/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Twilio API Team",
+                "email": "api@twilio.com"
+            }
+        ],
+        "description": "A PHP wrapper for Twilio's API",
+        "homepage": "http://github.com/twilio/twilio-php",
+        "keywords": [
+            "api",
+            "sms",
+            "twilio"
+        ]
+    },
+    {
+        "name": "symfony/polyfill-util",
+        "version": "v1.9.0",
+        "version_normalized": "1.9.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/polyfill-util.git",
+            "reference": "8e15d04ba3440984d23e7964b2ee1d25c8de1581"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/8e15d04ba3440984d23e7964b2ee1d25c8de1581",
+            "reference": "8e15d04ba3440984d23e7964b2ee1d25c8de1581",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "time": "2018-08-06T14:22:27+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.9-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Polyfill\\Util\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Nicolas Grekas",
+                "email": "p@tchwork.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony utilities for portability of PHP codes",
+        "homepage": "https://symfony.com",
+        "keywords": [
+            "compat",
+            "compatibility",
+            "polyfill",
+            "shim"
+        ]
+    },
+    {
+        "name": "symfony/polyfill-php56",
+        "version": "v1.9.0",
+        "version_normalized": "1.9.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/polyfill-php56.git",
+            "reference": "7b4fc009172cc0196535b0328bd1226284a28000"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/7b4fc009172cc0196535b0328bd1226284a28000",
+            "reference": "7b4fc009172cc0196535b0328bd1226284a28000",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3",
+            "symfony/polyfill-util": "~1.0"
+        },
+        "time": "2018-08-06T14:22:27+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.9-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Polyfill\\Php56\\": ""
+            },
+            "files": [
+                "bootstrap.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Nicolas Grekas",
+                "email": "p@tchwork.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony polyfill backporting some PHP 5.6+ features to lower PHP versions",
+        "homepage": "https://symfony.com",
+        "keywords": [
+            "compatibility",
+            "polyfill",
+            "portable",
+            "shim"
+        ]
+    },
+    {
+        "name": "paragonie/constant_time_encoding",
+        "version": "v2.2.2",
+        "version_normalized": "2.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/paragonie/constant_time_encoding.git",
+            "reference": "eccf915f45f911bfb189d1d1638d940ec6ee6e33"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/paragonie/constant_time_encoding/zipball/eccf915f45f911bfb189d1d1638d940ec6ee6e33",
+            "reference": "eccf915f45f911bfb189d1d1638d940ec6ee6e33",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^7"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^6|^7",
+            "vimeo/psalm": "^1"
+        },
+        "time": "2018-03-10T19:47:49+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "ParagonIE\\ConstantTime\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Paragon Initiative Enterprises",
+                "email": "security@paragonie.com",
+                "homepage": "https://paragonie.com",
+                "role": "Maintainer"
+            },
+            {
+                "name": "Steve 'Sc00bz' Thomas",
+                "email": "steve@tobtu.com",
+                "homepage": "https://www.tobtu.com",
+                "role": "Original Developer"
+            }
+        ],
+        "description": "Constant-time Implementations of RFC 4648 Encoding (Base-64, Base-32, Base-16)",
+        "keywords": [
+            "base16",
+            "base32",
+            "base32_decode",
+            "base32_encode",
+            "base64",
+            "base64_decode",
+            "base64_encode",
+            "bin2hex",
+            "encoding",
+            "hex",
+            "hex2bin",
+            "rfc4648"
+        ]
+    },
+    {
+        "name": "pragmarx/google2fa",
+        "version": "v3.0.2",
+        "version_normalized": "3.0.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/antonioribeiro/google2fa.git",
+            "reference": "d9d960370277958c700552c551e136018b915499"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/antonioribeiro/google2fa/zipball/d9d960370277958c700552c551e136018b915499",
+            "reference": "d9d960370277958c700552c551e136018b915499",
+            "shasum": ""
+        },
+        "require": {
+            "paragonie/constant_time_encoding": "~1.0|~2.0",
+            "paragonie/random_compat": ">=1 <9.99",
+            "php": ">=5.4",
+            "symfony/polyfill-php56": "~1.2"
+        },
+        "require-dev": {
+            "bacon/bacon-qr-code": "~1.0",
+            "phpunit/phpunit": "~4|~5|~6"
+        },
+        "suggest": {
+            "bacon/bacon-qr-code": "Required to generate inline QR Codes."
+        },
+        "time": "2018-07-31T23:31:19+00:00",
+        "type": "library",
+        "extra": {
+            "component": "package",
+            "branch-alias": {
+                "dev-master": "2.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "PragmaRX\\Google2FA\\": "src/",
+                "PragmaRX\\Google2FA\\Tests\\": "tests/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Antonio Carlos Ribeiro",
+                "email": "acr@antoniocarlosribeiro.com",
+                "role": "Creator & Designer"
+            }
+        ],
+        "description": "A One Time Password Authentication package, compatible with Google Authenticator.",
+        "keywords": [
+            "2fa",
+            "Authentication",
+            "Two Factor Authentication",
+            "google2fa",
+            "laravel"
+        ]
+    },
+    {
+        "name": "reflar/twofactor",
+        "version": "0.1.0-beta.3",
+        "version_normalized": "0.1.0.0-beta3",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ReFlar/twofactor.git",
+            "reference": "460d8854ec66121cd30e19acb254a42407e80bd8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ReFlar/twofactor/zipball/460d8854ec66121cd30e19acb254a42407e80bd8",
+            "reference": "460d8854ec66121cd30e19acb254a42407e80bd8",
+            "shasum": ""
+        },
+        "require": {
+            "flarum/core": "^0.1.0-beta.7",
+            "pragmarx/google2fa": "^3.0.1 ",
+            "twilio/sdk": "^5.16.7"
+        },
+        "conflict": {
+            "issyrocks12/flarum-ext-twofactor": "1.0.*"
+        },
+        "time": "2018-05-05T20:58:20+00:00",
+        "type": "flarum-extension",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "0.1.x-dev"
+            },
+            "flarum-extension": {
+                "title": "ReFlar Two Factor",
+                "icon": {
+                    "image": "icon.png",
+                    "backgroundColor": "#263238",
+                    "backgroundSize": "70%",
+                    "backgroundRepeat": "no-repeat",
+                    "backgroundPosition": "center",
+                    "color": "#fff"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Reflar\\twofactor\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Charlie K",
+                "email": "CDk2020@redevs.org"
+            }
+        ],
+        "description": "Add factor authentication to Flarum",
+        "keywords": [
+            "twofactor"
+        ]
+    },
+    {
+        "name": "zaptech/cookie-consent",
+        "version": "0.1.0-beta3",
+        "version_normalized": "0.1.0.0-beta3",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PartialDev/zaptech-cookie-consent.git",
+            "reference": "f1491f5c31ebe05f21289ead29607f7dce8b7f23"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/PartialDev/zaptech-cookie-consent/zipball/f1491f5c31ebe05f21289ead29607f7dce8b7f23",
+            "reference": "f1491f5c31ebe05f21289ead29607f7dce8b7f23",
+            "shasum": ""
+        },
+        "require": {
+            "flarum/core": "^0.1.0-beta.7"
+        },
+        "time": "2018-04-22T12:46:52+00:00",
+        "type": "flarum-extension",
+        "extra": {
+            "flarum-extension": {
+                "title": "Cookie Consent",
+                "icon": {
+                    "name": "exclamation-circle",
+                    "backgroundColor": "#ff5733",
+                    "color": "#f3bc00"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "ZapTech\\CConsent\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Joel Bond",
+                "email": "joel.bond@partialdev.com",
+                "homepage": "https://partialdev.com/"
+            }
+        ],
+        "description": "Customizable cookie consent notice for your Flarum installation",
+        "keywords": [
+            "consent",
+            "cookie",
+            "customizable",
+            "extension",
+            "flarum",
+            "partialdev"
+        ]
+    },
+    {
+        "name": "reflar/user-management",
+        "version": "0.1.5",
+        "version_normalized": "0.1.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ReFlar/user-management.git",
+            "reference": "81a4faa2e2046bc7c9a44c7fc2057f1e2e806a4f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ReFlar/user-management/zipball/81a4faa2e2046bc7c9a44c7fc2057f1e2e806a4f",
+            "reference": "81a4faa2e2046bc7c9a44c7fc2057f1e2e806a4f",
+            "shasum": ""
+        },
+        "require": {
+            "flarum/core": "^0.1.0-beta.6"
+        },
+        "conflict": {
+            "flagrow/terms": ">=0.1.0"
+        },
+        "time": "2018-05-15T19:49:34+00:00",
+        "type": "flarum-extension",
+        "extra": {
+            "flarum-extension": {
+                "title": "ReFlar User Management",
+                "icon": {
+                    "name": "address-book-o",
+                    "backgroundColor": "#263238",
+                    "color": "#fff"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Reflar\\UserManagement\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Christian Lopez",
+                "email": "ralkage@reflar.email",
+                "homepage": "https://reflar.io"
+            },
+            {
+                "name": "Charlie K",
+                "email": "issyrocks12@reflar.email",
+                "homepage": "https://reflar.io"
+            }
+        ],
+        "description": "Manage your users with style",
+        "keywords": [
+            "Settings",
+            "flarum",
+            "management",
+            "misc",
+            "reflar",
+            "registration"
+        ]
+    },
+    {
+        "name": "reflar/pretty-mail",
+        "version": "0.1.0-beta.2",
+        "version_normalized": "0.1.0.0-beta2",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ReFlar/pretty-mail.git",
+            "reference": "f23931975fb0f51a0ed3495b1427faee13fcb9c4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ReFlar/pretty-mail/zipball/f23931975fb0f51a0ed3495b1427faee13fcb9c4",
+            "reference": "f23931975fb0f51a0ed3495b1427faee13fcb9c4",
+            "shasum": ""
+        },
+        "require": {
+            "flarum/core": "^0.1.0-beta.7.1"
+        },
+        "time": "2018-04-19T05:28:21+00:00",
+        "type": "flarum-extension",
+        "extra": {
+            "flarum-extension": {
+                "title": "ReFlar Pretty mail",
+                "icon": {
+                    "name": "envelope-open",
+                    "backgroundColor": "#263238",
+                    "color": "#FFF"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "exclude-from-classmap": [
+                "/../../Flarum/Core/Listener/EmailConfirmationMailer.php",
+                "/../../Flarum/Core/Notification/NotificationMailer.php"
+            ],
+            "psr-4": {
+                "Reflar\\PrettyMail\\": "src/",
+                "Flarum\\Core\\": "src/Overrides"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Charlie K",
+                "email": "issyrocks12@reflar.email",
+                "homepage": "https://reflar.io"
+            }
+        ],
+        "description": "Make emails pretty",
+        "keywords": [
+            "extension",
+            "flarum",
+            "mail"
+        ]
+    },
+    {
+        "name": "google/recaptcha",
+        "version": "1.2.1",
+        "version_normalized": "1.2.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/google/recaptcha.git",
+            "reference": "e7add3be59211482ecdb942288f52da64a35f61a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/google/recaptcha/zipball/e7add3be59211482ecdb942288f52da64a35f61a",
+            "reference": "e7add3be59211482ecdb942288f52da64a35f61a",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5"
+        },
+        "require-dev": {
+            "friendsofphp/php-cs-fixer": "^2.2.20|^2.12",
+            "php-coveralls/php-coveralls": "^2.1",
+            "phpunit/phpunit": "^4.8.36|^5.7.27|^6.59|^7"
+        },
+        "time": "2018-08-05T09:31:53+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.2.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "ReCaptcha\\": "src/ReCaptcha"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "description": "Client library for reCAPTCHA, a free service that protects websites from spam and abuse.",
+        "homepage": "https://www.google.com/recaptcha/",
+        "keywords": [
+            "Abuse",
+            "captcha",
+            "recaptcha",
+            "spam"
+        ]
+    },
+    {
+        "name": "sijad/flarum-ext-recaptcha",
+        "version": "0.0.2",
+        "version_normalized": "0.0.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sijad/flarum-ext-recaptcha.git",
+            "reference": "df7bc6c96132434c8a9426e5eafe35d0302cd125"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sijad/flarum-ext-recaptcha/zipball/df7bc6c96132434c8a9426e5eafe35d0302cd125",
+            "reference": "df7bc6c96132434c8a9426e5eafe35d0302cd125",
+            "shasum": ""
+        },
+        "require": {
+            "flarum/core": "^0.1.0-beta.5",
+            "google/recaptcha": "~1.1"
+        },
+        "time": "2016-11-17T09:53:22+00:00",
+        "type": "flarum-extension",
+        "extra": {
+            "flarum-extension": {
+                "title": "Google reCAPTCHA",
+                "icon": {
+                    "image": "icon.svg",
+                    "backgroundColor": "#fff",
+                    "backgroundSize": "contain",
+                    "backgroundPosition": "center",
+                    "backgroundRepeat": "no-repeat"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Sijad\\ReCaptcha\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Sajjad Hashemian",
+                "email": "wolaws@gmail.com"
+            }
+        ],
+        "description": "Google reCAPTCHA for flarum",
+        "keywords": [
+            "captcha",
+            "validate",
+            "verify"
+        ]
+    }
+]

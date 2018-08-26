@@ -7,15 +7,12 @@
 		"reflar/nightmode": "*",
 		"reflar/level-ranks": "*",
 		"reflar/reactions": "*",
-		"reflar/enso-theme": "*",
 		"reflar/twofactor": "*",
 		"zaptech/cookie-consent": "*",
 		"reflar/user-management": "*",
-		"reflar/avataaars": "*",
-		"reflar/sweetalerts": "*",
 		"reflar/pretty-mail": "*",
 		"sijad/flarum-ext-recaptcha": "*"
-	},
+		},
 	"replace": {
 		"flarum/core": "*"
 	},
