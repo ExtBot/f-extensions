@@ -1,0 +1,7 @@
+mprove-auth0:
+  admin:
+    settings:
+      title: Auth0 settings
+      domain: Domain
+      client_id: Client ID
+      client_secret: Client secret

@@ -1,0 +1,14 @@
+{
+    "name": "tristiank3604/partialdev-flarum-ui",
+    "description": "PartialDev UI for Flarum",
+    "version": "0.1.0-alpha.5",
+    "type": "flarum-extension",
+    "require": {
+        "flarum/core": "^0.1.0-beta.7"
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "PartialDev Flarum UI"
+        }
+    }
+}

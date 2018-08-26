@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2260b41574dc21f0a8634bcbc006e152",
+    "content-hash": "029fea58db90a4bace7755572fe23053",
     "packages": [
         {
             "name": "amaurycarrade/flarum-ext-syndication",
@@ -154,6 +154,50 @@
             "time": "2018-04-22T10:42:39+00:00"
         },
         {
+            "name": "auth0/auth0-php",
+            "version": "5.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/auth0/auth0-PHP.git",
+                "reference": "c8aa6ea5dce87d112f3ff62d2b379202dd0bd217"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/auth0/auth0-PHP/zipball/c8aa6ea5dce87d112f3ff62d2b379202dd0bd217",
+                "reference": "c8aa6ea5dce87d112f3ff62d2b379202dd0bd217",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "firebase/php-jwt": "^5.0",
+                "guzzlehttp/guzzle": "~6.0",
+                "php": "^5.5 || ^7.0"
+            },
+            "require-dev": {
+                "josegonzalez/dotenv": "^2.0",
+                "phpunit/phpunit": "^4.8 || ^5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Auth0\\SDK\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Auth0",
+                    "email": "support@auth0.com",
+                    "homepage": "http://www.auth0.com/"
+                }
+            ],
+            "description": "Auth0 PHP SDK.",
+            "time": "2018-06-13T18:07:09+00:00"
+        },
+        {
             "name": "avatar4eg/flarum-ext-geotags",
             "version": "0.2.0",
             "source": {
@@ -260,6 +304,209 @@
                 "twitter"
             ],
             "time": "2016-09-16T07:52:26+00:00"
+        },
+        {
+            "name": "avatar4eg/flarum-ext-transliterator",
+            "version": "0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Avatar4eg/flarum-ext-transliterator.git",
+                "reference": "3a89dbf338f2d7593a4bc0bd21124ed42756484e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Avatar4eg/flarum-ext-transliterator/zipball/3a89dbf338f2d7593a4bc0bd21124ed42756484e",
+                "reference": "3a89dbf338f2d7593a4bc0bd21124ed42756484e",
+                "shasum": ""
+            },
+            "require": {
+                "behat/transliterator": "^1.1",
+                "flarum/core": "^0.1.0-beta.6"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "Url Transliterator",
+                    "icon": {
+                        "name": "language",
+                        "backgroundColor": "#71B55B",
+                        "color": "#000000"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Avatar4eg\\Transliterator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nikolai Morozov",
+                    "email": "avanmorozov@gmail.com"
+                }
+            ],
+            "description": "Flarum extension. Transliterator for urls.",
+            "keywords": [
+                "language",
+                "latin",
+                "url"
+            ],
+            "time": "2017-03-21T00:13:12+00:00"
+        },
+        {
+            "name": "avatar4eg/flarum-ext-users-list",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Avatar4eg/flarum-ext-users-list.git",
+                "reference": "ed9b1a02832fb00031ab1c0030b18071751464c4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Avatar4eg/flarum-ext-users-list/zipball/ed9b1a02832fb00031ab1c0030b18071751464c4",
+                "reference": "ed9b1a02832fb00031ab1c0030b18071751464c4",
+                "shasum": ""
+            },
+            "require": {
+                "flarum/core": "^0.1.0-beta.5"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "Users list",
+                    "icon": {
+                        "name": "users",
+                        "backgroundColor": "#FFFFFF",
+                        "color": "#000000"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Avatar4eg\\UsersList\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nikolai Morozov",
+                    "email": "avanmorozov@gmail.com"
+                }
+            ],
+            "description": "Add users list in admin panel.",
+            "keywords": [
+                "Users",
+                "admin"
+            ],
+            "time": "2016-09-16T08:42:06+00:00"
+        },
+        {
+            "name": "behat/transliterator",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Behat/Transliterator.git",
+                "reference": "826ce7e9c2a6664c0d1f381cbb38b1fb80a7ee2c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Behat/Transliterator/zipball/826ce7e9c2a6664c0d1f381cbb38b1fb80a7ee2c",
+                "reference": "826ce7e9c2a6664c0d1f381cbb38b1fb80a7ee2c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "chuyskywalker/rolling-curl": "^3.1",
+                "php-yaoi/php-yaoi": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Behat\\Transliterator": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Artistic-1.0"
+            ],
+            "description": "String transliterator",
+            "keywords": [
+                "i18n",
+                "slug",
+                "transliterator"
+            ],
+            "time": "2017-04-04T11:38:05+00:00"
+        },
+        {
+            "name": "clarkwinkelmann/flarum-ext-chatwee",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/clarkwinkelmann/flarum-ext-chatwee.git",
+                "reference": "773de402886db6072da3d8a0dda9fb5650e81d9c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/clarkwinkelmann/flarum-ext-chatwee/zipball/773de402886db6072da3d8a0dda9fb5650e81d9c",
+                "reference": "773de402886db6072da3d8a0dda9fb5650e81d9c",
+                "shasum": ""
+            },
+            "require": {
+                "flarum/core": "^0.1.0-beta.7",
+                "php": ">=7.0"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "ChatWee",
+                    "icon": {
+                        "name": "comments",
+                        "backgroundColor": "#1294F6",
+                        "color": "#FAFAFA"
+                    }
+                },
+                "flagrow": {
+                    "discuss": "https://discuss.flarum.org/d/8275-chatwee-sso"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ClarkWinkelmann\\ChatWee\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "mit"
+            ],
+            "authors": [
+                {
+                    "name": "Clark Winkelmann",
+                    "email": "clark.winkelmann@gmail.com",
+                    "homepage": "https://clarkwinkelmann.com/"
+                }
+            ],
+            "description": "Integrate ChatWee SSO with Flarum",
+            "keywords": [
+                "chat",
+                "chatwee",
+                "extension",
+                "flarum"
+            ],
+            "time": "2018-02-09T01:33:20+00:00"
         },
         {
             "name": "clarkwinkelmann/flarum-ext-emojionearea",
@@ -853,6 +1100,59 @@
                 "private"
             ],
             "time": "2018-02-09T12:54:57+00:00"
+        },
+        {
+            "name": "davis/flarum-ext-securehttps",
+            "version": "0.1.0-beta6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dav-is/flarum-ext-securehttps.git",
+                "reference": "e4875a60940e46925bad86e15db8261583d9d38f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dav-is/flarum-ext-securehttps/zipball/e4875a60940e46925bad86e15db8261583d9d38f",
+                "reference": "e4875a60940e46925bad86e15db8261583d9d38f",
+                "shasum": ""
+            },
+            "require": {
+                "flarum/core": "^0.1.0-beta.5"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "Secure HTTPS",
+                    "icon": {
+                        "name": "lock",
+                        "backgroundColor": "#000",
+                        "color": "green"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Davis\\SecureHttps\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Connor Davis",
+                    "email": "davis@produes.co"
+                }
+            ],
+            "description": "Changes all images using http to https",
+            "keywords": [
+                "customization",
+                "davis",
+                "flarum",
+                "https",
+                "images"
+            ],
+            "time": "2018-08-04T22:59:28+00:00"
         },
         {
             "name": "davis/flarum-ext-socialprofile",
@@ -1513,6 +1813,52 @@
                 "flarum"
             ],
             "time": "2018-08-23T18:34:19+00:00"
+        },
+        {
+            "name": "firebase/php-jwt",
+            "version": "v5.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/firebase/php-jwt.git",
+                "reference": "9984a4d3a32ae7673d6971ea00bae9d0a1abba0e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/9984a4d3a32ae7673d6971ea00bae9d0a1abba0e",
+                "reference": "9984a4d3a32ae7673d6971ea00bae9d0a1abba0e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": " 4.8.35"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Firebase\\JWT\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Neuman Vong",
+                    "email": "neuman+pear@twilio.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Anant Narayanan",
+                    "email": "anant@php.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
+            "homepage": "https://github.com/firebase/php-jwt",
+            "time": "2017-06-27T22:17:23+00:00"
         },
         {
             "name": "fixer112/flarum-frontpage",
@@ -2973,6 +3319,58 @@
             "time": "2017-06-13T14:26:30+00:00"
         },
         {
+            "name": "flarum/flarum-ext-bbcode",
+            "version": "v0.1.0-beta.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/flarum/flarum-ext-bbcode.git",
+                "reference": "4c238614aac05a3ae40824ac196cf39a4f968981"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/flarum/flarum-ext-bbcode/zipball/4c238614aac05a3ae40824ac196cf39a4f968981",
+                "reference": "4c238614aac05a3ae40824ac196cf39a4f968981",
+                "shasum": ""
+            },
+            "require": {
+                "flarum/core": "^0.1.0-beta.5"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1.x-dev"
+                },
+                "flarum-extension": {
+                    "title": "BBCode",
+                    "icon": {
+                        "name": "bold",
+                        "backgroundColor": "#238C59",
+                        "color": "#fff"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Flarum\\BBCode\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Toby Zerner",
+                    "email": "toby.zerner@gmail.com"
+                }
+            ],
+            "description": "Allow posts to be formatted with BBCode.",
+            "keywords": [
+                "formatting"
+            ],
+            "time": "2016-03-29T08:14:20+00:00"
+        },
+        {
             "name": "flarum/flarum-ext-markdown",
             "version": "v0.1.0-beta.5",
             "source": {
@@ -3612,6 +4010,56 @@
             "time": "2015-12-28T08:35:57+00:00"
         },
         {
+            "name": "hyn/flarum-cache",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hyn/flarum-cache.git",
+                "reference": "e885c1bef7a692e41493f6f1bf9fd383a6ad1ad6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hyn/flarum-cache/zipball/e885c1bef7a692e41493f6f1bf9fd383a6ad1ad6",
+                "reference": "e885c1bef7a692e41493f6f1bf9fd383a6ad1ad6",
+                "shasum": ""
+            },
+            "require": {
+                "flarum/core": "^0.1.0-beta.3"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "Cache",
+                    "icon": {
+                        "name": "tachometer",
+                        "backgroundColor": "#74000E",
+                        "color": "#BE1E31"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hyn\\Cache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniël Klabbers",
+                    "email": "daniel+flarum@klabbers.email",
+                    "homepage": "http://hyn.io"
+                }
+            ],
+            "description": "Allows to set other caching drivers",
+            "keywords": [
+                "cache"
+            ],
+            "time": "2015-11-20T21:37:43+00:00"
+        },
+        {
             "name": "hyn/flarum-default-group",
             "version": "0.5.0",
             "source": {
@@ -3912,6 +4360,52 @@
             "description": "A Base Security Library",
             "homepage": "https://github.com/ircmaxell/SecurityLib",
             "time": "2015-03-20T14:31:23+00:00"
+        },
+        {
+            "name": "isaa/flarum-isaa-opengraph",
+            "version": "0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ItalianSpaceAstronauticsAssociation/flarum-isaa-opengraph.git",
+                "reference": "876e8c6c60b9453604e4a92f9484a1826b1fed25"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ItalianSpaceAstronauticsAssociation/flarum-isaa-opengraph/zipball/876e8c6c60b9453604e4a92f9484a1826b1fed25",
+                "reference": "876e8c6c60b9453604e4a92f9484a1826b1fed25",
+                "shasum": ""
+            },
+            "require": {
+                "flarum/core": "^0.1.0-beta.5"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "OpenGraph"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ISAA\\OpenGraph\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Zambianchi for ISAA Techcnical Team",
+                    "email": "marco.zambianchi@isaa.it"
+                }
+            ],
+            "description": "Opengraph for flarum.",
+            "keywords": [
+                "embedding",
+                "flarum",
+                "opengraph"
+            ],
+            "time": "2016-09-05T20:42:29+00:00"
         },
         {
             "name": "isaced/flarum-ext-email-verification-switch",
@@ -4907,6 +5401,55 @@
             "time": "2017-06-19T01:22:40+00:00"
         },
         {
+            "name": "mprove/flarum-ext-auth0",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mprove-io/flarum-ext-auth0.git",
+                "reference": "11e149518a0637bbdf10153f2e4a2f08a60b92db"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mprove-io/flarum-ext-auth0/zipball/11e149518a0637bbdf10153f2e4a2f08a60b92db",
+                "reference": "11e149518a0637bbdf10153f2e4a2f08a60b92db",
+                "shasum": ""
+            },
+            "require": {
+                "auth0/auth0-php": "~5.0",
+                "flarum/core": "^0.1.0-beta.6"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "SSO Auth0",
+                    "icon": {
+                        "image": "icon.png",
+                        "backgroundColor": "#e4e4e4",
+                        "backgroundRepeat": "no-repeat",
+                        "backgroundPosition": "center"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mprove\\Auth\\Auth0\\": "src/",
+                    "Auth0\\SDK\\": "../../auth0/auth0-php/src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maxim Kvasha",
+                    "email": "kmi.maxim@gmail.com"
+                }
+            ],
+            "description": "Auth0 extension for Flarum",
+            "time": "2017-08-29T17:26:57+00:00"
+        },
+        {
             "name": "mtdowling/cron-expression",
             "version": "v1.2.1",
             "source": {
@@ -4949,6 +5492,59 @@
                 "schedule"
             ],
             "time": "2017-01-23T04:29:33+00:00"
+        },
+        {
+            "name": "nearata/flarum-ext-groupstyle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Nearata/flarum-ext-groupstyle.git",
+                "reference": "7501ff435e1afb332880e2355c813ebe04847138"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Nearata/flarum-ext-groupstyle/zipball/7501ff435e1afb332880e2355c813ebe04847138",
+                "reference": "7501ff435e1afb332880e2355c813ebe04847138",
+                "shasum": ""
+            },
+            "require": {
+                "flarum/core": "^0.1.0-beta-7"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "Group Style",
+                    "icon": {
+                        "name": "",
+                        "backgroundColor": "",
+                        "color": ""
+                    }
+                },
+                "flagrow": {
+                    "discuss": ""
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nearata\\GroupStyle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nearata",
+                    "email": "nearata@protonmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Group based styling",
+            "keywords": [
+                "flarum"
+            ],
+            "time": "2018-06-19T16:51:51+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -5059,6 +5655,43 @@
             "time": "2018-05-10T14:50:39+00:00"
         },
         {
+            "name": "oe800/flarum-ext-bbcode-alerts",
+            "version": "0.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/0E800/flarum-ext-bbcode-alerts.git",
+                "reference": "644dd1f9c3c13f5e186ecd95df00121bfe5b0a62"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/0E800/flarum-ext-bbcode-alerts/zipball/644dd1f9c3c13f5e186ecd95df00121bfe5b0a62",
+                "reference": "644dd1f9c3c13f5e186ecd95df00121bfe5b0a62",
+                "shasum": ""
+            },
+            "require": {
+                "flarum/core": "^0.1.0-beta.6"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "BBCode Alerts",
+                    "icon": {
+                        "name": "times-rectangle-o",
+                        "backgroundColor": "#000",
+                        "color": "#fff"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "oe800\\BBCodeAlerts\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Add visual alerts / warnings to Flarum posts",
+            "time": "2017-06-23T01:58:14+00:00"
+        },
+        {
             "name": "oe800/flarum-ext-bbcode-cards",
             "version": "0.1.4",
             "source": {
@@ -5131,6 +5764,43 @@
             "notification-url": "https://packagist.org/downloads/",
             "description": "Add customized signatures to Flarum",
             "time": "2017-04-01T06:32:27+00:00"
+        },
+        {
+            "name": "oe800/flarum-ext-bbcode-special",
+            "version": "0.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/0E800/flarum-ext-bbcode-special.git",
+                "reference": "1ec32214b5a8766c6e17dff831b7d68f6190710d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/0E800/flarum-ext-bbcode-special/zipball/1ec32214b5a8766c6e17dff831b7d68f6190710d",
+                "reference": "1ec32214b5a8766c6e17dff831b7d68f6190710d",
+                "shasum": ""
+            },
+            "require": {
+                "flarum/core": "^0.1.0-beta.6"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "BBCode Special",
+                    "icon": {
+                        "name": "ge",
+                        "backgroundColor": "#000",
+                        "color": "#fff"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "oe800\\Special\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Add Special BBCode effects.",
+            "time": "2017-10-06T16:26:38+00:00"
         },
         {
             "name": "omines/oauth2-gitlab",
@@ -5856,6 +6526,43 @@
             "time": "2017-06-06T16:41:17+00:00"
         },
         {
+            "name": "radixi0/flarum-ext-sharing",
+            "version": "0.1.0-beta.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/radixi0/flarum-ext-sharing.git",
+                "reference": "d538d409f46c6e940c13f5acbaaf526c61c41a8d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/radixi0/flarum-ext-sharing/zipball/d538d409f46c6e940c13f5acbaaf526c61c41a8d",
+                "reference": "d538d409f46c6e940c13f5acbaaf526c61c41a8d",
+                "shasum": ""
+            },
+            "require": {
+                "flarum/core": "^0.1.0-beta.6"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "Flarum Sharing",
+                    "icon": {
+                        "name": "retweet",
+                        "backgroundColor": "#489fdf",
+                        "color": "#fff"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "radixi0\\sharing\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "A new way of sharing discussions on social networks!",
+            "time": "2017-07-02T09:22:43+00:00"
+        },
+        {
             "name": "ramsey/uuid",
             "version": "3.8.0",
             "source": {
@@ -5939,16 +6646,16 @@
         },
         {
             "name": "reflar/gamification",
-            "version": "3.0.10",
+            "version": "3.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ReFlar/gamification.git",
-                "reference": "9c28317dafb774819149a97990e20def7a1d0b34"
+                "reference": "66de0cf2d2153e4227bd85d0203a2fba2dfd7714"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ReFlar/gamification/zipball/9c28317dafb774819149a97990e20def7a1d0b34",
-                "reference": "9c28317dafb774819149a97990e20def7a1d0b34",
+                "url": "https://api.github.com/repos/ReFlar/gamification/zipball/66de0cf2d2153e4227bd85d0203a2fba2dfd7714",
+                "reference": "66de0cf2d2153e4227bd85d0203a2fba2dfd7714",
                 "shasum": ""
             },
             "require": {
@@ -5998,7 +6705,7 @@
                 "points",
                 "reflar"
             ],
-            "time": "2018-08-08T23:53:44+00:00"
+            "time": "2018-08-26T05:29:29+00:00"
         },
         {
             "name": "reflar/koseki",
@@ -8112,6 +8819,33 @@
             "time": "2018-07-26T09:03:18+00:00"
         },
         {
+            "name": "tristiank3604/partialdev-flarum-ui",
+            "version": "0.1.0-alpha.5",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/tristian.kelly560/partialdev-flarum-ui.git",
+                "reference": "1726c9c47963415b998210f8e8d719391affca6a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/tristian%2Ekelly560%2Fpartialdev-flarum-ui/repository/archive.zip?sha=1726c9c47963415b998210f8e8d719391affca6a",
+                "reference": "1726c9c47963415b998210f8e8d719391affca6a",
+                "shasum": ""
+            },
+            "require": {
+                "flarum/core": "^0.1.0-beta.7"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "PartialDev Flarum UI"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "PartialDev UI for Flarum",
+            "time": "2018-08-25T21:44:37+00:00"
+        },
+        {
             "name": "twilio/sdk",
             "version": "5.21.3",
             "source": {
@@ -8203,6 +8937,51 @@
             "time": "2017-03-16T06:16:51+00:00"
         },
         {
+            "name": "wiseclock/flarum-ext-post-copyright",
+            "version": "0.1.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WiseClock/flarum-ext-post-copyright.git",
+                "reference": "7f679ef05f244213e03716c2994eb02e09f38dbe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WiseClock/flarum-ext-post-copyright/zipball/7f679ef05f244213e03716c2994eb02e09f38dbe",
+                "reference": "7f679ef05f244213e03716c2994eb02e09f38dbe",
+                "shasum": ""
+            },
+            "require": {
+                "flarum/core": "^0.1.0-beta.6"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "Post Copyright",
+                    "icon": {
+                        "name": "check-circle-o",
+                        "backgroundColor": "#cc0000",
+                        "color": "#ffd700"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "WiseClock\\PostCopyright\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "WiseClock"
+                }
+            ],
+            "description": "Enables copyright settings on posts.",
+            "time": "2017-03-22T01:40:53+00:00"
+        },
+        {
             "name": "wiseclock/flarum-ext-profile-image-crop",
             "version": "0.1.1",
             "source": {
@@ -8249,6 +9028,52 @@
             ],
             "description": "Crop when uploading profile image.",
             "time": "2017-03-14T03:12:52+00:00"
+        },
+        {
+            "name": "wiseclock/flarum-ext-reply2see",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WiseClock/flarum-ext-reply2see.git",
+                "reference": "6bcc7f44d2659d234afd80e16f55d875aa0540c3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WiseClock/flarum-ext-reply2see/zipball/6bcc7f44d2659d234afd80e16f55d875aa0540c3",
+                "reference": "6bcc7f44d2659d234afd80e16f55d875aa0540c3",
+                "shasum": ""
+            },
+            "require": {
+                "flarum/core": "^0.1.0-beta.6",
+                "flarum/flarum-ext-bbcode": "^0.1.0"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "Reply2See",
+                    "icon": {
+                        "name": "reply-all",
+                        "backgroundColor": "#ff1a00",
+                        "color": "#ffffff"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "WiseClock\\Reply2See\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "WiseClock"
+                }
+            ],
+            "description": "Adds a reply to see BBCODE.",
+            "time": "2017-07-28T10:38:38+00:00"
         },
         {
             "name": "wiwatsrt/flarum-ext-best-answer",
