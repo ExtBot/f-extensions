@@ -12,6 +12,7 @@
 		"reflar/user-management": "*",
 		"reflar/pretty-mail": "*",
 		"flagrow/sitemap": "*",
+		"dogsports/flarum-ext-pipetables": "*",
 		"sijad/flarum-ext-recaptcha": "*"
 		},
 	"replace": {

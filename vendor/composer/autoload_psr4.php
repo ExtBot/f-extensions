@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    's9e\\TextFormatter\\' => array($vendorDir . '/s9e/text-formatter/src'),
     'ZapTech\\CConsent\\' => array($vendorDir . '/zaptech/cookie-consent/src'),
     'Twilio\\' => array($vendorDir . '/twilio/sdk/Twilio'),
     'Symfony\\Polyfill\\Util\\' => array($vendorDir . '/symfony/polyfill-util'),
@@ -32,4 +33,5 @@ return array(
     'Flarum\\Tags\\' => array($vendorDir . '/flarum/flarum-ext-tags/src'),
     'Flarum\\Core\\' => array($vendorDir . '/reflar/pretty-mail/src/Overrides'),
     'Flagrow\\Sitemap\\' => array($vendorDir . '/flagrow/sitemap/src'),
+    'DogSports\\PipeTables\\' => array($vendorDir . '/dogsports/flarum-ext-pipetables/src'),
 );
