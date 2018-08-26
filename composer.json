@@ -16,6 +16,6 @@
 	"replace": {
 		"flarum/core": "*"
 	},
-	"minimum-stability": "dev",
+	"minimum-stability": "beta",
 	"prefer-stable": true
 }

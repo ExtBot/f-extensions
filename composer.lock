@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "749140be361c90446e5cc7c1516b795d",
+    "content-hash": "a30019097e0402eaee950a713e6827c3",
     "packages": [
         {
             "name": "flarum/flarum-ext-tags",
@@ -1369,7 +1369,7 @@
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "dev",
+    "minimum-stability": "beta",
     "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
