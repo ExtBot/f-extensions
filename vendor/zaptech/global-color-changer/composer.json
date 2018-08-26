@@ -1,0 +1,32 @@
+{
+
+    "name": "zaptech/global-color-changer",
+    "description": "Changes the global color of flarum",
+    "type": "flarum-extension",
+    "license": "Unlicense",
+    "require": {
+        "flarum/core": "^0.1.0-beta.6"
+    },
+
+    "support": {
+        "issues": "https://github.com/ZapTechAdmin/zaptech-global-color-changer/issues",
+        "source": "https://github.com/ZapTechAdmin/zaptech-global-color-changer"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "ZapTech\\GlobalCC\\": "src/"
+        }
+    },
+
+    "extra": {
+        "flarum-extension": {
+            "title": "Global Color Changer",
+            "icon": {
+                "name": "globe",
+                "backgroundColor": "#ff5733",
+                "color": "#f3bc00"
+            }           
+        }
+    }
+}
