@@ -1109,57 +1109,6 @@
         "homepage": "https://laravel.com"
     },
     {
-        "name": "paragonie/random_compat",
-        "version": "v2.0.17",
-        "version_normalized": "2.0.17.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/paragonie/random_compat.git",
-            "reference": "29af24f25bab834fcbb38ad2a69fa93b867e070d"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/paragonie/random_compat/zipball/29af24f25bab834fcbb38ad2a69fa93b867e070d",
-            "reference": "29af24f25bab834fcbb38ad2a69fa93b867e070d",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.2.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "4.*|5.*"
-        },
-        "suggest": {
-            "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
-        },
-        "time": "2018-07-04T16:31:37+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "lib/random.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Paragon Initiative Enterprises",
-                "email": "security@paragonie.com",
-                "homepage": "https://paragonie.com"
-            }
-        ],
-        "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
-        "keywords": [
-            "csprng",
-            "polyfill",
-            "pseudorandom",
-            "random"
-        ]
-    },
-    {
         "name": "doctrine/lexer",
         "version": "v1.0.1",
         "version_normalized": "1.0.1.0",
@@ -1352,6 +1301,53 @@
             "array",
             "collections",
             "iterator"
+        ]
+    },
+    {
+        "name": "paragonie/random_compat",
+        "version": "v9.99.99",
+        "version_normalized": "9.99.99.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/paragonie/random_compat.git",
+            "reference": "84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/paragonie/random_compat/zipball/84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95",
+            "reference": "84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^7"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.*|5.*",
+            "vimeo/psalm": "^1"
+        },
+        "suggest": {
+            "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
+        },
+        "time": "2018-07-02T15:55:56+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Paragon Initiative Enterprises",
+                "email": "security@paragonie.com",
+                "homepage": "https://paragonie.com"
+            }
+        ],
+        "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
+        "keywords": [
+            "csprng",
+            "polyfill",
+            "pseudorandom",
+            "random"
         ]
     },
     {
@@ -2597,22 +2593,22 @@
     },
     {
         "name": "pragmarx/google2fa",
-        "version": "v3.0.2",
-        "version_normalized": "3.0.2.0",
+        "version": "v3.0.3",
+        "version_normalized": "3.0.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/antonioribeiro/google2fa.git",
-            "reference": "d9d960370277958c700552c551e136018b915499"
+            "reference": "6949226739e4424f40031e6f1c96b1fd64047335"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/antonioribeiro/google2fa/zipball/d9d960370277958c700552c551e136018b915499",
-            "reference": "d9d960370277958c700552c551e136018b915499",
+            "url": "https://api.github.com/repos/antonioribeiro/google2fa/zipball/6949226739e4424f40031e6f1c96b1fd64047335",
+            "reference": "6949226739e4424f40031e6f1c96b1fd64047335",
             "shasum": ""
         },
         "require": {
             "paragonie/constant_time_encoding": "~1.0|~2.0",
-            "paragonie/random_compat": ">=1 <9.99",
+            "paragonie/random_compat": ">=1",
             "php": ">=5.4",
             "symfony/polyfill-php56": "~1.2"
         },
@@ -2623,7 +2619,7 @@
         "suggest": {
             "bacon/bacon-qr-code": "Required to generate inline QR Codes."
         },
-        "time": "2018-07-31T23:31:19+00:00",
+        "time": "2018-08-29T13:28:06+00:00",
         "type": "library",
         "extra": {
             "component": "package",
@@ -3080,23 +3076,23 @@
     },
     {
         "name": "flagrow/masquerade",
-        "version": "0.2.0",
-        "version_normalized": "0.2.0.0",
+        "version": "0.2.1",
+        "version_normalized": "0.2.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/flagrow/masquerade.git",
-            "reference": "ed9773996a1b105648c71c2d9c9bbceae4402c7f"
+            "reference": "4b89a23c054027f10935c531af683eb1f75f82c7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/flagrow/masquerade/zipball/ed9773996a1b105648c71c2d9c9bbceae4402c7f",
-            "reference": "ed9773996a1b105648c71c2d9c9bbceae4402c7f",
+            "url": "https://api.github.com/repos/flagrow/masquerade/zipball/4b89a23c054027f10935c531af683eb1f75f82c7",
+            "reference": "4b89a23c054027f10935c531af683eb1f75f82c7",
             "shasum": ""
         },
         "require": {
             "flarum/core": "^0.1.0-beta.6"
         },
-        "time": "2018-04-14T22:39:58+00:00",
+        "time": "2018-08-29T22:18:55+00:00",
         "type": "flarum-extension",
         "extra": {
             "flarum-extension": {
