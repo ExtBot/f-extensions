@@ -2369,17 +2369,17 @@
     },
     {
         "name": "twilio/sdk",
-        "version": "5.21.3",
-        "version_normalized": "5.21.3.0",
+        "version": "5.21.4",
+        "version_normalized": "5.21.4.0",
         "source": {
             "type": "git",
             "url": "https://github.com/twilio/twilio-php.git",
-            "reference": "b87bde9642a34da9f2ce0417e1aaf572bfd2aec0"
+            "reference": "4bdc0b8add796dd900c2bc7a63a84a187fe4f21d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/twilio/twilio-php/zipball/b87bde9642a34da9f2ce0417e1aaf572bfd2aec0",
-            "reference": "b87bde9642a34da9f2ce0417e1aaf572bfd2aec0",
+            "url": "https://api.github.com/repos/twilio/twilio-php/zipball/4bdc0b8add796dd900c2bc7a63a84a187fe4f21d",
+            "reference": "4bdc0b8add796dd900c2bc7a63a84a187fe4f21d",
             "shasum": ""
         },
         "require": {
@@ -2389,7 +2389,7 @@
             "apigen/apigen": "^4.1",
             "phpunit/phpunit": "4.5.*"
         },
-        "time": "2018-08-23T18:50:56+00:00",
+        "time": "2018-08-31T21:47:27+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -4201,17 +4201,17 @@
     },
     {
         "name": "composer/xdebug-handler",
-        "version": "1.2.1",
-        "version_normalized": "1.2.1.0",
+        "version": "1.3.0",
+        "version_normalized": "1.3.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/composer/xdebug-handler.git",
-            "reference": "e37cbd80da64afe314c72de8d2d2fec0e40d9373"
+            "reference": "b8e9745fb9b06ea6664d8872c4505fb16df4611c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/e37cbd80da64afe314c72de8d2d2fec0e40d9373",
-            "reference": "e37cbd80da64afe314c72de8d2d2fec0e40d9373",
+            "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/b8e9745fb9b06ea6664d8872c4505fb16df4611c",
+            "reference": "b8e9745fb9b06ea6664d8872c4505fb16df4611c",
             "shasum": ""
         },
         "require": {
@@ -4221,7 +4221,7 @@
         "require-dev": {
             "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.5"
         },
-        "time": "2018-08-23T12:00:19+00:00",
+        "time": "2018-08-31T19:07:57+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
