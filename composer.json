@@ -110,7 +110,8 @@
 	},
 	"replace": {
 		"flarum/core": "*",
-		"s9e/text-formatter": "*"
+		"s9e/text-formatter": "*",
+		"twilio/sdk": "*"
 	},
 	"minimum-stability": "dev",
 	"prefer-stable": true

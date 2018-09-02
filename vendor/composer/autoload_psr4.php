@@ -25,7 +25,6 @@ return array(
     'WiseClock\\ProfileImageCrop\\' => array($vendorDir . '/wiseclock/flarum-ext-profile-image-crop/src'),
     'WiseClock\\PostCopyright\\' => array($vendorDir . '/wiseclock/flarum-ext-post-copyright/src'),
     'WiseClock\\Login2See\\' => array($vendorDir . '/wiseclock/flarum-ext-login2see/src'),
-    'Twilio\\' => array($vendorDir . '/twilio/sdk/Twilio'),
     'Symfony\\Polyfill\\Util\\' => array($vendorDir . '/symfony/polyfill-util'),
     'Symfony\\Polyfill\\Php56\\' => array($vendorDir . '/symfony/polyfill-php56'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
