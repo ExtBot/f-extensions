@@ -1005,8 +1005,8 @@
     },
     {
         "name": "illuminate/contracts",
-        "version": "v5.5.41",
-        "version_normalized": "5.5.41.0",
+        "version": "v5.5.43",
+        "version_normalized": "5.5.43.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/contracts.git",
@@ -1051,17 +1051,17 @@
     },
     {
         "name": "illuminate/support",
-        "version": "v5.5.41",
-        "version_normalized": "5.5.41.0",
+        "version": "v5.5.43",
+        "version_normalized": "5.5.43.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/support.git",
-            "reference": "b93ddc422cf2b14e3d0237c775e5deb57d849bd8"
+            "reference": "ebe5d19b3ef3e73bca839b8614287fbe2b06ab7d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/support/zipball/b93ddc422cf2b14e3d0237c775e5deb57d849bd8",
-            "reference": "b93ddc422cf2b14e3d0237c775e5deb57d849bd8",
+            "url": "https://api.github.com/repos/illuminate/support/zipball/ebe5d19b3ef3e73bca839b8614287fbe2b06ab7d",
+            "reference": "ebe5d19b3ef3e73bca839b8614287fbe2b06ab7d",
             "shasum": ""
         },
         "require": {
@@ -1079,7 +1079,7 @@
             "symfony/process": "Required to use the composer class (~3.3).",
             "symfony/var-dumper": "Required to use the dd function (~3.3)."
         },
-        "time": "2018-06-08T13:45:23+00:00",
+        "time": "2018-08-10T19:40:01+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -4576,8 +4576,8 @@
     },
     {
         "name": "illuminate/console",
-        "version": "v5.5.41",
-        "version_normalized": "5.5.41.0",
+        "version": "v5.5.43",
+        "version_normalized": "5.5.43.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/console.git",
