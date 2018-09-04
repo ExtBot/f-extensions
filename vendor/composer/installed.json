@@ -1801,6 +1801,229 @@
         "abandoned": "extum/flarum-ext-signature"
     },
     {
+        "name": "michaelbelgium/flarum-discussion-views",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/MichaelBelgium/flarum-discussion-views.git",
+            "reference": "adb82fa4fdf968631622a2a9fee4e2f3d984c66d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/MichaelBelgium/flarum-discussion-views/zipball/adb82fa4fdf968631622a2a9fee4e2f3d984c66d",
+            "reference": "adb82fa4fdf968631622a2a9fee4e2f3d984c66d",
+            "shasum": ""
+        },
+        "require": {
+            "flarum/core": "^0.1.0-beta.7"
+        },
+        "time": "2018-06-20T17:46:15+00:00",
+        "type": "flarum-extension",
+        "extra": {
+            "flarum-extension": {
+                "title": "Discussion views",
+                "icon": {
+                    "name": "eye",
+                    "backgroundColor": "#88CC23",
+                    "color": "#fff"
+                }
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "michaelbelgium\\views\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Michael V.",
+                "email": "michael@michaelbelgium.me"
+            }
+        ],
+        "description": "Add views to flarum discussions"
+    },
+    {
+        "name": "migratetoflarum/redirects",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/migratetoflarum/redirects.git",
+            "reference": "661be0c9d0e109a2cdb1e46a212685577e44a3f7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/migratetoflarum/redirects/zipball/661be0c9d0e109a2cdb1e46a212685577e44a3f7",
+            "reference": "661be0c9d0e109a2cdb1e46a212685577e44a3f7",
+            "shasum": ""
+        },
+        "require": {
+            "flarum/core": "^0.1.0-beta.7",
+            "php": ">=7.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^6.5"
+        },
+        "time": "2018-03-27T20:36:29+00:00",
+        "type": "flarum-extension",
+        "extra": {
+            "flarum-extension": {
+                "title": "Redirects",
+                "icon": {
+                    "name": "angle-double-right",
+                    "backgroundColor": "#e7672e",
+                    "color": "#fafafa"
+                }
+            },
+            "flagrow": {
+                "discuss": "https://discuss.flarum.org/d/8597-redirects"
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "MigrateToFlarum\\Redirects\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Clark Winkelmann",
+                "email": "clark.winkelmann@gmail.com",
+                "homepage": "https://clarkwinkelmann.com/"
+            }
+        ],
+        "description": "Redirect urls to your Flarum",
+        "keywords": [
+            "extension",
+            "flarum",
+            "migration",
+            "redirects"
+        ]
+    },
+    {
+        "name": "migratetoflarum/old-passwords",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/migratetoflarum/old-passwords.git",
+            "reference": "fe74cf9604b9ff9828de64ff887627bcc97671c4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/migratetoflarum/old-passwords/zipball/fe74cf9604b9ff9828de64ff887627bcc97671c4",
+            "reference": "fe74cf9604b9ff9828de64ff887627bcc97671c4",
+            "shasum": ""
+        },
+        "require": {
+            "flarum/core": "^0.1.0-beta.7",
+            "php": ">=7.0"
+        },
+        "require-dev": {
+            "hautelook/phpass": "^1.1",
+            "phpunit/phpunit": "^6.5"
+        },
+        "suggest": {
+            "hautelook/phpass": "If you need to check against phpass hashes"
+        },
+        "time": "2018-04-23T23:28:39+00:00",
+        "type": "flarum-extension",
+        "extra": {
+            "flarum-extension": {
+                "title": "Old Passwords",
+                "icon": {
+                    "name": "key",
+                    "backgroundColor": "#e7672e",
+                    "color": "#fafafa"
+                }
+            },
+            "flagrow": {
+                "discuss": "https://discuss.flarum.org/d/8631-old-passwords"
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "MigrateToFlarum\\OldPasswords\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Clark Winkelmann",
+                "email": "clark.winkelmann@gmail.com",
+                "homepage": "https://clarkwinkelmann.com/"
+            }
+        ],
+        "description": "Re-hash passwords from an old platform on the fly",
+        "keywords": [
+            "extension",
+            "flarum",
+            "migration",
+            "passwords"
+        ]
+    },
+    {
+        "name": "datitisev/flarum-ext-dashboard",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/datitisev/flarum-ext-admindashboard.git",
+            "reference": "20c00814b26d1a96d953cf5cb198c6d204400cfe"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/datitisev/flarum-ext-admindashboard/zipball/20c00814b26d1a96d953cf5cb198c6d204400cfe",
+            "reference": "20c00814b26d1a96d953cf5cb198c6d204400cfe",
+            "shasum": ""
+        },
+        "require": {
+            "flarum/core": "^0.1.0-beta-7"
+        },
+        "time": "2018-04-15T23:45:14+00:00",
+        "type": "flarum-extension",
+        "extra": {
+            "flarum-extension": {
+                "title": "Dashboard",
+                "icon": {
+                    "name": "tachometer",
+                    "backgroundColor": "#3F51B5",
+                    "color": "#FFEB3B"
+                }
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Datitisev\\Dashboard\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "David Sevilla Martín",
+                "email": "dsevilla192@icloud.com",
+                "homepage": "https://github.com/datitisev",
+                "role": "Developer"
+            }
+        ],
+        "description": "A dashboard for the admin interface in Flarum"
+    },
+    {
         "name": "datitisev/flarum-ext-moderator-notes",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
@@ -1837,6 +2060,96 @@
         },
         "notification-url": "https://packagist.org/downloads/",
         "description": "Show Moderation Notes!"
+    },
+    {
+        "name": "antoinefr/flarum-ext-online",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/AntoineFr/flarum-ext-online.git",
+            "reference": "214321345c1f88963bcd394ddd1d431eb3bf1f1e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/AntoineFr/flarum-ext-online/zipball/214321345c1f88963bcd394ddd1d431eb3bf1f1e",
+            "reference": "214321345c1f88963bcd394ddd1d431eb3bf1f1e",
+            "shasum": ""
+        },
+        "require": {
+            "flarum/core": "^0.1.0-beta.7"
+        },
+        "time": "2018-08-05T16:48:43+00:00",
+        "type": "flarum-extension",
+        "extra": {
+            "flarum-extension": {
+                "title": "Online",
+                "icon": {
+                    "name": "user-circle"
+                }
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "AntoineFr\\Online\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "description": "Display online users on the left sidebar."
+    },
+    {
+        "name": "piotr-tokarczyk/flarum-user-default-preferences",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/piotr-tokarczyk/flarum-user-default-preferences.git",
+            "reference": "4a125348ea6a7a95a061e40c4c62d122c9ebd88f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/piotr-tokarczyk/flarum-user-default-preferences/zipball/4a125348ea6a7a95a061e40c4c62d122c9ebd88f",
+            "reference": "4a125348ea6a7a95a061e40c4c62d122c9ebd88f",
+            "shasum": ""
+        },
+        "require": {
+            "flarum/core": "^0.1.0-beta.6"
+        },
+        "time": "2018-08-08T12:54:44+00:00",
+        "type": "flarum-extension",
+        "extra": {
+            "flarum-extension": {
+                "title": "User default preferences",
+                "icon": {
+                    "name": "reply-all",
+                    "backgroundColor": "#fed650",
+                    "color": "#1395a5"
+                }
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "PT\\Preferences\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Piotr Tokarczyk"
+            }
+        ],
+        "description": "User preferences: 'Someone replies to one of my posts (email)' and 'Someone mentions me in a post (email)' are turned on by default for each new user in your Flarum forum.",
+        "keywords": [
+            "default",
+            "extension",
+            "flarum",
+            "user preferences"
+        ]
     },
     {
         "name": "xengine/flarum-ext-markdown-editor",
@@ -6221,319 +6534,6 @@
             }
         ],
         "description": "Make posts hidden for visitors."
-    },
-    {
-        "name": "michaelbelgium/flarum-discussion-views",
-        "version": "v0.1.0-beta.7-3.3",
-        "version_normalized": "0.1.0.0-beta7-3.3",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/MichaelBelgium/flarum-discussion-views.git",
-            "reference": "adb82fa4fdf968631622a2a9fee4e2f3d984c66d"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/MichaelBelgium/flarum-discussion-views/zipball/adb82fa4fdf968631622a2a9fee4e2f3d984c66d",
-            "reference": "adb82fa4fdf968631622a2a9fee4e2f3d984c66d",
-            "shasum": ""
-        },
-        "require": {
-            "flarum/core": "^0.1.0-beta.7"
-        },
-        "time": "2018-06-20T17:46:15+00:00",
-        "type": "flarum-extension",
-        "extra": {
-            "flarum-extension": {
-                "title": "Discussion views",
-                "icon": {
-                    "name": "eye",
-                    "backgroundColor": "#88CC23",
-                    "color": "#fff"
-                }
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "michaelbelgium\\views\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Michael V.",
-                "email": "michael@michaelbelgium.me"
-            }
-        ],
-        "description": "Add views to flarum discussions"
-    },
-    {
-        "name": "migratetoflarum/redirects",
-        "version": "0.1.0",
-        "version_normalized": "0.1.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/migratetoflarum/redirects.git",
-            "reference": "9f03b1ead3fb5b418881987de8d9d0b977c30996"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/migratetoflarum/redirects/zipball/9f03b1ead3fb5b418881987de8d9d0b977c30996",
-            "reference": "9f03b1ead3fb5b418881987de8d9d0b977c30996",
-            "shasum": ""
-        },
-        "require": {
-            "flarum/core": "^0.1.0-beta.7",
-            "php": ">=7.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "^6.5"
-        },
-        "time": "2018-01-24T00:47:57+00:00",
-        "type": "flarum-extension",
-        "extra": {
-            "flarum-extension": {
-                "title": "Redirects",
-                "icon": {
-                    "name": "angle-double-right",
-                    "backgroundColor": "#e7672e",
-                    "color": "#fafafa"
-                },
-                "flagrow": {
-                    "discuss": "https://discuss.flarum.org/d/8597-redirects"
-                }
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "MigrateToFlarum\\Redirects\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "mit"
-        ],
-        "authors": [
-            {
-                "name": "Clark Winkelmann",
-                "email": "clark.winkelmann@gmail.com",
-                "homepage": "https://clarkwinkelmann.com/"
-            }
-        ],
-        "description": "Redirect urls to your Flarum",
-        "keywords": [
-            "extension",
-            "flarum",
-            "migration",
-            "redirects"
-        ]
-    },
-    {
-        "name": "migratetoflarum/old-passwords",
-        "version": "0.3.0",
-        "version_normalized": "0.3.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/migratetoflarum/old-passwords.git",
-            "reference": "fe74cf9604b9ff9828de64ff887627bcc97671c4"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/migratetoflarum/old-passwords/zipball/fe74cf9604b9ff9828de64ff887627bcc97671c4",
-            "reference": "fe74cf9604b9ff9828de64ff887627bcc97671c4",
-            "shasum": ""
-        },
-        "require": {
-            "flarum/core": "^0.1.0-beta.7",
-            "php": ">=7.0"
-        },
-        "require-dev": {
-            "hautelook/phpass": "^1.1",
-            "phpunit/phpunit": "^6.5"
-        },
-        "suggest": {
-            "hautelook/phpass": "If you need to check against phpass hashes"
-        },
-        "time": "2018-04-23T23:28:39+00:00",
-        "type": "flarum-extension",
-        "extra": {
-            "flarum-extension": {
-                "title": "Old Passwords",
-                "icon": {
-                    "name": "key",
-                    "backgroundColor": "#e7672e",
-                    "color": "#fafafa"
-                }
-            },
-            "flagrow": {
-                "discuss": "https://discuss.flarum.org/d/8631-old-passwords"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "MigrateToFlarum\\OldPasswords\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Clark Winkelmann",
-                "email": "clark.winkelmann@gmail.com",
-                "homepage": "https://clarkwinkelmann.com/"
-            }
-        ],
-        "description": "Re-hash passwords from an old platform on the fly",
-        "keywords": [
-            "extension",
-            "flarum",
-            "migration",
-            "passwords"
-        ]
-    },
-    {
-        "name": "datitisev/flarum-ext-dashboard",
-        "version": "v0.1.0-beta.7",
-        "version_normalized": "0.1.0.0-beta7",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/datitisev/flarum-ext-admindashboard.git",
-            "reference": "20c00814b26d1a96d953cf5cb198c6d204400cfe"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/datitisev/flarum-ext-admindashboard/zipball/20c00814b26d1a96d953cf5cb198c6d204400cfe",
-            "reference": "20c00814b26d1a96d953cf5cb198c6d204400cfe",
-            "shasum": ""
-        },
-        "require": {
-            "flarum/core": "^0.1.0-beta-7"
-        },
-        "time": "2018-04-15T23:45:14+00:00",
-        "type": "flarum-extension",
-        "extra": {
-            "flarum-extension": {
-                "title": "Dashboard",
-                "icon": {
-                    "name": "tachometer",
-                    "backgroundColor": "#3F51B5",
-                    "color": "#FFEB3B"
-                }
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Datitisev\\Dashboard\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "authors": [
-            {
-                "name": "David Sevilla Martín",
-                "email": "dsevilla192@icloud.com",
-                "homepage": "https://github.com/datitisev",
-                "role": "Developer"
-            }
-        ],
-        "description": "A dashboard for the admin interface in Flarum"
-    },
-    {
-        "name": "antoinefr/flarum-ext-online",
-        "version": "0.3.0",
-        "version_normalized": "0.3.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/AntoineFr/flarum-ext-online.git",
-            "reference": "a767e36333062e23a7b6d9603e5dc94b42663255"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/AntoineFr/flarum-ext-online/zipball/a767e36333062e23a7b6d9603e5dc94b42663255",
-            "reference": "a767e36333062e23a7b6d9603e5dc94b42663255",
-            "shasum": ""
-        },
-        "require": {
-            "flarum/core": "^0.1.0-beta.7"
-        },
-        "time": "2018-04-22T10:42:39+00:00",
-        "type": "flarum-extension",
-        "extra": {
-            "flarum-extension": {
-                "title": "Online",
-                "icon": {
-                    "name": "user-circle"
-                }
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "AntoineFr\\Online\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "description": "Display online users on the left sidebar."
-    },
-    {
-        "name": "piotr-tokarczyk/flarum-user-default-preferences",
-        "version": "0.0.2",
-        "version_normalized": "0.0.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/piotr-tokarczyk/flarum-user-default-preferences.git",
-            "reference": "4a125348ea6a7a95a061e40c4c62d122c9ebd88f"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/piotr-tokarczyk/flarum-user-default-preferences/zipball/4a125348ea6a7a95a061e40c4c62d122c9ebd88f",
-            "reference": "4a125348ea6a7a95a061e40c4c62d122c9ebd88f",
-            "shasum": ""
-        },
-        "require": {
-            "flarum/core": "^0.1.0-beta.6"
-        },
-        "time": "2018-08-08T12:54:44+00:00",
-        "type": "flarum-extension",
-        "extra": {
-            "flarum-extension": {
-                "title": "User default preferences",
-                "icon": {
-                    "name": "reply-all",
-                    "backgroundColor": "#fed650",
-                    "color": "#1395a5"
-                }
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "PT\\Preferences\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Piotr Tokarczyk"
-            }
-        ],
-        "description": "User preferences: 'Someone replies to one of my posts (email)' and 'Someone mentions me in a post (email)' are turned on by default for each new user in your Flarum forum.",
-        "keywords": [
-            "default",
-            "extension",
-            "flarum",
-            "user preferences"
-        ]
     },
     {
         "name": "longman/telegram-bot",

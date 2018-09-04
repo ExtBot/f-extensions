@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "70b6fb90ca5cb866c7e003b3371438ea",
+    "content-hash": "498af6c981822b1955777a9a342b5c85",
     "packages": [
         {
             "name": "amaurycarrade/flarum-ext-syndication",
@@ -120,16 +120,16 @@
         },
         {
             "name": "antoinefr/flarum-ext-online",
-            "version": "0.3.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/AntoineFr/flarum-ext-online.git",
-                "reference": "a767e36333062e23a7b6d9603e5dc94b42663255"
+                "reference": "214321345c1f88963bcd394ddd1d431eb3bf1f1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AntoineFr/flarum-ext-online/zipball/a767e36333062e23a7b6d9603e5dc94b42663255",
-                "reference": "a767e36333062e23a7b6d9603e5dc94b42663255",
+                "url": "https://api.github.com/repos/AntoineFr/flarum-ext-online/zipball/214321345c1f88963bcd394ddd1d431eb3bf1f1e",
+                "reference": "214321345c1f88963bcd394ddd1d431eb3bf1f1e",
                 "shasum": ""
             },
             "require": {
@@ -151,7 +151,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Display online users on the left sidebar.",
-            "time": "2018-04-22T10:42:39+00:00"
+            "time": "2018-08-05T16:48:43+00:00"
         },
         {
             "name": "auth0/auth0-php",
@@ -917,7 +917,7 @@
         },
         {
             "name": "datitisev/flarum-ext-dashboard",
-            "version": "v0.1.0-beta.7",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/datitisev/flarum-ext-admindashboard.git",
@@ -5154,7 +5154,7 @@
         },
         {
             "name": "michaelbelgium/flarum-discussion-views",
-            "version": "v0.1.0-beta.7-3.3",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MichaelBelgium/flarum-discussion-views.git",
@@ -5200,7 +5200,7 @@
         },
         {
             "name": "migratetoflarum/old-passwords",
-            "version": "0.3.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/migratetoflarum/old-passwords.git",
@@ -5264,16 +5264,16 @@
         },
         {
             "name": "migratetoflarum/redirects",
-            "version": "0.1.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/migratetoflarum/redirects.git",
-                "reference": "9f03b1ead3fb5b418881987de8d9d0b977c30996"
+                "reference": "661be0c9d0e109a2cdb1e46a212685577e44a3f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/migratetoflarum/redirects/zipball/9f03b1ead3fb5b418881987de8d9d0b977c30996",
-                "reference": "9f03b1ead3fb5b418881987de8d9d0b977c30996",
+                "url": "https://api.github.com/repos/migratetoflarum/redirects/zipball/661be0c9d0e109a2cdb1e46a212685577e44a3f7",
+                "reference": "661be0c9d0e109a2cdb1e46a212685577e44a3f7",
                 "shasum": ""
             },
             "require": {
@@ -5291,10 +5291,10 @@
                         "name": "angle-double-right",
                         "backgroundColor": "#e7672e",
                         "color": "#fafafa"
-                    },
-                    "flagrow": {
-                        "discuss": "https://discuss.flarum.org/d/8597-redirects"
                     }
+                },
+                "flagrow": {
+                    "discuss": "https://discuss.flarum.org/d/8597-redirects"
                 }
             },
             "autoload": {
@@ -5304,7 +5304,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "mit"
+                "MIT"
             ],
             "authors": [
                 {
@@ -5320,7 +5320,7 @@
                 "migration",
                 "redirects"
             ],
-            "time": "2018-01-24T00:47:57+00:00"
+            "time": "2018-03-27T20:36:29+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -6068,7 +6068,7 @@
         },
         {
             "name": "piotr-tokarczyk/flarum-user-default-preferences",
-            "version": "0.0.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/piotr-tokarczyk/flarum-user-default-preferences.git",
@@ -9314,7 +9314,15 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "michaelbelgium/flarum-discussion-views": 20,
+        "migratetoflarum/redirects": 20,
+        "migratetoflarum/old-passwords": 20,
+        "datitisev/flarum-ext-dashboard": 20,
+        "datitisev/flarum-ext-moderator-notes": 20,
+        "antoinefr/flarum-ext-online": 20,
+        "piotr-tokarczyk/flarum-user-default-preferences": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
