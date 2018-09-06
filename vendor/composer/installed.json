@@ -2379,24 +2379,24 @@
     },
     {
         "name": "reflar/koseki",
-        "version": "0.1.8",
-        "version_normalized": "0.1.8.0",
+        "version": "0.2.0",
+        "version_normalized": "0.2.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/ReFlar/koseki.git",
-            "reference": "ca832163db57478ba720434810ee41f709eb2f37"
+            "reference": "ee988f192e5e24aab7ad6c7c01843e5b689a4f15"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/ReFlar/koseki/zipball/ca832163db57478ba720434810ee41f709eb2f37",
-            "reference": "ca832163db57478ba720434810ee41f709eb2f37",
+            "url": "https://api.github.com/repos/ReFlar/koseki/zipball/ee988f192e5e24aab7ad6c7c01843e5b689a4f15",
+            "reference": "ee988f192e5e24aab7ad6c7c01843e5b689a4f15",
             "shasum": ""
         },
         "require": {
             "flarum/core": "^0.1.0-beta.7",
             "flarum/flarum-ext-tags": "*"
         },
-        "time": "2018-08-19T22:58:40+00:00",
+        "time": "2018-09-05T18:21:43+00:00",
         "type": "flarum-extension",
         "extra": {
             "flarum-extension": {
