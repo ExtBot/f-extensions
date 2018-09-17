@@ -1,0 +1,32 @@
+{
+  "name": "extum/flarum-ext-user-bio",
+  "description": "Add user bio support to your Flarum forum.",
+  "keywords": [
+    "flarum"
+  ],
+  "type": "flarum-extension",
+  "license": "MIT",
+  "require": {
+    "flarum/core": "^0.1.0-beta-8"
+  },
+  "authors": [
+    {
+      "name": "Extum",
+      "email": "ardacebi1@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "extra": {
+    "flarum-extension": {
+      "title": "User Bio",
+      "icon": {
+        "name": "fas fa-align-left",
+        "backgroundColor": "#32d1d1",
+        "color": "#000"
+      }
+    },
+    "flagrow": {
+      "discuss": ""
+    }
+  }
+}

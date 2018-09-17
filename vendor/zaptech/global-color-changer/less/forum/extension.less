@@ -1,0 +1,34 @@
+.colorize(@r, @g, @b) {
+    @base:				rgb(@r, @g, @b);
+    @hue:				hue(@base);
+    @sat:				saturation(@base);
+    @light:			lightness(@base);
+    @base-lighten10:		hsl(@hue, @sat, @light*1.1);
+    @base-lighten30:		hsl(@hue, @sat, @light*1.3);
+    @base-darken10:		hsl(@hue, @sat, @light*.9);
+  
+    .DiscussionPage-nav .App-primaryControl,
+    .IndexPage-nav sideNav .App-primaryControl,
+    .App-composer .App-primaryControl,
+    .IndexPage-newDiscussion {
+      background-color: @base !important;
+    }
+  
+    #header,
+    .App::before {
+      color: hsl(@hue, @sat*.2, 20%) !important;
+      background-color: hsl(@hue, @sat*.6, 20%);
+    }
+  
+    header.Hero {
+      background-color: hsl(@hue, @sat*.35, 90%) !important;
+    }
+  
+    .Composer-controls .Button {
+      color: @base-darken30;
+    }
+  
+    .Scrubber-bar {
+      background-color: @base-lighten10;
+    }
+  }

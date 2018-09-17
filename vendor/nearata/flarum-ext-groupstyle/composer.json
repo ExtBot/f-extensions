@@ -1,0 +1,37 @@
+{
+  "name": "nearata/flarum-ext-groupstyle",
+  "description": "Group based styling",
+  "keywords": [
+    "flarum"
+  ],
+  "type": "flarum-extension",
+  "license": "MIT",
+  "require": {
+    "flarum/core": "^0.1.0-beta-7"
+  },
+  "authors": [
+    {
+      "name": "Nearata",
+      "email": "nearata@protonmail.com",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Nearata\\GroupStyle\\": "src/"
+    }
+  },
+  "extra": {
+    "flarum-extension": {
+      "title": "Group Style",
+      "icon": {
+        "name": "",
+        "backgroundColor": "",
+        "color": ""
+      }
+    },
+    "flagrow": {
+      "discuss": ""
+    }
+  }
+}
