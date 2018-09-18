@@ -6998,20 +6998,20 @@
         },
         {
             "name": "reflar/pretty-mail",
-            "version": "0.1.0-beta.2",
+            "version": "0.1.0-beta.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ReFlar/pretty-mail.git",
-                "reference": "f23931975fb0f51a0ed3495b1427faee13fcb9c4"
+                "reference": "6055be9af2782418b535c0809501c820d237cd9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ReFlar/pretty-mail/zipball/f23931975fb0f51a0ed3495b1427faee13fcb9c4",
-                "reference": "f23931975fb0f51a0ed3495b1427faee13fcb9c4",
+                "url": "https://api.github.com/repos/ReFlar/pretty-mail/zipball/6055be9af2782418b535c0809501c820d237cd9a",
+                "reference": "6055be9af2782418b535c0809501c820d237cd9a",
                 "shasum": ""
             },
             "require": {
-                "flarum/core": "^0.1.0-beta.7.1"
+                "flarum/core": "^0.1.0-beta.7"
             },
             "type": "flarum-extension",
             "extra": {
@@ -7051,7 +7051,7 @@
                 "flarum",
                 "mail"
             ],
-            "time": "2018-04-19T05:28:21+00:00"
+            "time": "2018-09-17T15:15:01+00:00"
         },
         {
             "name": "reflar/reactions",

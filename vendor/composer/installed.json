@@ -3101,65 +3101,6 @@
         ]
     },
     {
-        "name": "reflar/pretty-mail",
-        "version": "0.1.0-beta.2",
-        "version_normalized": "0.1.0.0-beta2",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/ReFlar/pretty-mail.git",
-            "reference": "f23931975fb0f51a0ed3495b1427faee13fcb9c4"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/ReFlar/pretty-mail/zipball/f23931975fb0f51a0ed3495b1427faee13fcb9c4",
-            "reference": "f23931975fb0f51a0ed3495b1427faee13fcb9c4",
-            "shasum": ""
-        },
-        "require": {
-            "flarum/core": "^0.1.0-beta.7.1"
-        },
-        "time": "2018-04-19T05:28:21+00:00",
-        "type": "flarum-extension",
-        "extra": {
-            "flarum-extension": {
-                "title": "ReFlar Pretty mail",
-                "icon": {
-                    "name": "envelope-open",
-                    "backgroundColor": "#263238",
-                    "color": "#FFF"
-                }
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "exclude-from-classmap": [
-                "/../../Flarum/Core/Listener/EmailConfirmationMailer.php",
-                "/../../Flarum/Core/Notification/NotificationMailer.php"
-            ],
-            "psr-4": {
-                "Reflar\\PrettyMail\\": "src/",
-                "Flarum\\Core\\": "src/Overrides"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Charlie K",
-                "email": "issyrocks12@reflar.email",
-                "homepage": "https://reflar.io"
-            }
-        ],
-        "description": "Make emails pretty",
-        "keywords": [
-            "extension",
-            "flarum",
-            "mail"
-        ]
-    },
-    {
         "name": "flagrow/sitemap",
         "version": "0.1.1",
         "version_normalized": "0.1.1.0",
@@ -9653,6 +9594,65 @@
             "captcha",
             "validate",
             "verify"
+        ]
+    },
+    {
+        "name": "reflar/pretty-mail",
+        "version": "0.1.0-beta.3",
+        "version_normalized": "0.1.0.0-beta3",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ReFlar/pretty-mail.git",
+            "reference": "6055be9af2782418b535c0809501c820d237cd9a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ReFlar/pretty-mail/zipball/6055be9af2782418b535c0809501c820d237cd9a",
+            "reference": "6055be9af2782418b535c0809501c820d237cd9a",
+            "shasum": ""
+        },
+        "require": {
+            "flarum/core": "^0.1.0-beta.7"
+        },
+        "time": "2018-09-17T15:15:01+00:00",
+        "type": "flarum-extension",
+        "extra": {
+            "flarum-extension": {
+                "title": "ReFlar Pretty mail",
+                "icon": {
+                    "name": "envelope-open",
+                    "backgroundColor": "#263238",
+                    "color": "#FFF"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "exclude-from-classmap": [
+                "/../../Flarum/Core/Listener/EmailConfirmationMailer.php",
+                "/../../Flarum/Core/Notification/NotificationMailer.php"
+            ],
+            "psr-4": {
+                "Reflar\\PrettyMail\\": "src/",
+                "Flarum\\Core\\": "src/Overrides"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Charlie K",
+                "email": "issyrocks12@reflar.email",
+                "homepage": "https://reflar.io"
+            }
+        ],
+        "description": "Make emails pretty",
+        "keywords": [
+            "extension",
+            "flarum",
+            "mail"
         ]
     }
 ]
