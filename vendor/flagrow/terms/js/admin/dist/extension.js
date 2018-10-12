@@ -18,6 +18,12 @@ System.register('flagrow/terms/addPermissions', ['flarum/extend', 'flarum/app', 
                 label: app.translator.trans('flagrow-terms.admin.permissions.postpone-policies-accept'),
                 permission: 'flagrow-terms.postpone-policies-accept'
             });
+
+            items.add('flagrow-terms-export-policies', {
+                icon: 'paperclip',
+                label: app.translator.trans('flagrow-terms.admin.permissions.export-policies'),
+                permission: 'flagrow-terms.export-policies'
+            });
         });
     });
 
@@ -104,6 +110,8 @@ System.register('flagrow/terms/components/PolicyEdit', ['flarum/app', 'flarum/he
                 }, {
                     key: 'viewFields',
                     value: function viewFields() {
+                        var _this3 = this;
+
                         return m('form.Flagrow-Terms-Policiy-Body', [m('.Form-group', [m('label', app.translator.trans('flagrow-terms.admin.policies.name')), m('input.FormControl', {
                             type: 'text',
                             value: this.policy.name(),
@@ -120,7 +128,17 @@ System.register('flagrow/terms/components/PolicyEdit', ['flarum/app', 'flarum/he
                             value: this.policy.terms_updated_at(),
                             oninput: m.withAttr('value', this.updateAttribute.bind(this, 'terms_updated_at')),
                             placeholder: app.translator.trans('flagrow-terms.admin.policies.terms-updated-at-placeholder')
-                        }), m('.helpText', app.translator.trans('flagrow-terms.admin.policies.terms-updated-at-help'))]), m('li.ButtonGroup', [Button.component({
+                        }), m('.helpText', app.translator.trans('flagrow-terms.admin.policies.terms-updated-at-help'))]), this.policy.exists ? m('.Form-group', [m('label', app.translator.trans('flagrow-terms.admin.policies.export-url')), m('.ButtonGroup', ['json', 'csv'].map(function (format) {
+                            return m('a.Button.Flagrow-Terms-Export-Button', {
+                                href: app.forum.attribute('apiUrl') + '/flagrow/terms/policies/' + _this3.policy.id() + '/export.' + format,
+                                target: '_blank'
+                            }, format.toUpperCase());
+                        })), m('.helpText', app.translator.trans('flagrow-terms.admin.policies.export-url-help', {
+                            a: m('a', {
+                                href: 'https://github.com/flagrow/terms/wiki/Export-url',
+                                target: '_blank'
+                            })
+                        }))]) : null, m('.ButtonGroup', [Button.component({
                             type: 'submit',
                             className: 'Button Button--primary',
                             children: app.translator.trans('flagrow-terms.admin.buttons.' + (this.policy.exists ? 'save' : 'add') + '-policy'),
@@ -150,7 +168,7 @@ System.register('flagrow/terms/components/PolicyEdit', ['flarum/app', 'flarum/he
                 }, {
                     key: 'savePolicy',
                     value: function savePolicy() {
-                        var _this3 = this;
+                        var _this4 = this;
 
                         this.processing = true;
 
@@ -158,16 +176,16 @@ System.register('flagrow/terms/components/PolicyEdit', ['flarum/app', 'flarum/he
 
                         this.policy.save(this.policy.data.attributes).then(function () {
                             if (createNewRecord) {
-                                _this3.initNewField();
-                                _this3.toggleFields = false;
+                                _this4.initNewField();
+                                _this4.toggleFields = false;
                             }
 
-                            _this3.processing = false;
-                            _this3.dirty = false;
+                            _this4.processing = false;
+                            _this4.dirty = false;
 
                             m.redraw();
                         }).catch(function (err) {
-                            _this3.processing = false;
+                            _this4.processing = false;
 
                             throw err;
                         });
@@ -175,22 +193,22 @@ System.register('flagrow/terms/components/PolicyEdit', ['flarum/app', 'flarum/he
                 }, {
                     key: 'deletePolicy',
                     value: function deletePolicy() {
-                        var _this4 = this;
+                        var _this5 = this;
 
                         if (!confirm(app.translator.trans('flagrow-terms.admin.messages.delete-policy-confirmation', {
                             name: this.policy.name()
-                        }))) {
+                        }).join(''))) {
                             return;
                         }
 
                         this.processing = true;
 
                         this.policy.delete().then(function () {
-                            _this4.processing = false;
+                            _this5.processing = false;
 
                             m.redraw();
                         }).catch(function (err) {
-                            _this4.processing = false;
+                            _this5.processing = false;
 
                             throw err;
                         });
@@ -343,6 +361,14 @@ System.register('flagrow/terms/components/TermsSettingsModal', ['flarum/app', 'f
                             state: this.setting(settingsPrefix + 'hide-updated-at')() > 0,
                             onchange: this.setting(settingsPrefix + 'hide-updated-at'),
                             children: app.translator.trans(translationPrefix + 'field.hide-updated-at')
+                        }))]), m('.Form-group', [m('label', app.translator.trans(translationPrefix + 'field.date-format')), m('input[type=text].FormControl', {
+                            bidi: this.setting(settingsPrefix + 'date-format'),
+                            placeholder: 'YYYY-MM-DD'
+                        }), m('.helpText', app.translator.trans(translationPrefix + 'field.date-format-help', {
+                            a: m('a', {
+                                href: 'https://momentjs.com/docs/#/displaying/format/',
+                                target: '_blank'
+                            })
                         }))]), PolicyList.component()];
                     }
                 }]);
@@ -436,7 +462,7 @@ System.register('flagrow/terms/models/Policy', ['flarum/Model', 'flarum/utils/mi
                 name: Model.attribute('name'),
                 url: Model.attribute('url'),
                 update_message: Model.attribute('update_message'),
-                terms_updated_at: Model.attribute('terms_updated_at'),
+                terms_updated_at: Model.attribute('terms_updated_at', Model.transformDate),
                 form_key: computed('id', function (id) {
                     return 'flagrow_terms_policy_' + id;
                 })

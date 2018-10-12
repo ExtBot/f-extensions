@@ -11,11 +11,10 @@
  * file that was distributed with this source code.
  */
 
-
 namespace Flagrow\Upload\Validators;
 
 use Flagrow\Upload\Helpers\Settings;
-use Flarum\Core\Validator\AbstractValidator;
+use Flarum\Foundation\AbstractValidator;
 
 class UploadValidator extends AbstractValidator
 {
@@ -27,8 +26,8 @@ class UploadValidator extends AbstractValidator
         return [
             'file' => [
                 'required',
-                'max:' . $settings->get('maxFileSize', Settings::DEFAULT_MAX_FILE_SIZE)
-            ]
+                'max:'.$settings->get('maxFileSize', Settings::DEFAULT_MAX_FILE_SIZE),
+            ],
         ];
     }
 }

@@ -11,10 +11,9 @@
  * file that was distributed with this source code.
  */
 
-
 namespace Flagrow\Upload\Commands;
 
-use Flarum\Core\User;
+use Flarum\User\User;
 use Illuminate\Support\Collection;
 
 class Upload

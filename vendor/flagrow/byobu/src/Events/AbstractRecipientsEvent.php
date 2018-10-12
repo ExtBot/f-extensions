@@ -2,9 +2,9 @@
 
 namespace Flagrow\Byobu\Events;
 
-use Flarum\Core\Discussion;
-use Flarum\Core\User;
-use Flarum\Core\Group;
+use Flarum\Discussion\Discussion;
+use Flarum\Group\Group;
+use Flarum\User\User;
 use Illuminate\Support\Collection;
 
 abstract class AbstractRecipientsEvent
@@ -38,11 +38,12 @@ abstract class AbstractRecipientsEvent
 
     /**
      * AbstractRecipientsEvent constructor.
-     * @param Discussion $discussion
-     * @param User $actor
-     * @param Collection|int[] $newUsers
-     * @param Collection|int[] $newGroups
-     * @param Collection|User[] $oldUsers
+     *
+     * @param Discussion         $discussion
+     * @param User               $actor
+     * @param Collection|int[]   $newUsers
+     * @param Collection|int[]   $newGroups
+     * @param Collection|User[]  $oldUsers
      * @param Collection|Group[] $oldGroups
      */
     public function __construct(Discussion $discussion, User $actor, Collection $newUsers, Collection $newGroups, Collection $oldUsers, Collection $oldGroups)

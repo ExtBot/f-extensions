@@ -2,8 +2,8 @@
 
 namespace Flagrow\Byobu\Gambits\Discussion;
 
-use Flarum\Core\Search\AbstractRegexGambit;
-use Flarum\Core\Search\AbstractSearch;
+use Flarum\Search\AbstractRegexGambit;
+use Flarum\Search\AbstractSearch;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 
@@ -17,10 +17,11 @@ class PrivacyGambit extends AbstractRegexGambit
     /**
      * Apply conditions to the search, given that the gambit was matched.
      *
-     * @param AbstractSearch $search The search object.
-     * @param array $matches An array of matches from the search bit.
-     * @param bool $negate Whether or not the bit was negated, and thus whether
-     *     or not the conditions should be negated.
+     * @param AbstractSearch $search  The search object.
+     * @param array          $matches An array of matches from the search bit.
+     * @param bool           $negate  Whether or not the bit was negated, and thus whether
+     *                                or not the conditions should be negated.
+     *
      * @return mixed
      */
     protected function conditions(AbstractSearch $search, array $matches, $negate)

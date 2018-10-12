@@ -3,6 +3,7 @@
 namespace Flagrow\Bazaar\Extensions;
 
 use Composer\Semver\Comparator;
+use Flagrow\Bazaar\Models\Task;
 use Flarum\Extension\Extension as InstalledExtension;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Arr;
@@ -24,6 +25,8 @@ class Extension implements Arrayable
      */
     protected $installedExtension;
 
+    protected $enabled = false;
+
     /**
      * @param string $id Extension `vendor/package` identifier
      */
@@ -32,7 +35,7 @@ class Extension implements Arrayable
         $this->id = $id;
     }
 
-    public static function createFromAttributes($attributes)
+    public static function createFromAttributes($attributes): Extension
     {
         $extension = new Extension(ExtensionUtils::packageToId($attributes['name']));
         $extension->attributes = $attributes;
@@ -52,7 +55,7 @@ class Extension implements Arrayable
     /**
      * @return InstalledExtension
      */
-    public function getInstalledExtension()
+    public function getInstalledExtension(): ?InstalledExtension
     {
         return $this->installedExtension;
     }
@@ -61,7 +64,7 @@ class Extension implements Arrayable
      * Get the Flarum extension id to search in the base ExtensionManager
      * @return string Flarum extension manager id
      */
-    public function getShortName()
+    public function getShortName(): string
     {
         return ExtensionUtils::idToShortName($this->id);
     }
@@ -69,14 +72,15 @@ class Extension implements Arrayable
     /**
      * Short function to map attributes that can only be found in the $attributes array
      * @param string $attribute
+     * @param null $default
      * @return mixed|null
      */
-    protected function getAttributeIfPresent($attribute)
+    protected function getAttributeIfPresent($attribute, $default = null)
     {
-        return Arr::get($this->attributes, $attribute);
+        return Arr::get($this->attributes, $attribute, $default);
     }
 
-    public function getPackage()
+    public function getPackage(): string
     {
         return Arr::get(
             $this->attributes,
@@ -85,32 +89,22 @@ class Extension implements Arrayable
         );
     }
 
-    /**
-     * @return string
-     */
-    public function getTitle()
+    public function getTitle(): string
     {
         return Arr::get($this->attributes, 'title', 'Unknown');
     }
 
-    /**
-     * @return string
-     */
-    public function getDescription()
+    public function getDescription(): string
     {
         return Arr::get($this->attributes, 'description', '');
     }
 
-    public function isInstalled()
+    public function isInstalled(): bool
     {
-        // We dont need to check $this->installedExtension->isInstalled() because it's always true at the moment
-        return $this->installedExtension !== null;
+        return $this->installedExtension && $this->installedExtension->isInstalled();
     }
 
-    /**
-     * @return null|string
-     */
-    public function getInstalledVersion()
+    public function getInstalledVersion(): ?string
     {
         if ($this->installedExtension) {
             return $this->installedExtension->getVersion();
@@ -119,13 +113,14 @@ class Extension implements Arrayable
         return null;
     }
 
-    public function isEnabled()
+    public function isEnabled(): bool
     {
-        if ($this->installedExtension) {
-            return $this->installedExtension->isEnabled();
-        }
+        return $this->enabled;
+    }
 
-        return false;
+    public function setEnabled(bool $enabled = null)
+    {
+        $this->enabled = $enabled;
     }
 
     /**
@@ -135,7 +130,7 @@ class Extension implements Arrayable
      *
      * @return array|null
      */
-    public function getIcon()
+    public function getIcon(): ?array
     {
         if ($this->installedExtension) {
             return $this->installedExtension->getIcon();
@@ -152,12 +147,7 @@ class Extension implements Arrayable
         return null;
     }
 
-    /**
-     * Whether the package is outdated.
-     *
-     * @return bool|null
-     */
-    public function isOutdated()
+    public function isOutdated(): ?bool
     {
         if (!$this->isInstalled()) {
             return null;
@@ -167,6 +157,20 @@ class Extension implements Arrayable
             $this->getInstalledVersion(),
             $this->getAvailableVersion()
         );
+    }
+
+    public function isPending(): bool
+    {
+        return Task::query()
+            ->where('package', $this->getPackage())
+            ->whereNull('started_at')
+            ->whereNull('finished_at')
+            ->count() > 0;
+    }
+
+    public function locale()
+    {
+        return $this->getAttributeIfPresent('locale');
     }
 
     public function getAvailableVersion()
@@ -186,16 +190,26 @@ class Extension implements Arrayable
             'description' => $this->getDescription(),
             'icon' => $this->getIcon(),
             'license' => $this->getAttributeIfPresent('license'),
-            'stars' => $this->getAttributeIfPresent('stars'),
-            'forks' => $this->getAttributeIfPresent('forks'),
             'downloads' => $this->getAttributeIfPresent('downloads'),
+            'locale' => $this->locale(),
             'installed' => $this->isInstalled(),
+            'pending' => $this->isPending(),
             'enabled' => $this->isEnabled(),
             'installed_version' => $this->getInstalledVersion(),
             'highest_version' => $this->getAvailableVersion(),
             'outdated' => $this->isOutdated(),
+            'discuss_link' => $this->getAttributeIfPresent('discussLink'),
+            'landing_link' => $this->getAttributeIfPresent('landingPageLink'),
             'flarum_id' => $this->installedExtension ? $this->installedExtension->getId() : null,
-            'favorited' => $this->getAttributeIfPresent('favorited')
+            'favorites' => $this->getAttributeIfPresent('amount_of_favorites', 0),
+            'favorited' => $this->getAttributeIfPresent('favorited', false),
+            'premium' => $this->getAttributeIfPresent('premiumEnabled', false),
+            'subscribed' => $this->getAttributeIfPresent('subscribed', false),
+            'canCheckout' => $this->getAttributeIfPresent('canCheckout', false),
+            'canUnsubscribe' => $this->getAttributeIfPresent('canUnsubscribe', false),
+            'flarumCompatibilityLatest' => $this->getAttributeIfPresent('flarumCompatibilityLatest', null),
+            'flarumCompatibilityNext' => $this->getAttributeIfPresent('flarumCompatibilityNext', null),
+            'flarumCompatibilityCurrent' => $this->getAttributeIfPresent('flarumCompatibilityCurrent', null),
         ];
     }
 }

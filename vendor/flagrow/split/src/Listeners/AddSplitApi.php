@@ -12,11 +12,8 @@
 
 namespace Flagrow\Split\Listeners;
 
-use Flagrow\Split\Api\Controllers\SplitController;
+use Flarum\Api\Event\Serializing;
 use Flarum\Api\Serializer\DiscussionSerializer;
-use Flarum\Event\ConfigureApiRoutes;
-use Flarum\Event\PrepareApiAttributes;
-use Flarum\Flags\Api\Controller;
 use Flarum\Settings\SettingsRepositoryInterface;
 use Illuminate\Contracts\Events\Dispatcher;
 
@@ -40,25 +37,16 @@ class AddSplitApi
      */
     public function subscribe(Dispatcher $events)
     {
-        $events->listen(PrepareApiAttributes::class, [$this, 'prepareApiAttributes']);
-        $events->listen(ConfigureApiRoutes::class, [$this, 'configureApiRoutes']);
+        $events->listen(Serializing::class, [$this, 'prepareApiAttributes']);
     }
 
     /**
-     * @param PrepareApiAttributes $event
+     * @param Serializing $event
      */
-    public function prepareApiAttributes(PrepareApiAttributes $event)
+    public function prepareApiAttributes(Serializing $event)
     {
         if ($event->isSerializer(DiscussionSerializer::class)) {
             $event->attributes['canSplit'] = $event->actor->can('split', $event->model);
         }
-    }
-
-    /**
-     * @param ConfigureApiRoutes $event
-     */
-    public function configureApiRoutes(ConfigureApiRoutes $event)
-    {
-        $event->post('/split', 'flagrow.split.run', SplitController::class);
     }
 }

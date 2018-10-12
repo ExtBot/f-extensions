@@ -2,11 +2,10 @@
 
 namespace Flagrow\Upload\Commands;
 
-use Flarum\Core\User;
+use Flarum\User\User;
 
 class Download
 {
-
     /**
      * @var string
      */
@@ -24,7 +23,7 @@ class Download
      */
     public $postId;
 
-    function __construct($uuid, User $actor, $discussionId = null, $postId = null)
+    public function __construct($uuid, User $actor, $discussionId = null, $postId = null)
     {
         $this->uuid = $uuid;
         $this->actor = $actor;

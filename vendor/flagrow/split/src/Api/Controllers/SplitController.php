@@ -9,28 +9,31 @@
  * For the full copyright and license information, please view the license.md
  * file that was distributed with this source code.
  */
+
 namespace Flagrow\Split\Api\Controllers;
 
-use Flarum\Api\Serializer\DiscussionSerializer;
-use Illuminate\Support\Arr;
 use Flagrow\Split\Api\Commands\SplitDiscussion;
-use Flarum\Api\Controller\AbstractResourceController;
+use Flarum\Api\Controller\AbstractShowController;
+use Flarum\Api\Serializer\DiscussionSerializer;
 use Illuminate\Contracts\Bus\Dispatcher;
+use Illuminate\Support\Arr;
 use Psr\Http\Message\ServerRequestInterface;
 use Tobscure\JsonApi\Document;
 
-class SplitController extends AbstractResourceController
+class SplitController extends AbstractShowController
 {
     /**
      * The serializer instance for this request.
      *
-     * @var ImageSerializer
+     * @var string
      */
     public $serializer = DiscussionSerializer::class;
+
     /**
      * @var Dispatcher
      */
     protected $bus;
+
     /**
      * @param Dispatcher $bus
      */
@@ -38,11 +41,13 @@ class SplitController extends AbstractResourceController
     {
         $this->bus = $bus;
     }
+
     /**
      * Get the data to be serialized and assigned to the response document.
      *
      * @param ServerRequestInterface $request
      * @param Document               $document
+     *
      * @return mixed
      */
     protected function data(ServerRequestInterface $request, Document $document)

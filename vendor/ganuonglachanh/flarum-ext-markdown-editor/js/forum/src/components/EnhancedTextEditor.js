@@ -236,7 +236,7 @@ export default class EnhancedTextEditor extends TextEditor {
    * Make selected text underline.
    */
   underline() {
-    this.insertAroundCursor('__', '__')
+    this.insertAroundCursor('[u]', '[/u]')
   }
 
   /**
@@ -264,7 +264,7 @@ export default class EnhancedTextEditor extends TextEditor {
    * Insert image.
    */
   image() {
-    this.insertAroundCursor('![](', ' "")')
+    this.insertAroundCursor('![', '](https://)')
   }
 
   /**

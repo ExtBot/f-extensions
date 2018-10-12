@@ -6,6 +6,96 @@
 
 */
 
+.App-nav .AdminNav .Dropdown-menu>li.active>a .Button-icon {
+    color: wheat;
+    font-weight: normal;
+}
+.App-nav .AdminNav .Dropdown-menu>li.active>a .Button-label {
+    color: wheat;
+    font-weight: normal;
+}
+.App-nav .AdminNav .Dropdown-menu>li.active>a .Button-label, .App-nav .AdminNav .Dropdown-menu>li.active>a .Button-icon {
+    color: goldenrod;
+    font-weight: normal;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: transparent;
+}
+
+.App-nav .AdminNav .Button-icon {
+    float: left;
+    margin-left: -30px;
+    font-size: 14px;
+    margin-top: 0px !important;
+}
+
+.Dropdown-toggle.Button.Button--icon.Button--flat {
+    box-shadow: none;
+    margin-right: 9px;
+    margin-top: 1.4px;
+}
+
+.SessionDropdown .Dropdown-toggle .Avatar {
+    margin: 5px 3px -2px -6px;
+    width: 24px;
+    height: 24px;
+    border-radius: 24px;
+    font-size: 12px;
+    line-height: 24px;
+}
+
+.ExtensionListItem {
+    width: 145px;
+    height: 192px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24);
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.ExtensionIcon {
+    width: 145px;
+    height: auto;
+    color: #667c99;
+    display: inline-block;
+    font-size: 60px;
+    line-height: 150px;
+    text-align: center;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+
+.Dropdown-toggle.Button.Button--icon.Button--flat {
+    box-shadow: none;
+}
+
+li.item-changePassword {
+    margin-right: 3px;
+}
+
+li.item-changeEmail {
+ margin-right:8px
+}
+
+.App-nav .AdminNav .Dropdown-menu > li.active > a .Button-label, .App-nav .AdminNav .Dropdown-menu > li.active > a .Button-icon {
+    color: #111;
+    font-weight: normal;
+}
+
 .on.Checkbox--switch .Checkbox-display:before {
     left: 25px;
     margin-bottom: 7px;
@@ -15,6 +105,21 @@
     border-radius: 50%;
     background: @primary-color;
     box-shadow: 0 3px 4px 0 rgba(0,0,0,.14), 0 3px 3px -2px rgba(0,0,0,.2), 0 1px 8px 0 rgba(0,0,0,.12);
+}
+
+.fa-circle:before {
+    color: #00C851;
+}
+
+.UserCard-lastSeen.online .fa-circle {
+    color: #00C851;
+}
+
+.Modal-close {
+    position: absolute;
+    right: 0px;
+    top: 10px;
+    z-index: 1;
 }
 
 .on.Checkbox--switch .Checkbox-display {
@@ -60,14 +165,7 @@
     cursor: pointer;
 }
 
-.affix .App-nav {
-    position: fixed;
-    bottom: 0;
-    height: auto;
-    background: #F5F5F5;
-}
-
-.Form--centered .Button {
+.Form--centered .Button{
     margin: 0 auto;
     text-align: center;
     font-size: 15px;
@@ -79,15 +177,6 @@ li.item-tag1, li.item-tag2, li.item-tag3, li.item-tag4, li.item-tag5, li.item-ta
     padding-left: 10px;
 }
 
-.sideNav .Dropdown--select .Dropdown-menu {
-    display: block;
-    margin: 0;
-    padding: 0;
-    float: none;
-    background: none;
-    transition: all .3s cubic-bezier(.25, .8, .25, 1);
-}
-
 .sideNav .Dropdown--select .Dropdown-menu>.Dropdown-separator {
     background: #e5e7f6;
     visibility: hidden;
@@ -95,12 +184,14 @@ li.item-tag1, li.item-tag2, li.item-tag3, li.item-tag4, li.item-tag5, li.item-ta
     width: 0px;
 }
 
-.sideNav .Dropdown--select .Dropdown-menu>li>a .Button-icon {
+.sideNav .Dropdown--select .Dropdown-menu > li > a .Button-icon {
     float: left;
-    margin-left: -30px;
-    margin-top: 1px;
-    font-size: 15px;
-    border-radius: 2px;
+    margin-left: -26px;
+    margin-top: 0px;
+    font-size: 19px;
+    border-radius: 4px;
+    padding-bottom: 3px;
+    margin-bottom: 0px;
 }
 
 .Form--centered .Button {
@@ -163,7 +254,7 @@ li.item-tag1, li.item-tag2, li.item-tag3, li.item-tag4, li.item-tag5, li.item-ta
 .IndexPage-newDiscussion {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
   border: none;
-  border-radius: 2px;
+  border-radius: 4px;
   position: relative;
   height: 36px;
   margin: 0;
@@ -247,18 +338,18 @@ li.item-tag1, li.item-tag2, li.item-tag3, li.item-tag4, li.item-tag5, li.item-ta
 }
 
 .Button--primary {
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
 .Button {
-    box-shadow: @default-shadow;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     border: none;
-    border-radius: 2px;
+    border-radius: 4px;
     position: relative;
     height: 36px;
     margin: 0;
     min-width: 44px;
-    padding: 0 16px;
+    padding: 1px 12px;
     display: inline-block;
     font-family: "Roboto","Helvetica","Arial",sans-serif;
     font-size: 14px;
@@ -336,21 +427,6 @@ input.Button[type="submit"] {
       background: rgb(255,255,255);
 }
 
-.SessionDropdown .Dropdown-toggle {
-  border-radius: 18px;
-  margin-left: 15px;
-}
-
-.SessionDropdown .Dropdown-toggle .Avatar {
-    margin: 6px 5px -2px -6px;
-    width: 24px;
-    height: 24px;
-    border-radius: 24px;
-    font-size: 12px;
-    line-height: 24px;
-}
-
-
 .DiscussionPage-nav .ButtonGroup:not(.itemCount1) .Dropdown-toggle {
   width: 22%;
   margin-top: -38px;
@@ -388,13 +464,6 @@ input.Button[type="submit"] {
     margin-top: -2px;
 }
 
- .NotificationsDropdown .Dropdown-toggle {
-  width:36px;
-  text-align:center;
-  padding:0px 0;
-  margin-left: 10px;
- }
-
 .Dropdown-menu>li>a .Button-icon, .Dropdown-menu>li>button .Button-icon, .Dropdown-menu>li>span .Button-icon {
     float: left;
     margin-left: -25px;
@@ -412,17 +481,16 @@ input.Button[type="submit"] {
 
 .TagIcon {
  border-radius:4px;
- width:16px;
- height:16px;
+ width:18px;
+ height:18px;
  display:inline-block;
  vertical-align:-3px;
  margin-left:1px;
  background:#e8ecf3;
-  -webkit-box-shadow:0 1px 1px rgba(0,0,0,0.2);
+ -webkit-box-shadow:0 1px 1px rgba(0,0,0,0.2);
  -moz-box-shadow:0 1px 1px rgba(0,0,0,0.2);
  box-shadow:0 1px 1px rgba(0,0,0,0.2);
- height:18px;
- font-size:14px !important;
+ font-size:14px !important
 }
 
 .TagIcon {
@@ -436,27 +504,27 @@ input.Button[type="submit"] {
 }
 
 .Button--icon {
-  border: none;
-  border-radius: 2px;
-  position: relative;
-  margin-left: 5px;
-  padding: 0 15px;
-  display: inline-block;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  text-transform: uppercase;
-  line-height: 1;
-  letter-spacing: 0;
-  overflow: hidden;
-  will-change: box-shadow;
-  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  outline: none;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: center;
-  line-height: 36px;
-  vertical-align: middle;
+    border: none;
+    border-radius: 4px;
+    position: relative;
+    margin-left: 5px;
+    display: inline-block;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: 0;
+    overflow: hidden;
+    will-change: box-shadow;
+    transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1),background-color .2s cubic-bezier(.4, 0, .2, 1),color .2s cubic-bezier(.4, 0, .2, 1);
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    line-height: 36px;
+    vertical-align: middle;
+    padding-top: 0px;
 }
 
 .Button--icon .Button-icon {
@@ -469,29 +537,24 @@ input.Button[type="submit"] {
 .DiscussionListItem-author {
  float:left;
  margin-top:13px;
- transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  background: radial-gradient(circle at center 75px, transparent, transparent 50px);
-  -webkit-filter:drop-shadow(0px 2px 1px #9b9b9b);
-  overflow: hidden;
+ overflow:hidden
 }
 
 .PostUser-avatar {
-  left:-85px;
-  position:absolute;
-  width:64px;
-  height:64px;
-  border-radius:64px;
-  font-size:32px;
-  line-height:64px;
-   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  -webkit-filter:drop-shadow(0px 2px 1px #9b9b9b);
-  overflow: hidden;
+ left:-85px;
+ position:absolute;
+ width:64px;
+ height:64px;
+ border-radius:64px;
+ font-size:32px;
+ line-height:64px;
+ overflow:hidden
 }
 
 .Post {
   padding-left:105px;
   box-shadow: @default-shadow;
-  border-radius: 3px;
+  border-radius: 4px;
 }
 
 .NotificationGrid {
@@ -615,27 +678,17 @@ input.Button[type="submit"] {
  .CommentPost:not(.Post--hidden),.ReplyPlaceholder {
   min-height:104px;
   margin-bottom:15px;
-  border-radius: 3px;
+  border-radius: 4px;
 }
 
 .DiscussionList-discussions {
-  list-style-type:none;
-  position:relative;
-  box-shadow: @default-shadow;
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  padding-left: 15px;
-  margin-top: 20px;
-  border-radius: 2px;
-}
-
-.DiscussionListItem {
-  position:relative;
-  margin-right:0px;
-  padding-right:25px;
-  padding-left:15px;
-  margin-left:-15px;
-  border-radius: 2px;
-  transition:background .2s
+ list-style-type:none;
+ position:relative;
+ box-shadow:0 2px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24);
+ transition:all .3s cubic-bezier(.25, .8, .25, 1);
+ padding-left:15px;
+ margin-top:20px;
+ border-radius:4px
 }
 
 .NotificationGrid-checkbox.highlighted .Checkbox:not(.disabled),.NotificationGrid-checkbox .Checkbox:hover:not(.disabled) {
@@ -776,7 +829,7 @@ filter: grayscale(40%);
     padding-top: 0px;
     margin-right: 4px;
     box-shadow: none;
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
 .LoadingIndicator>.spinner{
@@ -823,7 +876,7 @@ filter: grayscale(40%);
 .ReplyPlaceholder {
  border:none;
 transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-border-radius: 3px;
+border-radius: 4px;
  }
 
 
@@ -896,16 +949,13 @@ border-radius: 3px;
   content:"account_circle"
 }
 
-.fa-bell:before {
-  content:"notifications"
-}
-
 .fa-th-large:before {
   content:"label"
 }
 
-.fa-pencil:before {
-  content:"edit"
+.fa-pencil::before {
+    content: "edit";
+    font-size: 19px;
 }
 
 .fa-code-fork:before {
@@ -1057,10 +1107,6 @@ font: normal normal normal 16px/1 'Material Icons';
 
  .unread .DiscussionListItem-count:before {
   content:"chat_bubble"
- }
-
- .DiscussionListItem-count:before {
- content:"chat_bubble_outline";
  }
 
 .fa-photo:before,.fa-image:before,.fa-picture-o:before {
@@ -1315,6 +1361,10 @@ font: normal normal normal 16px/1 'Material Icons';
  content:"trip_origin"
 }
 
+.PostMention::before {
+    content: "alternate_email";
+}
+
 /* Material Icons Ending */
 
 /* Font Awesome Icons Beginning */
@@ -1400,11 +1450,11 @@ font: normal normal normal 16px/1 'Material Icons';
    height:46px;
    cursor:pointer;
    background:#f6f1e4;
-   border-radius: 3px;
+   border-radius: 4px;
 }
 
 .Composer {
-  border-radius: 3px;
+  border-radius: 4px;
   background:rgba(255,255,255,0.95);
   transform:translateZ(0);
   position:relative;
@@ -1422,8 +1472,6 @@ font: normal normal normal 16px/1 'Material Icons';
   font-size:32px;
   line-height:64px;
   left:-85px;
-  transition:all .3s cubic-bezier(.25, .8, .25, 1);
-  -webkit-filter:drop-shadow(0px 2px 2px #808080);
   overflow:hidden
  }
 
@@ -1434,7 +1482,7 @@ font: normal normal normal 16px/1 'Material Icons';
   overflow:auto;
   left:auto;
   right:0;
-  border-radius: 3px;
+  border-radius: 4px;
 }
 
 .EventPost,.EventPost a {
@@ -1444,10 +1492,6 @@ font: normal normal normal 16px/1 'Material Icons';
 
 .TagLabel.colored .TagLabel-text {
  color:#fff !important;
-  padding-right: 2px;
-  padding-left: 2px;
-  padding-top: 2px;
-  padding-bottom: 2px;
 }
 
 .TagsLabel .TagLabel {
@@ -1475,30 +1519,29 @@ font: normal normal normal 16px/1 'Material Icons';
 }
 
 .Dropdown-menu {
- position:absolute;
- top:100%;
- left:0;
- z-index:1030;
- display:none;
- min-width:160px;
- padding:8px 0;
- margin:7px 0;
- background:#fff;
- border-radius:2px;
- -webkit-box-shadow:0 2px 6px rgba(0,0,0,0.35);
- -moz-box-shadow:0 2px 6px rgba(0,0,0,0.35);
- box-shadow:0 2px 6px rgba(0,0,0,0.35);
- list-style:none;
- text-align:left;
- color:#111;
- font-size:13px;
- line-height:1.5
+    position: absolute;
+    top: 100%;
+    right: 0%;
+    z-index: 1030;
+    width: 160px;
+    padding: 8px 0;
+    margin: 7px 0;
+    background: #fff;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+    -moz-box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+    list-style: none;
+    text-align: left;
+    color: #111;
+    font-size: 13px;
+    line-height: 1.7;
 }
 
  .Button--text {
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.12);
      border: none;
-     border-radius: 2px;
+     border-radius: 4px;
      position: relative;
      height: 36px;
      margin: 0;
@@ -1533,17 +1576,10 @@ font: normal normal normal 16px/1 'Material Icons';
      filter: grayscale(40%);
  }
 
- .Badge,.Badge .Badge-icon {
-  font-size:15px;
-  padding-top:.10px;
-  padding-left: 0.6px;
- }
-
-
-
  .item-changePassword {
    padding-right: 5px;
  }
+
  .ExtensionListItem {
   width:120px;
   height:160px;
@@ -1597,5 +1633,33 @@ font: normal normal normal 16px/1 'Material Icons';
   }
 
   li.item-tag1,li.item-tag2,li.item-tag3,li.item-tag4,li.item-tag5,li.item-tag6,li.item-tag7,li.item-tag8,li.item-tag9,li.item-tag10,li.item-tag11,li.item-tag12,li.item-tag13,li.item-tag14,li.item-tag15,li.item-tag16,li.item-tag17,li.item-tag18,li.item-tag19,li.item-tag20 {
-  padding-left:0px;
+    padding-left: 4px;
+  }
+
+  .AdminLinkButton-description {
+    margin-left: 6px;
+   display:none
+  }
+
+  .App-nav .AdminNav .Dropdown-menu>li>a {
+   padding:15px 15px 15px 39px;
+   display:block;
+   text-decoration:none;
+   white-space:normal
+  }
+
+  .sideNav .Dropdown--select .Dropdown-menu>li>a .Button-icon {
+      float: left;
+      margin-left: -26px;
+      margin-top: 1px;
+      font-size: 19px;
+      border-radius: 4px;
+      padding-bottom: 3px;
+      margin-bottom: 0px;
+  }
+
+  .Badge, .Badge .Badge-icon {
+    font-size: 16px;
+    padding-top: .3px;
+    padding-right: .2px;
   }

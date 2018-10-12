@@ -12,7 +12,7 @@
 
 namespace Flagrow\Split\Api\Commands;
 
-use Flarum\Core\User;
+use Flarum\User\User;
 
 class SplitDiscussion
 {
@@ -54,9 +54,9 @@ class SplitDiscussion
      */
     public function __construct($title, $start_post_id, $end_post_number, User $actor)
     {
-        $this->title           = $title;
-        $this->start_post_id   = $start_post_id;
+        $this->title = $title;
+        $this->start_post_id = $start_post_id;
         $this->end_post_number = $end_post_number;
-        $this->actor           = $actor;
+        $this->actor = $actor;
     }
 }

@@ -11,11 +11,10 @@
  * file that was distributed with this source code.
  */
 
-
 namespace Flagrow\Upload\Events\File;
 
 use Flagrow\Upload\File;
-use Flarum\Core\User;
+use Flarum\User\User;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 abstract class Event
@@ -36,8 +35,8 @@ abstract class Event
     public $uploadedFile;
 
     /**
-     * @param User $actor
-     * @param File $file
+     * @param User         $actor
+     * @param File         $file
      * @param UploadedFile $uploadedFile
      */
     public function __construct(User $actor, File $file, UploadedFile $uploadedFile)

@@ -14,12 +14,12 @@ namespace Flagrow\Split\Api\Commands;
 
 use Flagrow\Split\Events\DiscussionWasSplit;
 use Flagrow\Split\Validators\SplitDiscussionValidator;
-use Flarum\Core\Access\AssertPermissionTrait;
-use Flarum\Core\Discussion;
-use Flarum\Core\Post;
-use Flarum\Core\Repository\PostRepository;
-use Flarum\Core\Repository\UserRepository;
+use Flarum\Discussion\Discussion;
+use Flarum\Post\Post;
+use Flarum\Post\PostRepository;
 use Flarum\Settings\SettingsRepositoryInterface;
+use Flarum\User\AssertPermissionTrait;
+use Flarum\User\UserRepository;
 use Illuminate\Contracts\Events\Dispatcher;
 
 class SplitDiscussionHandler
@@ -52,11 +52,11 @@ class SplitDiscussionHandler
     protected $events;
 
     /**
-     * @param UserRepository $users
-     * @param PostRepository $posts
+     * @param UserRepository              $users
+     * @param PostRepository              $posts
      * @param SettingsRepositoryInterface $settings
-     * @param Dispatcher $events
-     * @param SplitDiscussionValidator $validator
+     * @param Dispatcher                  $events
+     * @param SplitDiscussionValidator    $validator
      */
     public function __construct(
         UserRepository $users,
@@ -73,17 +73,21 @@ class SplitDiscussionHandler
     }
 
     /**
-     * @param SplitDiscussion $command
-     * @return \Flarum\Core\Discussion
+     * @param \Flagrow\Split\Api\Commands\SplitDiscussion $command
+     *
+     * @throws \Flarum\User\Exception\PermissionDeniedException
+     * @throws \Illuminate\Validation\ValidationException
+     *
+     * @return \Flarum\Discussion\Discussion
      */
     public function handle(SplitDiscussion $command)
     {
         $this->assertCan($command->actor, 'split');
 
         $this->validator->assertValid([
-            'start_post_id' => $command->start_post_id,
+            'start_post_id'   => $command->start_post_id,
             'end_post_number' => $command->end_post_number,
-            'title' => $command->title
+            'title'           => $command->title,
         ]);
 
         // load the first selected post to split.
@@ -94,7 +98,7 @@ class SplitDiscussionHandler
 
         // create a new discussion for the user of the first splitted reply.
         $discussion = Discussion::start($command->title, $startPost->user);
-        $discussion->setStartPost($startPost);
+        $discussion->setFirstPost($startPost);
 
         // persist the new discussion.
         $discussion->save();
@@ -113,7 +117,7 @@ class SplitDiscussionHandler
         $this->renumberDiscussion($discussion);
         $discussion = $this->refreshDiscussion($discussion);
 
-        $this->events->fire(
+        $this->events->dispatch(
             new DiscussionWasSplit($command->actor, $affectedPosts, $originalDiscussion, $discussion)
         );
 
@@ -127,6 +131,7 @@ class SplitDiscussionHandler
      * @param Discussion $discussion
      * @param            $start_post_number
      * @param            $end_post_number
+     *
      * @return \Illuminate\Database\Eloquent\Collection
      */
     protected function assignPostsToDiscussion(
@@ -141,7 +146,7 @@ class SplitDiscussionHandler
             ->whereBetween('number', [$start_post_number, $end_post_number])
             ->update(['discussion_id' => $discussion->id]);
 
-        $discussion->number_index = $end_post_number;
+        $discussion->post_number_index = $end_post_number;
         $discussion->save();
 
         // Update relationship posts on new discussion.
@@ -161,26 +166,28 @@ class SplitDiscussionHandler
 
         $number = 0;
 
-        $discussion->posts->sortBy('time')->each(function (Post $post) use (&$number) {
+        $discussion->posts->sortBy('created_at')->each(function (Post $post) use (&$number) {
             $number++;
             $post->number = $number;
             $post->save();
         });
 
-        $discussion->number_index = $number;
+        $discussion->post_number_index = $number;
         $discussion->save();
     }
 
     /**
      * Refreshes count and last Post for the discussion.
      *
-     * @param Discussion $discussion
+     * @param \Flarum\Discussion\Discussion $discussion
+     *
+     * @return mixed
      */
     protected function refreshDiscussion(Discussion $discussion)
     {
         $discussion->refreshLastPost();
-        $discussion->refreshCommentsCount();
-        $discussion->refreshParticipantsCount();
+        $discussion->refreshCommentCount();
+        $discussion->refreshParticipantCount();
 
         // Persist the new statistics.
         $discussion->save();

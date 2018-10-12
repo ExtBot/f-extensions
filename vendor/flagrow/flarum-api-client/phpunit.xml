@@ -2,7 +2,7 @@
 <phpunit backupGlobals="false"
          backupStaticAttributes="false"
          bootstrap="vendor/autoload.php"
-         colors="false"
+         colors="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
@@ -12,7 +12,10 @@
 >
     <testsuites>
         <testsuite name="TestSuite">
-            <directory>./tests/</directory>
+            <directory>./tests/unit/</directory>
         </testsuite>
     </testsuites>
+    <php>
+        <env name="FLARUM_HOST_TESTING" value="http://flarum.dev"/>
+    </php>
 </phpunit>

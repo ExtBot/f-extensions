@@ -4,20 +4,24 @@ namespace Flagrow\Bazaar\Repositories;
 
 use Flagrow\Bazaar\Events\ExtensionWasInstalled;
 use Flagrow\Bazaar\Events\ExtensionWasUpdated;
+use Flagrow\Bazaar\Events\SearchedExtensions;
+use Flagrow\Bazaar\Events\SearchingExtensions;
 use Flagrow\Bazaar\Extensions\Extension;
 use Flagrow\Bazaar\Extensions\ExtensionUtils;
 use Flagrow\Bazaar\Extensions\PackageManager;
-use Flagrow\Bazaar\Jobs\CacheClearJob;
 use Flagrow\Bazaar\Search\FlagrowApi as Api;
+use Flagrow\Bazaar\Search\SearchResults;
 use Flagrow\Bazaar\Traits\Cachable;
-use Flarum\Core\Search\SearchResults;
-use Flarum\Event\ExtensionWasUninstalled;
+use Flarum\Extension\Event\Uninstalled as ExtensionWasUninstalled;
 use Flarum\Extension\ExtensionManager;
+use function GuzzleHttp\Psr7\parse_query;
 use Illuminate\Contracts\Events\Dispatcher;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Arr;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Log\LoggerInterface;
 
-class ExtensionRepository
+final class ExtensionRepository
 {
     use Cachable;
     /**
@@ -41,34 +45,36 @@ class ExtensionRepository
      */
     protected $events;
     /**
-     * @var CacheClearJob
+     * @var LoggerInterface
      */
-    private $flush;
+    private $log;
 
     /**
      * ExtensionRepository constructor.
+     *
      * @param ExtensionManager $manager
-     * @param PackageManager $packages
-     * @param Api $client
-     * @param Dispatcher $events
-     * @param CacheClearJob $flush
+     * @param PackageManager   $packages
+     * @param Api              $client
+     * @param Dispatcher       $events
+     * @param LoggerInterface  $log
      */
     function __construct(
         ExtensionManager $manager,
         PackageManager $packages,
         Api $client,
         Dispatcher $events,
-        CacheClearJob $flush
+        LoggerInterface $log
     )
     {
         $this->manager = $manager;
         $this->client = $client;
         $this->packages = $packages;
         $this->events = $events;
-        $this->flush = $flush;
+        $this->log = $log;
     }
 
     /**
+     * @deprecated
      * @return Collection all extensions from the remote client
      */
     public function allExtensionsFromClient()
@@ -92,56 +98,70 @@ class ExtensionRepository
         })->keyBy('id');
     }
 
-    /**
-     * Filter by search term
-     * @param Collection $extensions
-     * @param string $search
-     * @return Collection
-     */
-    public function filterSearch(Collection $extensions, $search)
+    protected function payloadToExtensions(array $data): Collection
     {
-        if (empty($search)) {
-            return $extensions;
-        }
-
-        return $extensions->filter(function ($extension) use ($search) {
-            // Look for the serch term in all these things
-            $searchIn = [
-                $extension->getPackage(),
-                $extension->getTitle(),
-                $extension->getDescription(),
-            ];
-
-            foreach ($searchIn as $content) {
-                if (strpos(strtolower($content), strtolower($search)) !== false) {
-                    return true;
-                }
-            }
-
-            return false;
-        });
+        return Collection::make($data)->map(function ($package) {
+            return $this->createExtension($package);
+        })->keyBy('id');
     }
 
     /**
-     * @param array $params Request parameters
+     * @param ServerRequestInterface $request
      * @return SearchResults
      * @throws \Exception
      */
-    public function index(array $params = [])
+    public function index(ServerRequestInterface $request)
     {
-        $extensions = $this->allExtensionsFromClient();
+        $params = $orig = $request->getQueryParams();
 
-        foreach (Arr::get($params, 'filter', []) as $filter => $value) {
-            switch ($filter) {
-                case 'search':
-                    $extensions = $this->filterSearch($extensions, $value);
-                    break;
-                default:
-                    throw new \Exception('Invalid extension filter ' . $filter);
-            }
+        $params = collect($params)->filter();
+
+        if ($params->has('q') && ! $params->has('sort')) {
+            $params->put('sort', 'name');
+        }
+        else if (! $params->has('sort')) {
+            $params->put('sort', '-downloads');
         }
 
-        return new SearchResults($extensions, true);
+        $q = $params->get('q');
+        $filter = $params->get('filter');
+
+        if (! $filter && ! $q) {
+            $params->put('filter', ['is' => ['-flarum']]);
+        } elseif ($filter) {
+            parse_str($filter, $filter);
+            $params->put('filter', $filter);
+        }
+
+        $page = Arr::get($orig, 'page', []);
+        $offset = Arr::pull($page, 'offset', 0);
+        $page['number'] = ($offset+25)/25;
+        $params->put('page', $page);
+
+        $this->log->info("pagination", $params->toArray());
+
+        $this->events->fire(
+            new SearchingExtensions($params)
+        );
+
+        $response = $this->client->get('packages', ['query' => $params->toArray()]);
+
+        if ($response->getStatusCode() >= 400) {
+            $this->log->alert("Failed Bazaar call to flagrow.io: {$response->getReasonPhrase()}");
+        }
+
+        $json = json_decode($response->getBody()->getContents(), true);
+
+        $data = Arr::get($json, 'data', []);
+
+        $extensions = $this->payloadToExtensions($data);
+        $meta = Arr::get($json, 'meta', []);
+
+        $this->events->fire(
+            new SearchedExtensions($extensions, $params, $meta)
+        );
+
+        return new SearchResults($this->payloadToExtensions($data), $meta);
     }
 
     /**
@@ -184,6 +204,7 @@ class ExtensionRepository
      */
     protected function refreshInstalledExtension(Extension &$extension)
     {
+        $extension->setEnabled($this->manager->isEnabled($extension->getShortName()));
         $installedExtension = $this->manager->getExtension($extension->getShortName());
 
         if (!is_null($installedExtension)) {
@@ -203,21 +224,20 @@ class ExtensionRepository
 
         $extension = $this->getExtension($package);
 
-        $this->flush->fire();
-
-        $this->events->fire(
-            new ExtensionWasInstalled($extension->getInstalledExtension())
-        );
+        if ($extension->getInstalledExtension() !== null) {
+            $this->events->fire(
+                new ExtensionWasInstalled($extension->getInstalledExtension())
+            );
+        }
 
         return $extension;
     }
 
     /**
      * @param $package
-     * @param null|string $version
      * @return Extension|null
      */
-    public function updateExtension($package, $version = null)
+    public function updateExtension($package)
     {
         $extension = $this->getExtension($package);
 
@@ -225,13 +245,11 @@ class ExtensionRepository
 
         $this->manager->migrate($extension->getInstalledExtension());
 
-        $this->flush->fire();
+        $this->refreshInstalledExtension($extension);
 
         $this->events->fire(
             new ExtensionWasUpdated($extension->getInstalledExtension())
         );
-
-        $this->refreshInstalledExtension($extension);
 
         return $extension;
     }
@@ -255,8 +273,6 @@ class ExtensionRepository
         $installedExtension = $extension->getInstalledExtension();
 
         $extension->setInstalledExtension(null);
-
-        $this->flush->fire();
 
         $this->events->fire(
             new ExtensionWasUninstalled($installedExtension)
@@ -286,6 +302,23 @@ class ExtensionRepository
 
         if ($response->getStatusCode() === 409) {
             return $response;
+        }
+
+        return null;
+    }
+
+    /**
+     * @param string $package
+     * @param bool $buy
+     * @return Extension|null
+     */
+    public function buy($package, $buy = true)
+    {
+        $response = $this->client->request($buy ? 'post' : 'delete', 'packages/' . $package . '/buy');
+
+        if (in_array($response->getStatusCode(), [200, 201])) {
+            $json = json_decode($response->getBody()->getContents(), true);
+            return $this->createExtension(Arr::get($json, 'data', []));
         }
 
         return null;

@@ -9,12 +9,12 @@ use Flagrow\Upload\Exceptions\InvalidDownloadException;
 use Flagrow\Upload\Helpers\Settings;
 use Flagrow\Upload\Repositories\FileRepository;
 use Flagrow\Upload\Validators\DownloadValidator;
-use Flarum\Core\Access\AssertPermissionTrait;
-use Flarum\Core\Repository\DiscussionRepository;
+use Flarum\Discussion\DiscussionRepository;
+use Flarum\User\AssertPermissionTrait;
 use GuzzleHttp\Client;
+use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Arr;
-use Illuminate\Contracts\Events\Dispatcher;
 
 class DownloadHandler
 {
@@ -58,9 +58,13 @@ class DownloadHandler
     }
 
     /**
-     * @param Download $command
-     * @return \Psr\Http\Message\ResponseInterface
-     * @throws InvalidDownloadException
+     * @param \Flagrow\Upload\Commands\Download $command
+     *
+     * @throws \Flagrow\Upload\Exceptions\InvalidDownloadException
+     * @throws \Flarum\User\Exception\PermissionDeniedException
+     * @throws \Illuminate\Validation\ValidationException
+     *
+     * @return mixed
      */
     public function handle(Download $command)
     {

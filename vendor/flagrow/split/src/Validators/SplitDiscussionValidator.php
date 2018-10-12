@@ -12,7 +12,7 @@
 
 namespace Flagrow\Split\Validators;
 
-use Flarum\Core\Validator\AbstractValidator;
+use Flarum\Foundation\AbstractValidator;
 
 class SplitDiscussionValidator extends AbstractValidator
 {
@@ -24,15 +24,15 @@ class SplitDiscussionValidator extends AbstractValidator
         return [
             'start_post_id' => [
                 'required',
-                'int'
+                'int',
             ],
             'end_post_id' => [
                 'required',
-                'int'
+                'int',
             ],
             'title' => [
                 'required',
-                'string'
+                'string',
             ],
         ];
     }

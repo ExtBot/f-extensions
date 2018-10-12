@@ -1,6 +1,6 @@
 {
     "name": "reflar/level-ranks",
-    "description": "Add a level/expierence bar to your flarum Forum.",
+    "description": "Add a level/experience bar to your flarum Forum.",
     "keywords": [
         "extension",
         "flarum",
@@ -28,8 +28,8 @@
             "title": "ReFlar Level Ranks",
             "icon": {
                 "name": "percent",
-                "backgroundColor": "#f4f4f4",
-                "color": "#000"
+                "backgroundColor": "#263238",
+                "color": "#fff"
             }
         }
     },

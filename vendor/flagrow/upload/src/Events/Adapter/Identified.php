@@ -3,7 +3,7 @@
 namespace Flagrow\Upload\Events\Adapter;
 
 use Flagrow\Upload\Contracts\UploadAdapter;
-use Flarum\Core\User;
+use Flarum\User\User;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class Identified
@@ -24,8 +24,8 @@ class Identified
     public $adapter;
 
     /**
-     * @param User $actor
-     * @param UploadedFile $upload
+     * @param User               $actor
+     * @param UploadedFile       $upload
      * @param UploadAdapter|null $adapter
      */
     public function __construct(User $actor, UploadedFile &$upload, UploadAdapter &$adapter = null)

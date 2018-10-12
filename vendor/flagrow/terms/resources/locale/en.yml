@@ -6,6 +6,8 @@ flagrow-terms:
             field:
                 signup-legal-text: Additional text on signup form
                 hide-updated-at: Do not show the date of update of the terms when an update is available
+                date-format: Date format
+                date-format-help: You can use any valid <a>Moment.js</a> format. Leave field empty for default.
 
         titles:
             policies: Policies
@@ -36,10 +38,15 @@ flagrow-terms:
                 The date of the last terms update.
                 Setting this value will require all users who accepted prior to that date to accept again.
                 Must be in the past (otherwise users would never be able to accept after the date and get past the modal).
+            export-url: Export url
+            export-url-help: >
+                Any user with permission "Export all policies data" can access those urls to download the list of users who accepted this policy.
+                You can find more details about the available options on the <a>extension wiki</a>.
 
         permissions:
             see-user-policies-state: See the user policies state
             postpone-policies-accept: Can postpone accepting the new terms
+            export-policies: Export all users and policies data
 
     forum:
         signup:
@@ -58,6 +65,11 @@ flagrow-terms:
             title: Terms accept state for user {username}
             accepted-at: Accepted at {date}
             not-accepted: Not accepted
+
+        update-alert:
+            must-accept-message: We've temporarily restricted access to your account while you check out the new terms.
+            can-accept-message: We recently updated the terms. You must accept them to continue using this website.
+            review: Click here to review and accept the new terms
 
         user_controls:
             state_button: Terms accept state
