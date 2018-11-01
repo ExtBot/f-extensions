@@ -49,18 +49,9 @@ class Flarum
             'headers' => $this->requestHeaders($authorization)
         ]);
 
-        $this->fluent();
-        static::$cache = new Cache(new ArrayStore);
-    }
-
-    /**
-     * @return Flarum
-     */
-    protected function fluent(): Flarum
-    {
         $this->fluent = new Fluent($this);
 
-        return $this;
+        static::$cache = new Cache(new ArrayStore);
     }
 
     /**
@@ -79,12 +70,14 @@ class Flarum
         $method = $this->fluent->getMethod();
 
         /** @var ResponseInterface $response */
-        $response = $this->rest->{$method}((string)$this->fluent, $this->getVariablesForMethod());
+        try {
+            $response = $this->rest->{$method}((string)$this->fluent, $this->getVariablesForMethod());
+        } finally {
+            // Reset the fluent builder for a new request.
+            $this->fluent->reset();
+        }
 
         if ($response->getStatusCode() >= 200 && $response->getStatusCode() < 300) {
-            // Reset the fluent builder for a new request.
-            $this->fluent();
-
             return Factory::build($response);
         }
     }

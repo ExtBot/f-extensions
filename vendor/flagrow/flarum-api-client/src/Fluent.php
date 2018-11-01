@@ -12,6 +12,7 @@ class Fluent
     protected $types = [
         'discussions',
         'users',
+        'groups'
     ];
 
     protected $methods = [
@@ -65,6 +66,17 @@ class Fluent
     public function __construct(Flarum $flarum)
     {
         $this->flarum = $flarum;
+    }
+
+    public function reset()
+    {
+        $this->segments = [];
+        $this->includes = [];
+        $this->query = [];
+        $this->variables = [];
+        $this->method = 'get';
+        
+        return $this;
     }
 
     /**
