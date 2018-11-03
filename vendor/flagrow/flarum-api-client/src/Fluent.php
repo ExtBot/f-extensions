@@ -8,10 +8,10 @@ use Flagrow\Flarum\Api\Exceptions\UnauthorizedRequestMethodException;
  * Class Fluent
  * @package Flagrow\Flarum\Api
  *
- * @method Fluent discussions
- * @method Fluent groups
- * @method Fluent users
- * @method Fluent tags
+ * @method Fluent discussions(string|int|null $id)
+ * @method Fluent groups(string|int|null $id)
+ * @method Fluent users(string|int|null $id)
+ * @method Fluent tags(string|int|null $id)
  *
  * @method Fluent get
  * @method Fluent head
@@ -96,9 +96,13 @@ class Fluent
         return $this;
     }
 
-    protected function handleType(string $type): Fluent
+    protected function handleType(string $type, $id): Fluent
     {
         $this->segments[] = $type;
+
+        if ($id) {
+            $this->segments[] = $id;
+        }
 
         return $this;
     }
@@ -131,6 +135,15 @@ class Fluent
 
     public function setVariables(array $variables = [])
     {
+        if (isset($variables['relationships'])) {
+            foreach ($variables['relationships'] as $relation => $relationship) {
+                if (! array_get($relationship, 'data')) {
+                    unset($variables['relationships'][$relation]);
+                    $variables['relationships'][$relation]['data'] = $relationship;
+                }
+            }
+        }
+
         if (count($variables) === 1 && is_array($variables[0])) {
             $this->variables = $variables[0];
         } else {
@@ -215,8 +228,8 @@ class Fluent
             return $this->setMethod($name, $arguments);
         }
 
-        if (count($arguments) === 0 && in_array($name, $this->types)) {
-            return $this->handleType($name);
+        if (count($arguments) <= 1 && in_array($name, $this->types)) {
+            return $this->handleType($name, $arguments[0] ?? null);
         }
 
         if (in_array($name, $this->pagination) && count($arguments) === 1) {
