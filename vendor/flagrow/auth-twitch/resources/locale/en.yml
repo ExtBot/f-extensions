@@ -1,7 +1,0 @@
-flagrow-twitch:
-    admin:
-        title: Twitch client settings
-        client_id_label: Twitch client id
-        client_secret_label: Twitch client secret
-    forum:
-        log_in_with_twitch_button: Log in with Twitch
