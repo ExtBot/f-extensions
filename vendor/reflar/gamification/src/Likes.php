@@ -16,5 +16,5 @@ use Flarum\Database\AbstractModel;
 
 class Likes extends AbstractModel
 {
-    protected $table = 'posts_likes';
+    protected $table = 'post_likes';
 }

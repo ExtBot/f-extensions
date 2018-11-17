@@ -11,17 +11,18 @@
 
 namespace Reflar\twofactor\Api\Controllers;
 
-use Flarum\Core\Exception\PermissionDeniedException;
-use Flarum\Core\Repository\UserRepository;
 use Flarum\Http\AccessToken;
-use Flarum\Http\Controller\ControllerInterface;
+use Flarum\User\Exception\PermissionDeniedException;
+use Flarum\User\UserRepository;
 use Illuminate\Contracts\Bus\Dispatcher as BusDispatcher;
 use Illuminate\Contracts\Events\Dispatcher as EventDispatcher;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use Reflar\twofactor\TwoFactor;
 use Zend\Diactoros\Response\JsonResponse;
 
-class TokenController implements ControllerInterface
+class TokenController implements RequestHandlerInterface
 {
     /**
      * @var UserRepository
@@ -60,9 +61,11 @@ class TokenController implements ControllerInterface
     /**
      * @param ServerRequestInterface $request
      *
-     * @return string|JsonResponse
+     * @throws PermissionDeniedException
+     *
+     * @return ResponseInterface
      */
-    public function handle(ServerRequestInterface $request)
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $body = $request->getParsedBody();
 
@@ -86,7 +89,7 @@ class TokenController implements ControllerInterface
             if ($this->twoFactor->verifyTOTPCode($user, $twofactor)) {
                 return $this->generateAccessCode($user, $lifetime);
             } else {
-                return 'IncorrectCode';
+                return new JsonResponse(['userId' =>'IncorrectCode']);
             }
         } elseif (4 === $user->twofa_enabled) {
             if ($this->twoFactor->verifyPhoneCode($user, $twofactor)) {
@@ -97,7 +100,7 @@ class TokenController implements ControllerInterface
                     $this->twoFactor->sendText($user);
                 }
 
-                return 'IncorrectCode';
+                return new JsonResponse(['userId' =>'IncorrectCode']);
             }
         } else {
             return $this->generateAccessCode($user, $lifetime);
@@ -116,7 +119,7 @@ class TokenController implements ControllerInterface
         $token->save();
 
         return new JsonResponse([
-            'token'  => $token->id,
+            'token'  => $token->token,
             'userId' => $user->id,
         ]);
     }

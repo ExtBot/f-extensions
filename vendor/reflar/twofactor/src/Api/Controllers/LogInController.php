@@ -12,20 +12,19 @@
 namespace Reflar\twofactor\Api\Controllers;
 
 use Flarum\Api\Client;
-use Flarum\Core\Repository\UserRepository;
-use Flarum\Event\UserLoggedIn;
 use Flarum\Http\AccessToken;
-use Flarum\Http\Controller\ControllerInterface;
 use Flarum\Http\Rememberer;
 use Flarum\Http\SessionAuthenticator;
+use Flarum\User\Event\LoggedIn;
+use Flarum\User\UserRepository;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Zend\Diactoros\Response\EmptyResponse;
-use Zend\Diactoros\Response\JsonResponse;
+use Psr\Http\Server\RequestHandlerInterface;
 
-class LogInController implements ControllerInterface
+class LogInController implements RequestHandlerInterface
 {
     /**
-     * @var \Flarum\Core\Repository\UserRepository
+     * @var \Flarum\User\UserRepository
      */
     protected $users;
 
@@ -45,10 +44,10 @@ class LogInController implements ControllerInterface
     protected $rememberer;
 
     /**
-     * @param \Flarum\Core\Repository\UserRepository $users
-     * @param Client                                 $apiClient
-     * @param SessionAuthenticator                   $authenticator
-     * @param Rememberer                             $rememberer
+     * @param \Flarum\User\UserRepository $users
+     * @param Client                      $apiClient
+     * @param SessionAuthenticator        $authenticator
+     * @param Rememberer                  $rememberer
      */
     public function __construct(UserRepository $users, Client $apiClient, SessionAuthenticator $authenticator, Rememberer $rememberer)
     {
@@ -61,9 +60,11 @@ class LogInController implements ControllerInterface
     /**
      * @param Request $request
      *
-     * @return JsonResponse|EmptyResponse
+     * @throws \Exception
+     *
+     * @return ResponseInterface
      */
-    public function handle(Request $request)
+    public function handle(Request $request): ResponseInterface
     {
         $actor = $request->getAttribute('actor');
         $body = $request->getParsedBody();
@@ -71,18 +72,20 @@ class LogInController implements ControllerInterface
 
         $response = $this->apiClient->send(TokenController::class, $actor, [], $params);
 
-        if ('IncorrectCode' !== $response) {
-            if (200 === $response->getStatusCode()) {
-                $data = json_decode($response->getBody());
+        $data = json_decode($response->getBody());
 
+        if (!isset($data->errors) && 'IncorrectCode' !== $data->userId) {
+            if (200 === $response->getStatusCode()) {
                 $session = $request->getAttribute('session');
                 $this->authenticator->logIn($session, $data->userId);
 
                 $token = AccessToken::find($data->token);
 
-                event(new UserLoggedIn($this->users->findOrFail($data->userId), $token));
+                event(new LoggedIn($this->users->findOrFail($data->userId), $token));
 
-                $response = $this->rememberer->remember($response, $token, !array_get($body, 'remember'));
+                if (array_get($body, 'remember')) {
+                    $response = $this->rememberer->remember($response, $token);
+                }
             }
         }
 

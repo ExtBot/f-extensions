@@ -12,12 +12,12 @@
 
 namespace Reflar\twofactor\Api\Controllers;
 
-use Flarum\Api\Controller\AbstractResourceController;
+use Flarum\Api\Controller\AbstractShowController;
 use Psr\Http\Message\ServerRequestInterface;
 use Reflar\twofactor\TwoFactor;
 use Tobscure\JsonApi\Document;
 
-class VerifyCodeController extends AbstractResourceController
+class VerifyCodeController extends AbstractShowController
 {
     public $serializer = 'Reflar\twofactor\Api\Serializers\TwoFactorSerializer';
 

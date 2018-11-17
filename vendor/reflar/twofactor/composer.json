@@ -35,7 +35,7 @@
         "flarum-extension": {
             "title": "ReFlar Two Factor",
             "icon": {
-                "image": "icon.png",
+                "image": "resources/icon.png",
                 "backgroundColor": "#263238",
                 "backgroundSize": "70%",
                 "backgroundRepeat": "no-repeat",

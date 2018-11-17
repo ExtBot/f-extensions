@@ -2,12 +2,12 @@
 
 namespace Reflar\twofactor\Api\Controllers;
 
-use Flarum\Api\Controller\AbstractCollectionController;
+use Flarum\Api\Controller\AbstractListController;
 use Psr\Http\Message\ServerRequestInterface;
 use Reflar\twofactor\TwoFactor;
 use Tobscure\JsonApi\Document;
 
-class GetSecretController extends AbstractCollectionController
+class GetSecretController extends AbstractListController
 {
     public $serializer = 'Reflar\twofactor\Api\Serializers\TwoFactorSerializer';
 
@@ -28,7 +28,9 @@ class GetSecretController extends AbstractCollectionController
      * @param ServerRequestInterface $request
      * @param Document               $document
      *
-     * @return array
+     * @throws \PragmaRX\Google2FA\Exceptions\InsecureCallException
+     *
+     * @return array|mixed
      */
     protected function data(ServerRequestInterface $request, Document $document)
     {

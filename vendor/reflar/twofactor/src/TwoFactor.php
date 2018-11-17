@@ -3,10 +3,12 @@
 namespace Reflar\twofactor;
 
 use Flarum\Settings\SettingsRepositoryInterface;
+use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Mail\Message;
 use PragmaRX\Google2FA\Google2FA;
+use Reflar\TwoFactor\Events\UserEnabledTwoFactor;
 use Symfony\Component\Translation\TranslatorInterface;
 use Twilio\Rest\Client as Client;
 
@@ -38,26 +40,34 @@ class TwoFactor
     protected $translator;
 
     /**
+     * @var Dispatcher
+     */
+    protected $events;
+
+    /**
      * TwoFactor constructor.
      *
-     * @param SettingsRepositoryInterface $settings
-     * @param Google2FA                   $google2fa
-     * @param Hasher                      $hasher
-     * @param Mailer                      $mailer
-     * @param TranslatorInterface         $translator
+     * @param \Flarum\Settings\SettingsRepositoryInterface       $settings
+     * @param \PragmaRX\Google2FA\Google2FA                      $google2fa
+     * @param \Illuminate\Contracts\Hashing\Hasher               $hasher
+     * @param \Illuminate\Contracts\Mail\Mailer                  $mailer
+     * @param \Symfony\Component\Translation\TranslatorInterface $translator
+     * @param \Illuminate\Contracts\Events\Dispatcher            $events
      */
     public function __construct(
         SettingsRepositoryInterface $settings,
         Google2FA $google2fa,
         Hasher $hasher,
         Mailer $mailer,
-        TranslatorInterface $translator
+        TranslatorInterface $translator,
+        Dispatcher $events
     ) {
         $this->google2fa = $google2fa;
         $this->settings = $settings;
         $this->hasher = $hasher;
         $this->mailer = $mailer;
         $this->translator = $translator;
+        $this->events = $events;
     }
 
     /**
@@ -93,6 +103,8 @@ class TwoFactor
 
         $user->save();
 
+        $this->events->fire(new UserEnabledTwoFactor($user));
+
         $this->notifyEnabled($user);
 
         return $recoveryCodes;
@@ -114,15 +126,13 @@ class TwoFactor
     /**
      * @param $user
      *
-     * @return mixed
+     * @throws \PragmaRX\Google2FA\Exceptions\InsecureCallException
+     *
+     * @return string
      */
     public function getURL($user)
     {
-        return $this->google2fa->setAllowInsecureCallToGoogleApis(true)->getQRCodeGoogleUrl(
-            urlencode($this->settings->get('forum_title')),
-            $user->username,
-            $user->google2fa_secret
-        );
+        return $this->google2fa->setAllowInsecureCallToGoogleApis(true)->getQRCodeGoogleUrl($this->settings->get('forum_title'), $user->username, $user->google2fa_secret);
     }
 
     /**
@@ -197,6 +207,8 @@ class TwoFactor
     /**
      * @param $user
      * @param $phone
+     *
+     * @throws \Twilio\Exceptions\ConfigurationException
      */
     public function preparePhone2Factor($user, $phone)
     {
@@ -227,6 +239,8 @@ class TwoFactor
         $user->recovery_codes = implode(',', $codes);
 
         $user->save();
+
+        $this->events->fire(new UserEnabledTwoFactor($user));
 
         $this->notifyEnabled($user);
 
@@ -294,6 +308,8 @@ class TwoFactor
 
     /**
      * @param $user
+     *
+     * @throws \Twilio\Exceptions\ConfigurationException
      */
     public function sendText($user)
     {
@@ -309,9 +325,9 @@ class TwoFactor
         $client->messages->create($user->phone, [
             'from' => $this->settings->get('reflar.twofactor.twillio_number'),
             'body' => $this->translator->trans('reflar-twofactor.forum.text', [
-                    '{forum}' => $this->settings->get('forum_title'),
-                    '{code}'  => $randst,
-                ]),
+                '{forum}' => $this->settings->get('forum_title'),
+                '{code}'  => $randst,
+            ]),
         ]);
     }
 
@@ -320,10 +336,10 @@ class TwoFactor
      */
     public function notifyEnabled($user)
     {
-        $this->mailer->raw($this->translator->trans('reflar-twofactor.forum.email.body'),
-            function (Message $message) use ($user) {
-                $message->to($user->email);
-                $message->subject('['.$this->settings->get('forum_title').'] '.$this->translator->trans('reflar-twofactor.forum.email.subject'));
-            });
+        $this->mailer->raw($this->translator->trans('reflar-twofactor.forum.email.body'), function (Message $message
+        ) use ($user) {
+            $message->to($user->email);
+            $message->subject('['.$this->settings->get('forum_title').'] '.$this->translator->trans('reflar-twofactor.forum.email.subject'));
+        });
     }
 }
