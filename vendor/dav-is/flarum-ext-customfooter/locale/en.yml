@@ -1,8 +1,0 @@
-davis-customfooter:
-  admin:
-    settings:
-      title: Custom Footer Configuration
-      customtext: Text for Footer
-      heightofheader: Height of Footer
-      cssofheader: CSS
-      jsofheader: JS
