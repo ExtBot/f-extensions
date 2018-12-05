@@ -1,6 +1,0 @@
-.git* export-ignore
-js/src export-ignore
-js/*.json export-ignore
-js/*.js export-ignore
-
-js/dist/* -diff
