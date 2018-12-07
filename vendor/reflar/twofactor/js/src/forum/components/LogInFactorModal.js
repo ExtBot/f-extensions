@@ -84,7 +84,7 @@ export default class LogInFactorModal extends Modal {
                     dismissible: false,
                     children: app.translator.trans('reflar-twofactor.forum.incorrect_2fa')
                 })
-                this.loading = false
+                this.loading = false;
                 m.redraw()
             } else {
                 window.location.reload()

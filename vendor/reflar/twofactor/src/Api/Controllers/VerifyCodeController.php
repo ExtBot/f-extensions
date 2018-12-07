@@ -26,10 +26,11 @@ class VerifyCodeController extends AbstractShowController
 
     /**
      * @param ServerRequestInterface $request
-     * @param Document $document
-     * @return mixed|string
+     * @param Document               $document
      *
      * @throws \Twilio\Exceptions\ConfigurationException
+     *
+     * @return mixed|string
      */
     public function data(ServerRequestInterface $request, Document $document)
     {

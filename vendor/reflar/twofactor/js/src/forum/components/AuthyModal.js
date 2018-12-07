@@ -183,7 +183,7 @@ export default class AuthyModal extends Modal {
             url: app.forum.attribute('apiUrl') + '/twofactor/verifycode',
             method: 'POST',
             data: {
-                'step': 5,
+                'step': 6,
                 'code': this.twoFactorCode()
             },
             errorHandler: this.onerror.bind(this)

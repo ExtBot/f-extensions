@@ -45,10 +45,10 @@ class TokenController implements RequestHandlerInterface
     protected $twoFactor;
 
     /**
-     * @param UserRepository $users
-     * @param BusDispatcher $bus
+     * @param UserRepository  $users
+     * @param BusDispatcher   $bus
      * @param EventDispatcher $events
-     * @param TwoFactor $twoFactor
+     * @param TwoFactor       $twoFactor
      */
     public function __construct(
         UserRepository $users,
@@ -66,6 +66,7 @@ class TokenController implements RequestHandlerInterface
      * @param ServerRequestInterface $request
      *
      * @throws PermissionDeniedException
+     * @throws \Twilio\Exceptions\ConfigurationException
      *
      * @return ResponseInterface
      */
@@ -101,18 +102,27 @@ class TokenController implements RequestHandlerInterface
             } else {
                 if ($user->pageId !== $pageId) {
                     $user->pageId = $pageId;
+                    $user->save();
                     $this->twoFactor->sendText($user);
                 }
 
-                return new JsonResponse(['userId' => 'OneIncorrectCode']);
+                return new JsonResponse(['userId' => 'IncorrectCode']);
             }
         } elseif (6 === $user->twofa_enabled) {
-            if ($user->pageId !== $pageId) {
+            if ($user->authy_status === 'approved') {
+                $user->authy_status = 'unverified';
+                $user->save();
+
+                return $this->generateAccessCode($user, $lifetime);
+            } elseif ($this->twoFactor->verifyAuthyCode($user, $twofactor)) {
+                return $this->generateAccessCode($user, $lifetime);
+            } elseif ($user->pageId !== $pageId) {
                 $user->pageId = $pageId;
+                $user->save();
                 $this->twoFactor->sendOneTouch($user);
             }
 
-                return new JsonResponse(['userId' => 'OneIncorrectCode']);
+            return new JsonResponse(['userId' => 'IncorrectOneCode']);
         } else {
             return $this->generateAccessCode($user, $lifetime);
         }
@@ -130,7 +140,7 @@ class TokenController implements RequestHandlerInterface
         $token->save();
 
         return new JsonResponse([
-            'token' => $token->token,
+            'token'  => $token->token,
             'userId' => $user->id,
         ]);
     }

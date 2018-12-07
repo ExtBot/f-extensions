@@ -8,6 +8,7 @@ import Model from 'flarum/Model'
 import SettingsPage from 'flarum/components/SettingsPage'
 import TwoFactorModal from './components/TwoFactorModal'
 import User from 'flarum/models/User'
+import OneTouchModal from './components/OneTouchModal';
 
 app.initializers.add('reflar-twofactor', () => {
     User.prototype.twofa_enabled = Model.attribute('twofa-enabled')
@@ -49,14 +50,16 @@ app.initializers.add('reflar-twofactor', () => {
             errorHandler: this.failure.bind(this),
             data: {identification, password, remember, pageId}
         }).then(response => {
+                let data = {
+                    identification: this.identification(),
+                    password: this.password(),
+                    remember: this.remember(),
+                    pageId: this.pageId
+                }
                 if (response.userId === 'IncorrectCode') {
-                    let data = {
-                        identification: this.identification(),
-                        password: this.password(),
-                        remember: this.remember(),
-                        pageId: this.pageId
-                    }
                     app.modal.show(new LogInFactorModal({data}))
+                } else if (response.userId === 'IncorrectOneCode') {
+                    app.modal.show(new OneTouchModal({data}));
                 } else {
                     window.location.reload()
                 }

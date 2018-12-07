@@ -12,10 +12,9 @@ class OneTouchCallbackController extends AbstractShowController
 {
     public $serializer = 'Reflar\twofactor\Api\Serializers\TwoFactorSerializer';
 
-
     /**
      * @param ServerRequestInterface $request
-     * @param Document $document
+     * @param Document               $document
      *
      * @return mixed|void
      */
@@ -24,33 +23,49 @@ class OneTouchCallbackController extends AbstractShowController
         $serverParams = $request->getServerParams();
         $nonce = $serverParams['HTTP_X_AUTHY_SIGNATURE_NONCE'];
         $method = $serverParams['REQUEST_METHOD'];
-        $proto = isset($serverParams['HTTPS']) ? "https" : "http";
-        $url = "{$proto}://{$serverParams[HTTP_HOST]}{$serverParams[REQUEST_URI]}";
+        $scheme = isset($serverParams['HTTPS']) && $serverParams['HTTPS'] === 'on' ? 'https' : 'http';
+        $url = "$scheme://{$serverParams['HTTP_HOST']}{$serverParams['REQUEST_URI']}";
 
-        $data = normalizeArray($request->getParsedBody());
+        $data = $request->getParsedBody();
 
-        $query = http_build_query($data);
-        $exploded = explode('&', $query);
-        sort($exploded);
-        $params = implode('&', $exploded);
+        $flattened = [];
+        $this->flatten($data, '', $flattened);
+        sort($flattened);
+        $params = implode('&', $flattened);
 
-        $data = "$nonce|$method|$url|$params";
+        $authyData = "$nonce|$method|$url|$params";
 
-        $computedSig = base64_encode(hash_hmac('sha256', $data, app(SettingsRepositoryInterface::class)->get('reflar.twofactor.authy_api_key'), true));
+        $computedSig = base64_encode(hash_hmac('sha256', $authyData, app(SettingsRepositoryInterface::class)->get('reflar.twofactor.authy_api_key'), true));
 
         $sig = $serverParams['HTTP_X_AUTHY_SIGNATURE'];
-
         if (hash_equals($computedSig, $sig)) {
             $user = User::where('authy_id', '=', $data['authy_id'])->firstOrFail();
 
-            if(isset($user)) {
+            if (isset($user)) {
                 $user->authy_status = $data['status'];
                 $user->save();
 
-                return "ok";
+                return 'ok';
             } else {
-                return "invalid";
+                return 'invalid';
             }
         }
+    }
+
+    private function flatten($array, $key, &$flattened)
+    {
+        foreach ($array as $k => $value) {
+            $fkey = ($key === '') ? $k : $key.'['.$k.']';
+            if (is_array($value)) {
+                $this->flatten($value, $fkey, $flattened);
+            } else {
+                if (is_bool($value)) {
+                    $value = $value === true ? 'true' : 'false';
+                }
+                $flattened[] = urlencode($fkey).'='.urlencode($value);
+            }
+        }
+
+        return $flattened;
     }
 }

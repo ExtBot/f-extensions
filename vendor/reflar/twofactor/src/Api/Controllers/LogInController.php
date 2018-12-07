@@ -74,7 +74,7 @@ class LogInController implements RequestHandlerInterface
 
         $data = json_decode($response->getBody());
 
-        if (!isset($data->errors) && 'IncorrectCode' !== $data->userId) {
+        if (!isset($data->errors) && !in_array($data->userId, ['IncorrectCode', 'IncorrectOneCode'])) {
             if (200 === $response->getStatusCode()) {
                 $session = $request->getAttribute('session');
                 $this->authenticator->logIn($session, $data->userId);

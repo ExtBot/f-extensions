@@ -54,11 +54,11 @@ class TwoFactor
      * TwoFactor constructor.
      *
      * @param SettingsRepositoryInterface $settings
-     * @param Google2FA $google2fa
-     * @param Hasher $hasher
-     * @param Mailer $mailer
-     * @param TranslatorInterface $translator
-     * @param Dispatcher $events
+     * @param Google2FA                   $google2fa
+     * @param Hasher                      $hasher
+     * @param Mailer                      $mailer
+     * @param TranslatorInterface         $translator
+     * @param Dispatcher                  $events
      */
     public function __construct(
         SettingsRepositoryInterface $settings,
@@ -239,10 +239,11 @@ class TwoFactor
     {
         $authyUser = $this->authy->registerUser($user->email, $phone, $countryCode);
 
-        if($authyUser->ok()) {
+        if ($authyUser->ok()) {
             $user->twofa_enabled = 5;
             $user->authy_id = $authyUser->id();
             $user->save();
+
             return true;
         } else {
             return false;
@@ -310,6 +311,8 @@ class TwoFactor
 
     public function verifyAuthyCode($user, $input)
     {
+        $input = !empty($input) ? $input : '000000';
+
         $verification = $this->authy->verifyToken($user->authy_id, $input);
 
         if ($verification->ok()) {
@@ -326,13 +329,13 @@ class TwoFactor
      */
     public function sendOneTouch($user)
     {
-        if($user->authy_status != 'unverified') {
+        if ($user->authy_status !== 'unverified') {
             $user->authy_status = 'unverified';
             $user->save();
         }
 
         $oneTouchApproval = $this->authy->createApprovalRequest($user->authy_id, $this->translator->trans('reflar-twofactor.forum.onetouch', [
-            '{forum}' => $this->settings->get('forum_title')
+            '{forum}' => $this->settings->get('forum_title'),
         ]), [
             'details[Username]' => $user->username,
         ]);
