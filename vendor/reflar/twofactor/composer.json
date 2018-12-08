@@ -15,11 +15,10 @@
         "source": "https://gitlab.com/ReDevelopers/ReFlar/twofactor"
     },
     "require": {
-        "flarum/core": "^0.1.0-beta.7",
+        "flarum/core": "^0.1.0-beta.8",
         "pragmarx/google2fa": "^3.0.1 ",
         "twilio/sdk": "^5.16.7",
         "authy/php": "^3.0"
-        
     },
     "conflict": {
         "issyrocks12/flarum-ext-twofactor": "1.0.*"

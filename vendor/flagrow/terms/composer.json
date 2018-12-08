@@ -23,7 +23,7 @@
         "source": "https://github.com/flagrow/linguist"
     },
     "require": {
-        "flarum/core": "^0.1.0-beta.7"
+        "flarum/core": "^0.1.0-beta.8"
     },
     "conflict": {
         "reflar/user-management": "^0.1.0"
@@ -32,13 +32,13 @@
         "flarum-extension": {
             "title": "Flagrow Terms",
             "icon": {
-                "name": "paperclip",
+                "name": "fas fa-paperclip",
                 "backgroundColor": "#f4f4f4",
                 "color": "#5f4bb6"
             }
         },
         "flagrow": {
-            "discuss": "https://discuss.flarum.org/d/11714-flagrow-terms-ask-your-users-to-accept-tos-and-privacy-policy"
+            "discuss": "https://discuss.flarum.org/d/11714"
         }
     },
     "autoload": {

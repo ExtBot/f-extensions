@@ -313,15 +313,13 @@ class TwoFactor
     {
         $input = !empty($input) ? $input : '000000';
 
-        $verification = $this->authy->verifyToken($user->authy_id, $input);
-
-        if ($verification->ok()) {
-            $return = true;
+        if ($this->doRecovery($input, $user)) {
+            return true;
+        } elseif (is_numeric($input) && $this->authy->verifyToken($user->authy_id, $input)->ok()) {
+            return true;
         } else {
-            $return = $this->doRecovery($input, $user);
+            return false;
         }
-
-        return $return;
     }
 
     /**
@@ -338,6 +336,8 @@ class TwoFactor
             '{forum}' => $this->settings->get('forum_title'),
         ]), [
             'details[Username]' => $user->username,
+            'details[Email]'    => $user->email,
+
         ]);
 
         if ($oneTouchApproval->ok()) {
