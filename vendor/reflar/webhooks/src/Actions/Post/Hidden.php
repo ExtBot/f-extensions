@@ -13,11 +13,12 @@
 
 namespace Reflar\Webhooks\Actions\Post;
 
-use Reflar\Webhooks\Action;
 use Reflar\Webhooks\Response;
 
 class Hidden extends Action
 {
+    const EVENT = \Flarum\Post\Event\Hidden::class;
+
     /**
      * @param \Flarum\Post\Event\Hidden $event
      *
@@ -37,13 +38,5 @@ class Hidden extends Action
             ->setAuthor($event->actor)
             ->setColor('26de81')
             ->setTimestamp($event->post->hidden_at);
-    }
-
-    /**
-     * @return string
-     */
-    public function getEvent()
-    {
-        return \Flarum\Post\Event\Hidden::class;
     }
 }

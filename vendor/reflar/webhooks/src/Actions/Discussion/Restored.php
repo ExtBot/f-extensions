@@ -14,11 +14,12 @@
 namespace Reflar\Webhooks\Actions\Discussion;
 
 use Carbon\Carbon;
-use Reflar\Webhooks\Action;
 use Reflar\Webhooks\Response;
 
 class Restored extends Action
 {
+    const EVENT = \Flarum\Discussion\Event\Restored::class;
+
     /**
      * @param \Flarum\Discussion\Event\Restored $event
      *
@@ -37,13 +38,5 @@ class Restored extends Action
             ->setAuthor($event->actor)
             ->setColor('fed330')
             ->setTimestamp(Carbon::now());
-    }
-
-    /**
-     * @return string
-     */
-    public function getEvent()
-    {
-        return \Flarum\Discussion\Event\Restored::class;
     }
 }
