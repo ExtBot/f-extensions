@@ -1,5 +1,5 @@
 {
-    "name": "@flagrow/terms",
+    "name": "@flagrow/html-errors",
     "version": "0.0.0",
     "scripts": {
         "build": "webpack --mode production",
@@ -7,7 +7,6 @@
     },
     "dependencies": {
         "flarum-webpack-config": "^0.1.0-beta.8",
-        "html5sortable": "^0.2.0",
         "webpack": "^4.0.0",
         "webpack-cli": "^3.0.7"
     }
