@@ -1,0 +1,52 @@
+{
+    "name": "reflar/gamification",
+    "description":  "Upvotes and downvotes for your Flarum community",
+    "keywords": [
+        "misc",
+        "settings",
+        "flarum",
+        "reflar",
+        "points",
+        "gamification"
+    ],
+    "type": "flarum-extension",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christian Lopez",
+            "email": "Christian.Lopez@redevs.org",
+            "homepage": "https://redevs.org"
+        },
+
+        {
+          "name": "Charlie K",
+          "email": "Charlie.K@redevs.org",
+          "homepage": "https://redevs.org"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/ReDevelopers/ReFlar/gamification/issues",
+        "source": "https://github.com/ReDevelopers/ReFlar/gamification"
+    },
+    "require": {
+        "flarum/core": "^0.1.0-beta.8"
+    },
+      "autoload": {
+        "psr-4": {
+            "Reflar\\Gamification\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "ReFlar Gamification",
+            "icon": {
+                "name": "fa fa-thumbs-up",
+                "backgroundColor": "#263238",
+                "color": "#fff"
+            }
+        },
+        "flagrow": {
+            "discuss": "https://discuss.flarum.org/d/5588-gamification-by-reflar"
+        }
+    }
+}
