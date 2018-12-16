@@ -2,7 +2,7 @@ import { extend } from 'flarum/extend';
 import UserCard from 'flarum/components/UserCard';
 import UserControls from 'flarum/utils/UserControls';
 import Button from 'flarum/components/Button';
-import UserMoneyModal from 'antoinefr/money/components/UserMoneyModal';
+import UserMoneyModal from './components/UserMoneyModal';
 import Model from 'flarum/Model';
 import User from 'flarum/models/User';
 
@@ -11,7 +11,7 @@ app.initializers.add('antoinefr-money', function() {
   
   extend(UserCard.prototype, 'infoItems', function(items) {
     items.add('money',
-      app.forum.data.attributes['antoinefr-money.moneyname'].replace('{money}', this.props.user.data.attributes['money'])
+      app.forum.data.attributes['antoinefr-money.moneyname'].replace('[money]', this.props.user.data.attributes['money'])
     );
   });
   
@@ -19,12 +19,11 @@ app.initializers.add('antoinefr-money', function() {
     if (user.canEditMoney()) {
       items.add('money', Button.component({
         children: app.translator.trans('antoinefr-money.forum.user_controls.money_button'),
-        icon: 'money',
+        icon: 'fas fa-money-bill',
         onclick: function() {
           app.modal.show(new UserMoneyModal({user}));
         }
       }));
     }
   });
-  
 });
