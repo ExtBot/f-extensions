@@ -1,53 +1,43 @@
 <?php
 
-namespace Flagrow\Mason\Listeners;
+namespace Flagrow\Mason\Handlers;
 
 use Flagrow\Mason\Field;
 use Flagrow\Mason\Repositories\AnswerRepository;
 use Flagrow\Mason\Repositories\FieldRepository;
 use Flagrow\Mason\Validators\UserAnswerValidator;
-use Flarum\Core\Exception\PermissionDeniedException;
-use Flarum\Core\Exception\ValidationException;
-use Flarum\Event\DiscussionWillBeSaved;
-use Illuminate\Contracts\Events\Dispatcher;
+use Flarum\Discussion\Event\Saving;
+use Flarum\Foundation\ValidationException;
+use Flarum\User\Exception\PermissionDeniedException;
 use Illuminate\Contracts\Validation\Factory;
 use Illuminate\Support\Arr;
 
-class SaveAnswersToDatabase
+class DiscussionSaving
 {
     /**
      * @var Factory
      */
-    protected $validator;
-
-    /**
-     * @var AnswerRepository
-     */
-    protected $answers;
-
+    private $validation;
     /**
      * @var FieldRepository
      */
-    protected $fields;
+    private $fields;
+    /**
+     * @var AnswerRepository
+     */
+    private $answers;
 
-    public function __construct(Factory $validator)
+    public function __construct(Factory $validation, FieldRepository $fields, AnswerRepository $answers)
     {
-        $this->validator = $validator;
+        $this->validation = $validation;
+        $this->fields = $fields;
+        $this->answers = $answers;
     }
 
-    public function subscribe(Dispatcher $events)
-    {
-        $events->listen(DiscussionWillBeSaved::class, [$this, 'whenDiscussionWillBeSaved']);
-    }
-
-    public function whenDiscussionWillBeSaved(DiscussionWillBeSaved $event)
+    public function __invoke(Saving $event)
     {
         $discussion = $event->discussion;
         $actor = $event->actor;
-
-        // Can't be put in the constructor, it's probably too early in the container lifecycle
-        $this->answers = app(AnswerRepository::class);
-        $this->fields = app(FieldRepository::class);
 
         $hasAnswersData = isset($event->data['relationships']['flagrowMasonAnswers']['data']);
 
@@ -120,6 +110,7 @@ class SaveAnswersToDatabase
             $discussion->flagrowMasonAnswers()->sync($newAnswerIds);
         });
     }
+
 
     protected function validateAnswerCount(Field $field, $count)
     {
