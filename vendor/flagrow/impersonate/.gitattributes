@@ -1,5 +1,0 @@
-js/src export-ignore
-js/package-lock.json export-ignore
-.git* export-ignore
-
-js/dist/*.js -diff
