@@ -1,0 +1,36 @@
+{
+    "name": "krombox/flarum-ext-auth-wordpress",
+    "description": "Allow users to log in with your WordPress site.",
+    "type": "flarum-extension",
+    "keywords": ["authentication"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Roman Kapustian",
+            "email": "ikrombox@gmail.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/krombox/flarum-ext-auth-wordpress/issues",
+        "source": "https://github.com/krombox/flarum-ext-auth-wordpress"
+    },
+    "require": {
+        "flarum/core": "^0.1.0-beta.6",
+        "krombox/oauth2-wordpress": "^0.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Krombox\\Auth\\WordPress\\": "src/"
+        }
+    },
+    "extra": {        
+        "flarum-extension": {
+            "title": "WordPress Login",
+            "icon": {
+                "name": "wordpress",
+                "backgroundColor": "#23282d",
+                "color": "#fff"
+            }
+        }
+    }
+}
