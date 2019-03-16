@@ -15,7 +15,12 @@
         {
             "name": "Daniël Klabbers",
             "email": "daniel@klabbers.email",
-            "homepage": "http://luceos.com"
+            "homepage": "https://luceos.com/"
+        },
+        {
+            "name": "Clark Winkelmann",
+            "email": "clark.winkelmann@gmail.com",
+            "homepage": "https://clarkwinkelmann.com/"
         }
     ],
     "require": {
@@ -25,7 +30,7 @@
         "flarum-extension": {
             "title": "User Directory",
             "icon": {
-                "name": "address-book-o",
+                "name": "far fa-address-book",
                 "backgroundColor": "#f4f4f4",
                 "color": "#5f4bb6"
             }

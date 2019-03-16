@@ -9,7 +9,7 @@ class ViewProvider extends AbstractServiceProvider
     public function register()
     {
         $this->loadViewsFrom(
-            __DIR__ . '/../../assets/views',
+            __DIR__ . '/../../resources/views',
             'flagrow.user-directory'
         );
     }
