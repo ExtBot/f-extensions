@@ -1,7 +1,11 @@
 import User from 'flarum/core/models/User';
-import addPrivateDiscussionPermission from './addPrivateDiscussionPermission';
 
-app.initializers.add('flagrow-byobu', app => {
+import addPrivateDiscussionPermission from './addPrivateDiscussionPermission';
+import addSettingsModal from "./addSettingsModal";
+
+app.initializers.add('fof-byobu', app => {
   app.store.models.recipients = User;
+
   addPrivateDiscussionPermission();
+  addSettingsModal();
 });

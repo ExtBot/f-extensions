@@ -1,6 +1,6 @@
 <?php
 
-namespace Flagrow\Byobu;
+namespace FoF\Byobu;
 
 use Flarum\Api\Serializer\BasicUserSerializer;
 use Flarum\Api\Serializer\DiscussionSerializer;
@@ -13,7 +13,8 @@ return [
         ->js(__DIR__.'/js/dist/admin.js'),
     (new Native\Frontend('forum'))
         ->css(__DIR__.'/resources/less/forum/extension.less')
-        ->js(__DIR__.'/js/dist/forum.js'),
+        ->js(__DIR__.'/js/dist/forum.js')
+        ->content(Content\PassExtensionSettings::class),
     new Native\Locales(__DIR__.'/resources/locale'),
     new Extend\UserPreference('blocksPd', function ($value) { return boolval($value); }, false),
     (new Extend\ApiAttribute)
@@ -23,13 +24,12 @@ return [
     new Native\Compat(function (Dispatcher $events) {
         $events->subscribe(Listeners\AddGambits::class);
         $events->subscribe(Listeners\AddRecipientsRelationships::class);
-//        $events->subscribe(Listeners\AddPermissions::class);
         $events->subscribe(Listeners\CreatePostWhenRecipientsChanged::class);
         $events->subscribe(Listeners\SaveRecipientsToDatabase::class);
 
         $events->subscribe(Access\DiscussionPolicy::class);
 
-        // Support for flagrow/split
+        // Support for fof/split
         $events->subscribe(Listeners\AddRecipientsToSplitDiscussion::class);
     }),
 ];

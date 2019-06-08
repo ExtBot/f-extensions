@@ -1,5 +1,5 @@
 {
-  "name": "@flagrow/byobu",
+  "name": "@fof/byobu",
   "version": "0.0.0",
   "dependencies": {
     "flarum-webpack-config": "^0.1.0-beta.10",
@@ -8,6 +8,9 @@
   },
   "scripts": {
     "build": "webpack --mode production",
-    "watch": "webpack --mode development --watch"
+    "dev": "webpack --mode development --watch"
+  },
+  "devDependencies": {
+    "@fof/components": "github:friendsofflarum/components"
   }
 }
