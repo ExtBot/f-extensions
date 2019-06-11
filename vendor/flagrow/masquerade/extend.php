@@ -1,8 +1,8 @@
 <?php
 
-namespace Flagrow\Masquerade;
+namespace FoF\Masquerade;
 
-use Flagrow\Masquerade\Api\Controllers as Api;
+use FoF\Masquerade\Api\Controllers as Api;
 use Flarum\Extend;
 use Illuminate\Contracts\Events\Dispatcher;
 
@@ -10,8 +10,8 @@ return [
     (new Extend\Frontend('forum'))
         ->js(__DIR__ . '/js/dist/forum.js')
         ->css(__DIR__ . '/resources/less/forum.less')
-        ->route('/masquerade/configure', 'masquerade.profile.configure', Forum\Content\ConfigureProfile::class)
-        ->route('/masquerade/{username}', 'masquerade.profile.view', Forum\Content\ViewProfile::class),
+        ->route('/masquerade/configure', 'masquerade.profile.configure', Content\ConfigureProfile::class)
+        ->route('/masquerade/{username}', 'masquerade.profile.view', Content\ViewProfile::class),
     (new Extend\Frontend('admin'))
         ->js(__DIR__ . '/js/dist/admin.js')
         ->css(__DIR__ . '/resources/less/admin.less'),

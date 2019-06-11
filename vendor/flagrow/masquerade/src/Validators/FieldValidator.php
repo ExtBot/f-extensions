@@ -1,8 +1,8 @@
 <?php
 
-namespace Flagrow\Masquerade\Validators;
+namespace FoF\Masquerade\Validators;
 
-use Flagrow\Masquerade\FieldType\TypeFactory;
+use FoF\Masquerade\FieldType\TypeFactory;
 use Flarum\Foundation\AbstractValidator;
 
 class FieldValidator extends AbstractValidator
@@ -13,7 +13,7 @@ class FieldValidator extends AbstractValidator
             'name' => ['required', 'string'],
             'description' => ['string'],
             'required' => ['boolean'],
-            'type' => ['in:' . implode(',', TypeFactory::validTypes())],
+            'type' => ['nullable', 'in:' . implode(',', TypeFactory::validTypes())],
             'validation' => ['string'],
             'icon' => ['string'],
             'prefix' => ['string'],

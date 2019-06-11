@@ -9,7 +9,7 @@ export default class SelectFieldOptionEditor extends Component {
 
     view() {
         return m('li', [
-            m('label', app.translator.trans('flagrow-masquerade.admin.fields.options')),
+            m('label', app.translator.trans('fof-masquerade.admin.fields.options')),
             m('table', m('tbody', this.options().map((option, optionIndex) => m('tr', [
                 m('td', m('input[type=text].FormControl', {
                     oninput: m.withAttr('value', value => {
@@ -21,30 +21,30 @@ export default class SelectFieldOptionEditor extends Component {
                     onclick: () => {
                         this.moveOption(optionIndex, -1);
                     },
-                }, icon('chevron-up'))),
+                }, icon('fas fa-chevron-up'))),
                 m('td', m('button.Button', {
                     onclick: () => {
                         this.moveOption(optionIndex, 1);
                     },
-                }, icon('chevron-down'))),
+                }, icon('fas fa-chevron-down'))),
                 m('td', m('button.Button.Button--danger', {
                     onclick: () => {
                         this.deleteOption(optionIndex);
                     },
-                }, icon('close'))),
+                }, icon('fas fa-close'))),
             ])))),
-            m('.helpText', app.translator.trans('flagrow-masquerade.admin.fields.option-coma-warning')),
+            m('.helpText', app.translator.trans('fof-masquerade.admin.fields.option-coma-warning')),
             m('table', m('tbody'), m('tr', [
                 m('td', m('input[type=text].FormControl', {
                     onchange: m.withAttr('value', this.newOption),
                     value: this.newOption(),
-                    placeholder: app.translator.trans('flagrow-masquerade.admin.fields.option-new'),
+                    placeholder: app.translator.trans('fof-masquerade.admin.fields.option-new'),
                 })),
                 m('td', m('button.Button.Button--primary', {
                     onclick: () => {
                         this.addOption();
                     },
-                }, icon('plus'))),
+                }, icon('fas fa-plus'))),
             ])),
         ]);
     }
