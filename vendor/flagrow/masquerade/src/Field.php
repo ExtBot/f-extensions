@@ -30,7 +30,33 @@ class Field extends AbstractModel
 
     protected $table = 'fof_masquerade_fields';
 
-    protected $casts = ['required' => 'boolean', 'on_bio' => 'boolean'];
+    protected $casts = [
+        'required' => 'boolean',
+        'on_bio' => 'boolean',
+    ];
+
+    protected $fillable = [
+        'name',
+        'description',
+        'prefix',
+        'icon',
+        'type',
+        'required',
+        'validation',
+        'on_bio',
+    ];
+
+    protected $visible = [
+        'name',
+        'description',
+        'prefix',
+        'icon',
+        'type',
+        'required',
+        'validation',
+        'sort',
+        'on_bio',
+    ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

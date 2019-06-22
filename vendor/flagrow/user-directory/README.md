@@ -19,15 +19,36 @@ composer require fof/user-directory
 
 ### Updating
 
+To the next minor version:
+
 ```sh
 composer update fof/user-directory
 ```
 
+To the latest compatible version:
+
+```sh
+composer require fof/user-directory
+```
+
+### Updating from Flagrow
+
+This extension replaces [Flagrow User Directory](https://packagist.org/packages/fof/user-directory).
+
+To upgrade from the old extension to the new one:
+
+```sh
+composer remove flagrow/user-directory
+composer require fof/user-directory
+```
+
+Then enable the new extension in the admin panel.
+
 ### Links
 
 - [Flarum Discuss post](https://discuss.flarum.org/d/5682)
-- [Source code on GitHub](https://github.com/fof/user-directory)
-- [Report an issue](https://github.com/fof/user-directory/issues)
+- [Source code on GitHub](https://github.com/FriendsOfFlarum/user-directory)
+- [Report an issue](https://github.com/FriendsOfFlarum/user-directory/issues)
 - [Download via Packagist](https://packagist.org/packages/fof/user-directory)
 
 An extension by [FriendsOfFlarum](https://github.com/FriendsOfFlarum)
