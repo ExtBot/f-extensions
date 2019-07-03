@@ -2,16 +2,15 @@
 
 namespace FoF\Masquerade\Api\Controllers;
 
-use Flarum\Api\Controller\AbstractListController;
 use FoF\Masquerade\Api\Serializers\FieldSerializer;
 use FoF\Masquerade\Repositories\FieldRepository;
-use FoF\Masquerade\Validators\OrderFieldValidator;
+use FoF\Masquerade\Validators\FieldValidator;
+use Flarum\Api\Controller\AbstractShowController;
 use Flarum\User\AssertPermissionTrait;
-use Illuminate\Support\Arr;
 use Psr\Http\Message\ServerRequestInterface;
 use Tobscure\JsonApi\Document;
 
-class OrderFieldController extends AbstractListController
+class StoreFieldController extends AbstractShowController
 {
     use AssertPermissionTrait;
 
@@ -20,7 +19,7 @@ class OrderFieldController extends AbstractListController
     protected $validator;
     protected $fields;
 
-    public function __construct(OrderFieldValidator $validator, FieldRepository $fields)
+    public function __construct(FieldValidator $validator, FieldRepository $fields)
     {
         $this->validator = $validator;
         $this->fields = $fields;
@@ -34,10 +33,8 @@ class OrderFieldController extends AbstractListController
 
         $this->validator->assertValid($attributes);
 
-        $order = Arr::get($attributes, 'sort');
+        $field = $this->fields->store($attributes);
 
-        $this->fields->sorting($order);
-
-        return $this->fields->all();
+        return $field;
     }
 }
