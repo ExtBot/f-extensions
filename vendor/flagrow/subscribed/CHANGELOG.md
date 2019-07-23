@@ -1,4 +1,0 @@
-- 0.1.0-beta.1
-  - Added event for new discussion. Including email and web.
-  - Added event for new user. Including email and web.
-  - Both events are permission based.

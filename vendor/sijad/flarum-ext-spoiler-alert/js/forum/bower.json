@@ -1,6 +1,0 @@
-{
-  "name": "sijad-spoiler-alert-forum",
-  "devDependencies": {
-    "spoiler-alert": "sijad/spoiler-alert#master"
-  }
-}
