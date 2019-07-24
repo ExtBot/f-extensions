@@ -1,0 +1,35 @@
+{
+  "name": "avatar4eg/flarum-ext-share-social",
+  "description": "Include share social button.",
+  "type": "flarum-extension",
+  "keywords": ["share", "facebook", "twitter", "google", "google plus", "social"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Binh Duong",
+      "email": "binh.duong@vingle.net"
+    },
+    {
+      "name": "Nikolai Morozov",
+      "email": "avanmorozov@gmail.com"
+    }
+  ],
+  "require": {
+    "flarum/core": "^0.1.0-beta.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Avatar4eg\\ShareSocial\\": "src/"
+    }
+  },
+  "extra": {
+    "flarum-extension": {
+      "title": "Share Social",
+      "icon": {
+        "name": "share-alt",
+        "backgroundColor": "#EE8208",
+        "color": "#fff"
+      }
+    }
+  }
+}

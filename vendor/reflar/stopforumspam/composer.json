@@ -1,0 +1,38 @@
+{
+  "name": "reflar/stopforumspam",
+  "description": "Stop Forum Spam",
+  "keywords": [
+    "flarum"
+  ],
+  "type": "flarum-extension",
+  "license": "MIT",
+  "require": {
+    "flarum/core": "^0.1.0-beta-8",
+    "guzzlehttp/guzzle": "6.*"
+  },
+  "authors": [
+    {
+      "name": "Charlie K",
+      "email": "charlie.k@redevs.org",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Reflar\\Stopforumspam\\": "src/"
+    }
+  },
+  "extra": {
+    "flarum-extension": {
+      "title": "ReFlar Stop Forum Spam",
+      "icon": {
+        "name": "fas fa-stop",
+        "backgroundColor": "#263238",
+        "color": "#ffffff"
+      }
+    },
+    "flagrow": {
+      "discuss": ""
+    }
+  }
+}
