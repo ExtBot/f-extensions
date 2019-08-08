@@ -1,6 +1,6 @@
 <?php
 
-namespace Flagrow\AmazonAffiliation;
+namespace FoF\AmazonAffiliation;
 
 use Illuminate\Support\Arr;
 use Psr\Http\Message\UriInterface;
@@ -13,6 +13,7 @@ class AmazonLinkManipulator
 
     /**
      * @param UriInterface $uri
+     *
      * @return UriInterface|null
      */
     public function process(UriInterface $uri)
@@ -20,7 +21,7 @@ class AmazonLinkManipulator
         $matches = [];
 
         if (preg_match('~^(?:www\.)?(amazon\.((?:[a-z]{2,3}\.)?[a-z]{2,3}))$~', $uri->getHost(), $matches) !== 1) {
-            return null;
+            return;
         }
 
         $amazonDomain = $matches[1];
@@ -41,10 +42,10 @@ class AmazonLinkManipulator
         }
 
         return $uri
-            // Always make the sceme https
+            // Always make the scheme https
             ->withScheme('https')
             // Always add www subdomain
-            ->withHost('www.' . $amazonDomain)
+            ->withHost('www.'.$amazonDomain)
             // Rebuild the query. Even if it didn't change
             ->withQuery(http_build_query($query));
     }
