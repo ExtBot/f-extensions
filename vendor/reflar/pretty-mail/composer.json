@@ -1,5 +1,5 @@
 {
-    "name": "reflar/pretty-mail",
+    "name": "fof/pretty-mail",
     "description": "Make emails pretty",
     "keywords": [
         "extension",
@@ -10,37 +10,40 @@
     "license": "MIT",
     "authors": [
         {
-          "name": "Charlie K",
-          "email": "issyrocks12@reflar.email",
-          "homepage": "https://reflar.io"
+            "name": "Charlie K",
+            "email": "issyrocks12@reflar.email"
         }
     ],
     "support": {
-        "issues": "https://github.com/ReFlar/pretty-mail/issues",
-        "source": "https://github.com/ReFlar/pretty-mail"
+        "issues": "https://github.com/FriendsOfFlarum/pretty-mail/issues",
+        "source": "https://github.com/FriendsOfFlarum/pretty-mail"
     },
     "require": {
-        "flarum/core": "^0.1.0-beta.7"
+        "flarum/core": "^0.1.0-beta.8"
+    },
+    "replace": {
+        "reflar/pretty-mail": "*"
     },
     "extra": {
         "flarum-extension": {
-            "title": "ReFlar Pretty mail",
+            "title": "FoF Pretty Mail",
             "icon": {
-                "name": "envelope-open",
-                "backgroundColor": "#263238",
-                "color": "#FFF"
+                "name": "fas fa-envelope-open",
+                "backgroundColor": "#e74c3c",
+                "color": "#fff"
             }
+        },
+        "flagrow": {
+            "discuss": "https://discuss.flarum.org/d/11178-friendsofflarum-pretty-mail"
         }
     },
     "autoload": {
-        "exclude-from-classmap": [
-            "/../../Flarum/Core/Listener/EmailConfirmationMailer.php",
-            "/../../Flarum/Core/Notification/NotificationMailer.php"
+        "files": [
+            "src/Overrides/User/EmailConfirmationMailer.php",
+            "src/Overrides/Notification/NotificationMailer.php"
         ],
         "psr-4": {
-            "Reflar\\PrettyMail\\": "src/",
-
-            "Flarum\\Core\\": "src/Overrides"
+            "FoF\\PrettyMail\\": "src/"
         }
     }
 }
