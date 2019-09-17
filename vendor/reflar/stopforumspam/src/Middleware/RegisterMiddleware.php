@@ -1,27 +1,49 @@
 <?php
 
-namespace Reflar\Stopforumspam\middleware;
+/*
+ * This file is part of fof/stopforumspam.
+ *
+ * Copyright (c) 2019 FriendsOfFlarum.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
-use Flarum\Api\Handler\IlluminateValidationExceptionHandler;
-use Flarum\Api\JsonApiResponse;
+namespace FoF\StopForumSpam\Middleware;
+
+use Flarum\Foundation\ErrorHandling\JsonApiFormatter;
+use Flarum\Foundation\ErrorHandling\Registry;
+use Flarum\Foundation\ValidationException;
 use Flarum\Settings\SettingsRepositoryInterface;
-use GuzzleHttp\Client as Guzzle;
-use Illuminate\Contracts\Validation\ValidationException;
-use Psr\Http\Server\MiddlewareInterface;
-use Psr\Http\Server\RequestHandlerInterface;
+use FoF\StopForumSpam\StopForumSpam;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Tobscure\JsonApi\Document;
-use Tobscure\JsonApi\Exception\Handler\ResponseBag;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use Zend\Diactoros\Uri;
 
 class RegisterMiddleware implements MiddlewareInterface
 {
+    /**
+     * @var StopForumSpam
+     */
+    private $sfs;
+
+    /**
+     * @var SettingsRepositoryInterface
+     */
+    private $settings;
+
+    public function __construct(StopForumSpam $sfs, SettingsRepositoryInterface $settings)
+    {
+        $this->sfs = $sfs;
+        $this->settings = $settings;
+    }
+
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $registerUri = new Uri(app()->url('/register'));
         if ($request->getUri()->getPath() === $registerUri->getPath()) {
-
             $data = $request->getParsedBody();
             $serverParams = $request->getServerParams();
 
@@ -31,43 +53,40 @@ class RegisterMiddleware implements MiddlewareInterface
                 $ipAddress = $serverParams['REMOTE_ADDR'];
             }
 
-            $settings = app(SettingsRepositoryInterface::class);
+            $body = null;
 
-            $client = new Guzzle([
-                'query' => [
-                    'f' => 'json',
-                    'ip' => $ipAddress,
-                    'email' => $data['email'],
+            try {
+                $body = $this->sfs->check([
+                    'ip'       => $ipAddress,
+                    'email'    => $data['email'],
                     'username' => $data['username'],
-                ],
-            ]);
-            $response = $client->request('GET', 'https://api.stopforumspam.org/api');
-            $body = json_decode($response->getBody());
+                ]);
+            } catch (\Throwable $e) {
+                return (new JsonApiFormatter())->format(
+                    app(Registry::class)->handle($e),
+                    $request
+                );
+            }
 
             if ($body->success === 1) {
                 unset($body->success);
                 $frequency = 0;
+
                 foreach ($body as $key => $value) {
-                    if ($settings->get("sfs.$key") === '1') {
+                    if ((int) $this->settings->get("fof-stopforumspam.$key")) {
                         $frequency += $value->frequency;
                     }
                 }
 
-                if ($frequency !== 0 && $frequency >= (int)$settings->get('sfs.frequency')) {
-                    $error = new ResponseBag('422', [
-                        [
-                            'status' => '422',
-                            'code' => 'validation_error',
-                            'source' => [
-                                'pointer' => '/data/attributes/username'
-                            ],
-                            'detail' => 'Your info has been flagged as spam'
-                        ]
-                    ]);
-
-                    $document = new Document();
-                    $document->setErrors($error->getErrors());
-                    return new JsonApiResponse($document, $error->getStatus());
+                if ($frequency !== 0 && $frequency >= (int) $this->settings->get('fof-stopforumspam.frequency')) {
+                    return (new JsonApiFormatter())
+                        ->format(
+                            app(Registry::class)
+                                ->handle(new ValidationException([
+                                    'username' => app('translator')->trans('fof-stopforumspam.forum.message.spam'),
+                                ])),
+                            $request
+                        );
                 }
             }
         }

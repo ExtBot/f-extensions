@@ -1,25 +1,27 @@
 <?php
 
-/**
- *  This file is part of reflar/stopforumspam.
+/*
+ * This file is part of fof/stopforumspam.
  *
- *  Copyright (c) 2018 .
+ * Copyright (c) 2019 FriendsOfFlarum.
  *
- *
- *  For the full copyright and license information, please view the LICENSE.md
- *  file that was distributed with this source code.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
-namespace Reflar\Stopforumspam;
+namespace FoF\StopForumSpam;
 
-use Flarum\Extend\Frontend;
+use Flarum\Extend;
+use FoF\Spamblock\Event\MarkedUserAsSpammer;
 use Illuminate\Contracts\Events\Dispatcher;
 
 return[
-    (new Frontend('admin'))
+    (new Extend\Frontend('admin'))
         ->js(__DIR__.'/js/dist/admin.js'),
-     function (Dispatcher $events) {
+    (new Extend\Locales(__DIR__.'/locale')),
+    function (Dispatcher $events) {
+        $events->listen(MarkedUserAsSpammer::class, Listeners\ReportSpammer::class);
+
         $events->subscribe(Listeners\AddMiddleware::class);
-        $events->subscribe(Listeners\ReportSpammer::class);
     },
 ];
