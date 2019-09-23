@@ -3,6 +3,8 @@ import Component from 'flarum/Component';
 import Button from 'flarum/components/Button';
 import Dropdown from 'flarum/components/Dropdown';
 import ExtensionsPage from 'flarum/components/ExtensionsPage';
+import Alert from 'flarum/components/Alert';
+import LoadingModal from 'flarum/components/LoadingModal';
 import localesAsArray from '../utils/localesAsArray';
 import StringKey from '../components/StringKey';
 
@@ -27,13 +29,13 @@ export default class LinguistStringsPane extends Component {
         m.sync([
             app.request({
                 method: 'GET',
-                url: app.forum.attribute('apiUrl') + '/flagrow/linguist/strings',
+                url: app.forum.attribute('apiUrl') + '/fof/linguist/strings',
             }).then(result => {
                 app.store.pushPayload(result);
             }),
             app.request({
                 method: 'GET',
-                url: app.forum.attribute('apiUrl') + '/flagrow/linguist/string-keys',
+                url: app.forum.attribute('apiUrl') + '/fof/linguist/string-keys',
             }).then(result => {
                 const keys = app.store.pushPayload(result);
 
@@ -56,7 +58,26 @@ export default class LinguistStringsPane extends Component {
         const keys = this.results.slice(0, this.numberOfResultsToShow);
 
         return m('.container', [
-            m('.Flagrow-Linguist-Filters', {
+            m('div', { // The div with key needs to be outside of the ternary operation because null would break DOM ordering
+                key: 'clear-cache',
+            }, app.data.settings['fof.linguist.should-clear-cache'] === '1' ? Alert.component({
+                children: app.translator.trans('fof-linguist.admin.clear-cache.text'),
+                dismissible: false,
+                controls: [Button.component({
+                    className: 'Button Button--link',
+                    onclick() {
+                        // Same logic as in core StatusWidget
+                        app.modal.show(new LoadingModal());
+
+                        app.request({
+                            method: 'DELETE',
+                            url: app.forum.attribute('apiUrl') + '/cache',
+                        }).then(() => window.location.reload());
+                    },
+                    children: app.translator.trans('fof-linguist.admin.clear-cache.button'),
+                })],
+            }) : null),
+            m('.FoF-Linguist-Filters', {
                 key: 'filters',
             }, [
                 m('input.FormControl', {
@@ -66,19 +87,19 @@ export default class LinguistStringsPane extends Component {
                         this.filters.search = value;
                         this.applyFilters();
                     }),
-                    placeholder: app.translator.trans('flagrow-linguist.admin.filters.search'),
+                    placeholder: app.translator.trans('fof-linguist.admin.filters.search'),
                 }),
                 Button.component({
-                    className: 'Button' + (this.filters.withOwnTranslations ? ' Flagrow-Linguist-Filter--Selected' : ''),
+                    className: 'Button' + (this.filters.withOwnTranslations ? ' FoF-Linguist-Filter--Selected' : ''),
                     icon: `far fa-${this.filters.withOwnTranslations ? 'check-square' : 'square'}`,
                     onclick: () => {
                         this.filters.withOwnTranslations = !this.filters.withOwnTranslations;
                         this.applyFilters();
                     },
-                }, app.translator.trans('flagrow-linguist.admin.filters.with-own-translations')),
+                }, app.translator.trans('fof-linguist.admin.filters.with-own-translations')),
                 Dropdown.component({
-                    buttonClassName: 'Button' + (this.filters.forExtension ? ' Flagrow-Linguist-Filter--Selected' : ''),
-                    label: app.translator.trans('flagrow-linguist.admin.filters.for-extension'),
+                    buttonClassName: 'Button' + (this.filters.forExtension ? ' FoF-Linguist-Filter--Selected' : ''),
+                    label: app.translator.trans('fof-linguist.admin.filters.for-extension'),
                 }, this.enabledExtensions.map(
                     extension => Button.component({
                         className: 'Button',
@@ -95,8 +116,8 @@ export default class LinguistStringsPane extends Component {
                     }, extension.extra['flarum-extension'].title)
                 )),
                 Dropdown.component({
-                    buttonClassName: 'Button' + (this.filters.withoutOriginalTranslationsInLocales.length ? ' Flagrow-Linguist-Filter--Selected' : ''),
-                    label: app.translator.trans('flagrow-linguist.admin.filters.without-original-translations-in-locales'),
+                    buttonClassName: 'Button' + (this.filters.withoutOriginalTranslationsInLocales.length ? ' FoF-Linguist-Filter--Selected' : ''),
+                    label: app.translator.trans('fof-linguist.admin.filters.without-original-translations-in-locales'),
                 }, localesAsArray().map(
                     locale => Button.component({
                         className: 'Button',
@@ -115,8 +136,8 @@ export default class LinguistStringsPane extends Component {
                     }, locale.name + ' (' + locale.key + ')')
                 )),
                 Dropdown.component({
-                    buttonClassName: 'Button' + (this.filters.withOriginalTranslationsInLocales.length ? ' Flagrow-Linguist-Filter--Selected' : ''),
-                    label: app.translator.trans('flagrow-linguist.admin.filters.with-original-translations-in-locales'),
+                    buttonClassName: 'Button' + (this.filters.withOriginalTranslationsInLocales.length ? ' FoF-Linguist-Filter--Selected' : ''),
+                    label: app.translator.trans('fof-linguist.admin.filters.with-original-translations-in-locales'),
                 }, localesAsArray().map(
                     locale => Button.component({
                         className: 'Button',
@@ -139,11 +160,16 @@ export default class LinguistStringsPane extends Component {
                 key: stringKey.id(),
                 stringKey,
                 highlight: this.filters.search,
+                onchange: () => {
+                    // We use the setting and not a local variable because we need to preserve state
+                    // if we navigate away and back to the Linguist page without refreshing the admin panel
+                    app.data.settings['fof.linguist.should-clear-cache'] = '1';
+                },
             })),
-            m('.Flagrow-Linguist-Results', {
+            m('.FoF-Linguist-Results', {
                 key: 'results-stats',
             }, [
-                app.translator.trans('flagrow-linguist.admin.filters.results', {
+                app.translator.trans('fof-linguist.admin.filters.results', {
                     shown: keys.length + '', // cast to string otherwise number isn't displayed
                     total: this.results.length + '',
                 }),
@@ -153,7 +179,7 @@ export default class LinguistStringsPane extends Component {
                     onclick: () => {
                         this.numberOfResultsToShow += RESULTS_PER_PAGE;
                     },
-                }, app.translator.trans('flagrow-linguist.admin.buttons.load-more')) : null),
+                }, app.translator.trans('fof-linguist.admin.buttons.load-more')) : null),
             ]),
         ]);
     }
@@ -161,9 +187,15 @@ export default class LinguistStringsPane extends Component {
     applyFilters() {
         this.numberOfResultsToShow = RESULTS_PER_PAGE;
 
-        const keysWithCustomTranslations = app.store.all('flagrow-linguist-string').map(string => string.key());
+        const keysWithCustomTranslations = app.store.all('fof-linguist-string').map(string => string.key());
 
-        this.results = app.store.all('flagrow-linguist-string-key').filter(key => {
+        let lowercaseSearch = '';
+
+        if (this.filters.search) {
+            lowercaseSearch = this.filters.search.toLowerCase();
+        }
+
+        this.results = app.store.all('fof-linguist-string-key').filter(key => {
             if (this.filters.withOwnTranslations && keysWithCustomTranslations.indexOf(key.key()) === -1) {
                 return false;
             }
@@ -187,15 +219,15 @@ export default class LinguistStringsPane extends Component {
                 }
             }
 
-            if (this.filters.search) {
-                if (key.key().indexOf(this.filters.search) !== -1) {
+            if (lowercaseSearch) {
+                if (key.key().toLowerCase().indexOf(lowercaseSearch) !== -1) {
                     return true;
                 }
 
                 const locales = key.locales();
 
                 for (let locale in locales) {
-                    if (locales.hasOwnProperty(locale) && locales[locale].indexOf(this.filters.search) !== -1) {
+                    if (locales.hasOwnProperty(locale) && locales[locale].toLowerCase().indexOf(lowercaseSearch) !== -1) {
                         return true;
                     }
                 }

@@ -1,4 +1,4 @@
-const HIGHLIGHT_DELIMITER = '<flagrow-highlight>';
+const HIGHLIGHT_DELIMITER = '<fof-highlight>';
 
 // Takes a string and highlight a keyword with a span with mithril template
 // The output will be an array if a keyword is given
@@ -7,12 +7,17 @@ export default function (string, highlight) {
         return string;
     }
 
+    const lowercaseHighliht = highlight.toLowerCase();
+
+    // Regex to match the highlighted work in a case-insensitive manner
+    const regex = new RegExp(lowercaseHighliht.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
+
     return string
-        .replace(highlight, HIGHLIGHT_DELIMITER + highlight + HIGHLIGHT_DELIMITER, string)
+        .replace(regex, HIGHLIGHT_DELIMITER + '$&' + HIGHLIGHT_DELIMITER)
         .split(HIGHLIGHT_DELIMITER)
         .map(text => {
-            if (text === highlight) {
-                return m('span.Flagrow-Linguist-Highlight', text);
+            if (text.toLowerCase() === lowercaseHighliht) {
+                return m('span.FoF-Linguist-Highlight', text);
             }
 
             return text;
