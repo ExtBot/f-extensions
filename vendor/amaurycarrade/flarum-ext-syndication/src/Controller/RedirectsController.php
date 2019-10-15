@@ -35,37 +35,43 @@
  * knowledge of the CeCILL-B license and that you accept its terms.
  */
 
-namespace AmauryCarrade\FlarumFeeds\Listener;
+namespace AmauryCarrade\FlarumFeeds\Controller;
 
-use Illuminate\Contracts\Events\Dispatcher;
-use Flarum\Event\ConfigureForumRoutes;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+use Zend\Diactoros\Response\RedirectResponse;
 
 
-class AddFeedsRoutes
+class RedirectsController implements RequestHandlerInterface
 {
-	public function subscribe(Dispatcher $events)
-	{
-		$events->listen(ConfigureForumRoutes::class, [$this, 'configureForumRoutes']);
-	}
+    /**
+     * Handles a request and produces a response.
+     *
+     * May call other collaborating code to generate the response.
+     *
+     * @param ServerRequestInterface $request
+     * @return ResponseInterface
+     */
+    public function handle(ServerRequestInterface $request): ResponseInterface
+    {
+        $path = strtolower($request->getUri()->getPath());
+        $type = starts_with($path, '/atom') ? 'atom': 'rss';
 
-	public function configureForumRoutes(ConfigureForumRoutes $event)
-	{
-		$event->get('/rss', 'feeds.rss.global', 'AmauryCarrade\FlarumFeeds\Controller\DiscussionsActivityFeedController');
-		$event->get('/atom', 'feeds.atom.global', 'AmauryCarrade\FlarumFeeds\Controller\DiscussionsActivityFeedController');
+        $target = null;
 
-		$event->get('/rss/d', 'feeds.rss.discussions', 'AmauryCarrade\FlarumFeeds\Controller\LastDiscussionsFeedController');
-		$event->get('/atom/d', 'feeds.atom.discussions', 'AmauryCarrade\FlarumFeeds\Controller\LastDiscussionsFeedController');
+        $queryParams = $request->getQueryParams();
+        $tag_slug = array_get($queryParams, 'tag');
 
-        $event->get('/rss/d/{id:\d+(?:-[^/]*)?}', 'feeds.rss.discussion', 'AmauryCarrade\FlarumFeeds\Controller\DiscussionFeedController');
-        $event->get('/atom/d/{id:\d+(?:-[^/]*)?}', 'feeds.atom.discussion', 'AmauryCarrade\FlarumFeeds\Controller\DiscussionFeedController');
-
-        if (class_exists('Flarum\Tags\Tag'))
+        if ($tag_slug != null)
         {
-            $event->get('/rss/t/{tag}', 'feeds.rss.tag', 'AmauryCarrade\FlarumFeeds\Controller\TagsFeedController');
-            $event->get('/atom/t/{tag}', 'feeds.atom.tag', 'AmauryCarrade\FlarumFeeds\Controller\TagsFeedController');
-
-            $event->get('/rss/t/{tag}/d', 'feeds.rss.tag_discussions', 'AmauryCarrade\FlarumFeeds\Controller\LastDiscussionsByTagFeedController');
-            $event->get('/atom/t/{tag}/d', 'feeds.atom.tag_discussions', 'AmauryCarrade\FlarumFeeds\Controller\LastDiscussionsByTagFeedController');
+            $target = '/' . $type . '/t/' . $tag_slug . '/discussions';
         }
-	}
+        else
+        {
+            $target = '/' . $type . '/discussions';
+        }
+
+        return new RedirectResponse($target, 301);
+    }
 }
