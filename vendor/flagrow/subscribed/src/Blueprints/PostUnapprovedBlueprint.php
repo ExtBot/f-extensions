@@ -13,21 +13,21 @@ namespace FoF\Subscribed\Blueprints;
 
 use Flarum\Notification\Blueprint\BlueprintInterface;
 use Flarum\Notification\MailableInterface;
-use Flarum\User\User;
+use Flarum\Post\Post;
 
-class UserCreatedBlueprint implements BlueprintInterface, MailableInterface
+class PostUnapprovedBlueprint implements BlueprintInterface, MailableInterface
 {
     /**
-     * @var User
+     * @var Post
      */
-    public $user;
+    public $post;
 
     /**
-     * @param User $user
+     * @param Post $post
      */
-    public function __construct(User $user)
+    public function __construct(Post $post)
     {
-        $this->user = $user;
+        $this->post = $post;
     }
 
     /**
@@ -35,7 +35,7 @@ class UserCreatedBlueprint implements BlueprintInterface, MailableInterface
      */
     public function getSender()
     {
-        return $this->user;
+        return $this->post->user;
     }
 
     /**
@@ -43,7 +43,7 @@ class UserCreatedBlueprint implements BlueprintInterface, MailableInterface
      */
     public function getSubject()
     {
-        return $this->user;
+        return $this->post;
     }
 
     /**
@@ -58,7 +58,7 @@ class UserCreatedBlueprint implements BlueprintInterface, MailableInterface
      */
     public static function getType()
     {
-        return 'userCreated';
+        return 'postUnapproved';
     }
 
     /**
@@ -66,7 +66,7 @@ class UserCreatedBlueprint implements BlueprintInterface, MailableInterface
      */
     public static function getSubjectModel()
     {
-        return User::class;
+        return Post::class;
     }
 
     /**
@@ -76,7 +76,7 @@ class UserCreatedBlueprint implements BlueprintInterface, MailableInterface
      */
     public function getEmailView()
     {
-        return ['text' => 'fof-subscribed::emails.userCreated'];
+        return ['text' => 'fof-subscribed::emails.postUnapproved'];
     }
 
     /**
@@ -86,11 +86,11 @@ class UserCreatedBlueprint implements BlueprintInterface, MailableInterface
      */
     public function getEmailSubject()
     {
-        return '[New User] '.$this->user->display_name;
+        return "[New Unapproved Post] {$this->post->user->display_name} posted in {$this->post->discussion->title}";
     }
 
     public function getFromUser()
     {
-        return $this->user;
+        return $this->post->user;
     }
 }

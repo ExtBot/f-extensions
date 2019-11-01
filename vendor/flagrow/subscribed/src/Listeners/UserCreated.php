@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of fof/subscribed.
+ *
+ * Copyright (c) 2019 FriendsOfFlarum.
+ *
+ * For the full copyright and license information, please view the LICENSE.md
+ * file that was distributed with this source code.
+ */
+
 namespace FoF\Subscribed\Listeners;
 
 use Flarum\Api\Serializer\BasicUserSerializer;
@@ -9,8 +18,8 @@ use Flarum\User\Event\Deleted;
 use Flarum\User\Event\Registered;
 use Flarum\User\User;
 use FoF\Subscribed\Blueprints\UserCreatedBlueprint;
+use FoF\Subscribed\Jobs\SendNotificationWhenUserIsCreated;
 use Illuminate\Contracts\Events\Dispatcher;
-use Illuminate\Database\Query\Expression;
 
 class UserCreated
 {
@@ -54,21 +63,8 @@ class UserCreated
      */
     public function whenUserRegistered(Registered $event)
     {
-        $user = $event->user;
-
-        $notify = User::query()
-            ->where('users.id', '!=', $user->id)
-            ->where('users.is_email_confirmed', '=', 1)
-            ->where('preferences', 'regexp', new Expression('\'"notify_userCreated_[a-z]+":true\''))
-            ->get();
-
-        $notify = $notify->filter(function (User $recipient) {
-            return $recipient->can('subscribeUserCreated');
-        });
-
-        $this->notifications->sync(
-            $this->getNotification($user),
-            $notify->all()
+        app('flarum.queue.connection')->push(
+            new SendNotificationWhenUserIsCreated($event->user)
         );
     }
 
