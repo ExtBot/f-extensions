@@ -12,6 +12,8 @@ export default class PrivateDiscussionsUserPage extends UserPage {
         super.init();
 
         this.changeSort('latest');
+
+        this.duser = null;
     }
 
     show(user) {
@@ -24,6 +26,8 @@ export default class PrivateDiscussionsUserPage extends UserPage {
         });
 
         this.list.refresh();
+
+        this.duser = user;
 
         // We call the parent method after creating the list, this way the this.list property
         // is set before content() is called for the first time
@@ -50,9 +54,19 @@ export default class PrivateDiscussionsUserPage extends UserPage {
             let recipients = new ItemList();
             recipients.add('users:' + app.session.user.id(), app.session.user);
 
+            if (this.duser !== null && app.session.user !== this.duser) {
+                recipients.add('users:' + this.duser.id(), this.duser);
+            }
+
             PrivateDiscussionComposer.prototype.recipients = recipients;
 
-            const component = new PrivateDiscussionComposer();
+            const component = new PrivateDiscussionComposer({
+                user: app.session.user,
+                recipients: recipients,
+                recipientUsers: recipients,
+                titlePlaceholder: app.translator.trans('fof-byobu.forum.composer_private_discussion.title_placeholder'),
+                submitLabel: app.translator.trans('fof-byobu.forum.composer_private_discussion.submit_button')
+            });
 
             app.composer.load(component);
 
