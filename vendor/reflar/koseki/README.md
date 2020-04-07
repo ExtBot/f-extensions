@@ -1,1 +1,0 @@
-# [Deprecated] Koseki by ReFlar
