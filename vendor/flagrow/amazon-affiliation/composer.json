@@ -1,0 +1,54 @@
+{
+  "name": "fof/amazon-affiliation",
+  "description": "Add your Amazon Affiliation tag to Amazon links",
+  "keywords": [
+    "extension",
+    "flarum",
+    "friendsofflarum",
+    "fof",
+    "amazon",
+    "affiliation",
+    "links"
+  ],
+  "type": "flarum-extension",
+  "license": "MIT",
+  "require": {
+    "flarum/core": "^0.1.0-beta.9"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "8.3.3"
+  },
+  "replace": {
+    "flagrow/amazon-affiliation": "*"
+  },
+  "authors": [
+    {
+      "name": "Clark Winkelmann",
+      "email": "clark.winekelmann@gmail.com",
+      "role": "Developer"
+    },
+    {
+      "name": "Christian Lopez",
+      "email": "Christian.L@redevs.org",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "FoF\\AmazonAffiliation\\": "src/"
+    }
+  },
+  "extra": {
+    "flarum-extension": {
+      "title": "FoF Amazon Affiliation",
+      "icon": {
+        "name": "fab fa-amazon",
+        "backgroundColor": "#e74c3c",
+        "color": "#fff"
+      }
+    },
+    "flagrow": {
+      "discuss": ""
+    }
+  }
+}
