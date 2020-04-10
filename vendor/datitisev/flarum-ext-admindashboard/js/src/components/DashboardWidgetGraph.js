@@ -22,7 +22,7 @@ export default class DashboardWidgetGraph extends DashboardWidget {
     }
 
     content() {
-        const { userCount, discussionCount, postCount } = app.forum.attribute('datitisev-dashboard.data');
+        const { userCount, discussionCount, postCount } = app.data['datitisev-dashboard.data'];
 
         return (
             <div className="DashboardGraph--Categories">
@@ -55,7 +55,7 @@ export default class DashboardWidgetGraph extends DashboardWidget {
     graphView() {
         return (
             <div className="DashboardGraph--Graph">
-                {Object.keys(this.months).map(id => {
+                {Object.keys(this.months).map((id) => {
                     const month = months[id];
                     return (
                         <div className="DashboardGraph--Month">
