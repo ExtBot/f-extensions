@@ -3,9 +3,9 @@
 namespace FoF\Sitemap\Resources;
 
 use Carbon\Carbon;
-use FoF\Sitemap\Sitemap\Frequency;
 use Flarum\Discussion\Discussion as Model;
 use Flarum\User\Guest;
+use FoF\Sitemap\Sitemap\Frequency;
 use Illuminate\Database\Eloquent\Builder;
 
 class Discussion extends Resource
@@ -17,7 +17,7 @@ class Discussion extends Resource
 
     public function url($model): string
     {
-        return $this->generateUrl("d/{$model->id}-{$model->slug}");
+        return $this->generateUrl('d/' . $model->id . (trim($model->slug) ? '-' . $model->slug : ''));
     }
 
     public function priority(): float
