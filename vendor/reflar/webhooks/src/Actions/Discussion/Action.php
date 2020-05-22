@@ -11,7 +11,7 @@
  * file that was distributed with this source code.
  */
 
-namespace ReFlar\Webhooks\Actions\Discussion;
+namespace Reflar\Webhooks\Actions\Discussion;
 
 use Flarum\User\Guest;
 
@@ -19,6 +19,8 @@ abstract class Action extends \Reflar\Webhooks\Action
 {
     public function ignore($event, bool $asGuest): bool
     {
-        return $asGuest && !$event->discussion->firstPost->isVisibleTo(new Guest());
+        $post = $event->discussion->firstPost ?? $event->discussion->posts()->where('number', 1)->first();
+
+        return $asGuest && $post && !$post->isVisibleTo(new Guest());
     }
 }
