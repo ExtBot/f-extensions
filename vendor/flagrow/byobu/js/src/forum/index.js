@@ -10,11 +10,11 @@ import addDiscussPrivatelyControl from './addDiscussPrivatelyControl';
 import addPrivacySetting from './addPrivacySetting';
 import addPrivateDiscussionsPage from './addPrivateDiscussionsPage';
 import NotificationGrid from 'flarum/components/NotificationGrid';
-import PrivateDiscussionNotification from './components/PrivateDiscussionNotification';
-import PrivateDiscussionRepliedNotification from './components/PrivateDiscussionReplyNotification';
-import PrivateDiscussionUserLeftNotification from './components/PrivateDiscussionUserLeftNotification';
-import PrivateDiscussionAddedNotification from './components/PrivateDiscussionAddedNotification';
-import PrivateDiscussionMadePublicNotification from './components/PrivateDiscussionMadePublicNotification';
+import PrivateDiscussionNotification from './components/notifications/PrivateDiscussionNotification';
+import PrivateDiscussionRepliedNotification from './components/notifications/PrivateDiscussionReplyNotification';
+import PrivateDiscussionUserLeftNotification from './components/notifications/PrivateDiscussionUserLeftNotification';
+import PrivateDiscussionAddedNotification from './components/notifications/PrivateDiscussionAddedNotification';
+import PrivateDiscussionMadePublicNotification from './components/notifications/PrivateDiscussionMadePublicNotification';
 import PrivateDiscussionIndex from './components/PrivateDiscussionIndex';
 import RecipientsModified from './components/RecipientsModified';
 import RecipientLeft from './components/RecipientLeft';
@@ -24,7 +24,7 @@ export * from '../common/helpers';
 export * from './components';
 
 app.initializers.add('fof-byobu', function(app) {
-    app.routes.private_discussions = { path: '/private-discussions', component: PrivateDiscussionIndex.component() };
+    //app.routes['private_discussions'] = { path: '/private-discussions', component: PrivateDiscussionIndex.component() };
 
     Discussion.prototype.recipientUsers = Model.hasMany('recipientUsers');
     Discussion.prototype.oldRecipientUsers = Model.hasMany('oldRecipientUsers');

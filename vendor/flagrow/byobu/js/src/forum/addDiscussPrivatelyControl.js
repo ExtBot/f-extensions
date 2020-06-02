@@ -3,7 +3,6 @@ import UserControls from 'flarum/utils/UserControls';
 import PrivateDiscussionComposer from './components/PrivateDiscussionComposer';
 import Button from 'flarum/components/Button';
 import ItemList from 'flarum/utils/ItemList';
-import removeTags from './removeTags';
 
 export default function() {
     // Add a control allowing the discussion to be moved to another category.
@@ -19,7 +18,9 @@ export default function() {
                 Button.component({
                     children: app.translator.trans('fof-byobu.forum.buttons.send_pd', { username: user.username() }),
                     icon: 'far fa-map',
-                    onclick: () => {
+                    onclick: (e) => {
+                        e.preventDefault();
+
                         const deferred = m.deferred();
 
                         let recipients = new ItemList();
@@ -45,10 +46,6 @@ export default function() {
                     },
                 })
             );
-
-            if (app.forum.attribute('byobuTag')) {
-                removeTags();
-            }
         }
 
         return items;
