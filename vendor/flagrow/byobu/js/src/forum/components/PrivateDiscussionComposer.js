@@ -37,7 +37,16 @@ export default class PrivateDiscussionComposer extends DiscussionComposer {
             const tag = app.store.getBy('tags', 'slug', app.forum.attribute('byobuTag'));
 
             if (tag) {
-                this.tags = [tag];
+                if (tag.data.attributes.isChild) {
+                    // This is a secondary tag! We also need the primary! :)
+
+                    const parentTagId = tag.data.relationships.parent.data.id;
+                    const parentTag = app.store.getBy('tags', 'id', parentTagId);
+
+                    this.tags = [parentTag, tag];
+                } else {
+                    this.tags = [tag];
+                }
             } else {
                 console.error('fof/byobu: Could not find tag with slug ' + app.forum.attribute('byobuTag'));
             }

@@ -18,6 +18,7 @@ use FoF\Byobu\Events\DiscussionRecipientRemovedSelf;
 use FoF\Byobu\Events\DiscussionRecipientsChanged;
 use FoF\Byobu\Jobs;
 use Illuminate\Events\Dispatcher;
+use s9e\TextFormatter\Utils;
 
 class QueueNotificationJobs
 {
@@ -39,6 +40,17 @@ class QueueNotificationJobs
 
     public function postMadeInPrivateDiscussion(Saving $event)
     {
+        // stop the notification from firing when events such as flarum/likes or fof/reactions re-save the post.
+        if ($event->post->exists) {
+            return;
+        }
+
+        // If the post content contains a postmention, don't notify here, we will assume some other event will handle it.
+        $postMentions = Utils::getAttributeValues($event->post->parsedContent, 'POSTMENTION', 'id');
+        if ($postMentions > 0) {
+            return;
+        }
+
         $actor = $event->actor;
 
         $event->post->afterSave(function ($post) use ($actor) {
