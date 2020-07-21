@@ -2,10 +2,11 @@ import Modal from 'flarum/components/Modal';
 import Switch from 'flarum/components/Switch';
 import Button from 'flarum/components/Button';
 import Dropdown from 'flarum/components/Dropdown';
+import LoadingIndicator from 'flarum/components/LoadingIndicator';
 import icon from 'flarum/helpers/icon';
 import Group from 'flarum/models/Group';
 
-const sortByProp = prop => (a, b) => {
+const sortByProp = (prop) => (a, b) => {
     const propA = a[prop].toUpperCase(); // ignore upper and lowercase
     const propB = b[prop].toUpperCase(); // ignore upper and lowercase
 
@@ -16,7 +17,7 @@ const groupBy = (obj, fn) => {
     const keys = Object.keys(obj);
     const vals = Object.values(obj);
 
-    return keys.map(typeof fn === 'function' ? fn : val => val[fn]).reduce((acc, val, i) => {
+    return keys.map(typeof fn === 'function' ? fn : (val) => val[fn]).reduce((acc, val, i) => {
         if (!acc[val]) acc[val] = {};
 
         acc[val][keys[i]] = vals[i];
@@ -34,6 +35,9 @@ export default class WebhookEditModal extends Modal {
         const events = app.data['reflar-webhooks.events'];
 
         this.loadingGroup = m.prop(false);
+
+        this.groupId = m.prop(this.webhook.groupId() || Group.GUEST_ID);
+        this.extraText = m.prop(this.webhook.extraText() || '');
 
         this.events = groupBy(
             events.reduce(
@@ -64,7 +68,7 @@ export default class WebhookEditModal extends Modal {
                 },
                 { other: [] }
             ),
-            key => key.split('.')[0]
+            (key) => key.split('.')[0]
         );
     }
 
@@ -82,34 +86,47 @@ export default class WebhookEditModal extends Modal {
             3: 'fas fa-user',
         };
 
-        const group = app.store.getById('groups', this.webhook.groupId()) || app.store.getById('groups', Group.MEMBER_ID);
+        const group = app.store.getById('groups', this.groupId());
 
         return (
             <div className="ReflarWebhooksModal Modal-body">
                 {app.translator.trans('reflar-webhooks.admin.settings.modal.description')}
 
-                <div className="Form">
+                <form className="Form" onsubmit={this.onsubmit.bind(this)}>
+                    <div className="Form-group hasLoading">
+                        <label className="label">{app.translator.trans('reflar-webhooks.admin.settings.modal.extra_text_label')}</label>
+
+                        <p className="helpText">{app.translator.trans('reflar-webhooks.admin.settings.modal.extra_text_help')}</p>
+
+                        <input type="text" className="FormControl" bidi={this.extraText} onkeypress={this.onkeypress.bind(this)} />
+                    </div>
+
                     <div className="Form-group">
+                        <label className="label">{app.translator.trans('reflar-webhooks.admin.settings.modal.group_label')}</label>
+                        <p className="helpText">{app.translator.trans('reflar-webhooks.admin.settings.modal.group_help')}</p>
+
                         {Dropdown.component({
-                            label: [icon(this.loadingGroup() ? 'fas fa-spinner fa-spin' : group.icon() || icons[group.id()]), group.namePlural()],
+                            label: [icon(group.icon() || icons[group.id()]), group.namePlural()],
                             buttonClassName: 'Button Button--danger',
                             children: app.store
                                 .all('groups')
-                                .filter(g => ['1', '2'].includes(g.id()))
-                                .map(g =>
+                                .filter((g) => ['1', '2'].includes(g.id()))
+                                .map((g) =>
                                     Button.component({
-                                        active: group.id() === g.id(),
+                                        active: group && group.id() === g.id(),
                                         disabled: group && group.id() === g.id(),
                                         children: g.namePlural(),
                                         icon: g.icon() || icons[g.id()],
-                                        onclick: this.changeGroup.bind(this, g),
+                                        onclick: () => this.groupId(g.id()),
                                     })
                                 ),
                         })}
                     </div>
 
-                    <div className="Webhook-events">
-                        {Object.entries(this.events).map(([vendor, events]) => (
+                    <div className="Form-group Webhook-events">
+                        <label className="label">{app.translator.trans('reflar-webhooks.admin.settings.modal.events_label')}</label>
+
+                        {Object.entries(this.events).map(([, events]) => (
                             <div>
                                 {Object.entries(events)
                                     .sort(sortByProp(0))
@@ -117,7 +134,7 @@ export default class WebhookEditModal extends Modal {
                                         events.length ? (
                                             <div>
                                                 <h3>{this.translate(group)}</h3>
-                                                {events.map(event =>
+                                                {events.map((event) =>
                                                     Switch.component({
                                                         state: this.webhook.events().includes(event.full),
                                                         children: this.translate(group, event.name.toLowerCase()),
@@ -130,13 +147,42 @@ export default class WebhookEditModal extends Modal {
                             </div>
                         ))}
                     </div>
-                </div>
+
+                    <div className="Form-group">
+                        <Button type="submit" className="Button Button--primary" loading={this.loading}>
+                            {app.translator.trans('core.admin.settings.submit_button')}
+                        </Button>
+                    </div>
+                </form>
             </div>
         );
     }
 
     translate(group, key = 'title') {
         return app.translator.trans(`reflar-webhooks.admin.settings.actions.${group}.${key}`);
+    }
+
+    onsubmit(e) {
+        e.preventDefault();
+
+        this.loading = true;
+
+        return this.webhook
+            .save({
+                extraText: this.extraText(),
+                group_id: this.groupId(),
+            })
+            .then(() => {
+                this.loading = false;
+
+                m.redraw();
+            });
+    }
+
+    onkeypress(e) {
+        if (e.key === 'Enter') {
+            this.onsubmit(e);
+        }
     }
 
     onchange(event, checked, component) {
@@ -154,18 +200,5 @@ export default class WebhookEditModal extends Modal {
             component.loading = false;
             m.lazyRedraw();
         });
-    }
-
-    changeGroup(group) {
-        this.loadingGroup(true);
-
-        return this.webhook
-            .save({
-                group_id: group.id(),
-            })
-            .then(() => {
-                this.loadingGroup(false);
-                m.lazyRedraw();
-            });
     }
 }

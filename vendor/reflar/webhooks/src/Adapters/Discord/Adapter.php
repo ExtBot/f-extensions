@@ -49,7 +49,7 @@ class Adapter extends \Reflar\Webhooks\Adapters\Adapter
 
         $this->request($url, [
             'username'   => $title,
-            'avatar_url' => $this->getAvatarUrl(),
+            'content'    => $response->getExtraText(),
             'embeds'     => [
                 $this->toArray($response),
             ],

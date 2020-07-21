@@ -32,6 +32,11 @@
 
     .Webhook-url {
       flex-grow: 1;
+      margin-left: 20px;
+
+      &::placeholder {
+        font-style: italic;
+      }
     }
 
     .Webhook-button {
@@ -65,11 +70,32 @@
     margin-bottom: 5px;
   }
 
+  .Form-group.hasLoading {
+    > div {
+      position: relative;
+    }
+
+    .LoadingIndicator {
+      position: absolute;
+      top: 8px;
+      right: 15px;
+    }
+  }
+
   .Dropdown-toggle .icon {
     margin-right: 10px;
   }
 
+  .label {
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+
   .Webhook-events {
+    .label {
+      margin-bottom: -10px;
+    }
+
     > div {
       display: flex;
       flex-wrap: wrap;
