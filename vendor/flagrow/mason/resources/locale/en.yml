@@ -1,4 +1,4 @@
-flagrow-mason:
+fof-mason:
     forum:
         discussion-controls:
             edit-answers: Edit fields
@@ -25,6 +25,8 @@ flagrow-mason:
             add-answer: Add answer
             save-answer: Save answer changes
             delete-answer: Delete answer
+            edit-answer: Edit Answer
+            edit-answer-prompt: Edit content everywhere it is used
             show-user-answers: Show non-suggested answers ({count})
         menu:
             description: >
@@ -39,8 +41,6 @@ flagrow-mason:
             description: Field description
             description-help: >
                 An optional description to explain the use/need of this field.
-            min_answers_count: Minimum required answers
-            max_answers_count: Maximum allowed answers
             show_when_empty: Show when empty
             show_when_empty-help:
                 Whether to show the field on the discussion when it has no answer
@@ -62,6 +62,7 @@ flagrow-mason:
             icon-preview: "preview: {preview}"
             save-field-for-answers: Save the field to add answers
             is_suggested: Suggest answer to users
+            new-answer: New answer
             new-answer-placeholder: Some text
         messages:
             delete-answer-confirmation: >
@@ -94,10 +95,12 @@ flagrow-mason:
                 This will hide the default tags selector and show a custom dropdown field instead.
                 This will only work if you allowed up to one primary and one secondary tag !
             tags-field-name: Label of the tags field
-            tags-field-name-placeholder: => flagrow-mason.forum.tags.tags-label
+            tags-field-name-placeholder: => fof-mason.forum.tags.tags-label
         titles:
             settings: Settings
             fields: Fields
+            field-settings: Field settinga
+            field-answers: Field answers
         permissions:
             mason-heading: Mason
             see-own-fields: See fields on own existing discussions

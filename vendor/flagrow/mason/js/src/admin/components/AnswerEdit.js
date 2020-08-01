@@ -1,5 +1,6 @@
 import app from 'flarum/app';
 import icon from 'flarum/helpers/icon';
+import extractText from 'flarum/utils/extractText';
 import Component from 'flarum/Component';
 import Button from 'flarum/components/Button';
 import Switch from 'flarum/components/Switch';
@@ -15,17 +16,18 @@ export default class FieldEdit extends Component {
         return m('form.Mason-Box', [
             // Only suggested answers can be reordered
             (this.answer.is_suggested() ? [
-                m('span.fa.fa-arrows.Mason-Box--handle.js-answer-handle'),
+                m('span.fas.fa-arrows-alt.Mason-Box--handle.js-answer-handle'),
                 ' ',
             ] : null),
             m('span', {
                 onclick: () => {
-                    const newContent = prompt('Edit content', this.answer.content());
+                    const newContent = prompt(extractText(app.translator.trans('fof-mason.admin.buttons.edit-answer-prompt')), this.answer.content());
 
                     if (newContent) {
                         this.updateAttribute('content', newContent);
                     }
                 },
+                title: extractText(app.translator.trans('fof-mason.admin.buttons.edit-answer')),
             }, [
                 this.answer.content(),
                 ' ',
@@ -40,13 +42,13 @@ export default class FieldEdit extends Component {
                     // And the unsaved state won't be preserved because the AnswerEdit component changes its place
                     this.saveAnswer();
                 },
-                children: app.translator.trans('flagrow-mason.admin.fields.is_suggested'),
+                children: app.translator.trans('fof-mason.admin.fields.is_suggested'),
             }),
             m('.ButtonGroup', [
                 Button.component({
                     type: 'submit',
                     className: 'Button Button--primary',
-                    children: app.translator.trans('flagrow-mason.admin.buttons.save-answer'),
+                    children: app.translator.trans('fof-mason.admin.buttons.save-answer'),
                     loading: this.processing,
                     disabled: !this.readyToSave(),
                     onclick: this.saveAnswer.bind(this),
@@ -54,7 +56,7 @@ export default class FieldEdit extends Component {
                 Button.component({
                     type: 'submit',
                     className: 'Button Button--danger',
-                    children: app.translator.trans('flagrow-mason.admin.buttons.delete-answer'),
+                    children: app.translator.trans('fof-mason.admin.buttons.delete-answer'),
                     loading: this.processing,
                     onclick: this.deleteAnswer.bind(this),
                 }),
@@ -90,9 +92,9 @@ export default class FieldEdit extends Component {
     }
 
     deleteAnswer() {
-        if (!confirm(app.translator.trans('flagrow-mason.admin.messages.delete-answer-confirmation', {
+        if (!confirm(extractText(app.translator.trans('fof-mason.admin.messages.delete-answer-confirmation', {
                 content: this.answer.content(),
-            }))) {
+            })))) {
             return;
         }
 

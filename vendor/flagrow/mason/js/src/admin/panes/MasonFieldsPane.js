@@ -1,3 +1,5 @@
+import sortable from 'html5sortable/dist/html5sortable.es.js';
+
 import app from 'flarum/app';
 import Component from 'flarum/Component';
 import FieldEdit from './../components/FieldEdit';
@@ -8,7 +10,7 @@ export default class MasonFieldsPane extends Component {
     init() {
         app.request({
             method: 'GET',
-            url: app.forum.attribute('apiUrl') + '/flagrow/mason/fields',
+            url: app.forum.attribute('apiUrl') + '/fof/mason/fields',
         }).then(result => {
             app.store.pushPayload(result);
             m.redraw();
@@ -16,23 +18,21 @@ export default class MasonFieldsPane extends Component {
     }
 
     config() {
-        this.$('.js-fields-container')
-            .sortable({
-                handle: '.js-field-handle',
-            })
-            .on('sortupdate', () => {
-                const sorting = this.$('.js-field-data')
-                    .map(function () {
-                        return $(this).data('id');
-                    })
-                    .get();
+        sortable(this.element.querySelector('.js-fields-container'), {
+            handle: '.js-field-handle',
+        })[0].addEventListener('sortupdate', () => {
+            const sorting = this.$('.js-field-data')
+                .map(function () {
+                    return $(this).data('id');
+                })
+                .get();
 
-                this.updateSort(sorting);
-            });
+            this.updateSort(sorting);
+        });
     }
 
     view() {
-        const fields = app.store.all('flagrow-mason-field');
+        const fields = app.store.all('mason-fields');
 
         let fieldsList = [];
 
@@ -48,7 +48,7 @@ export default class MasonFieldsPane extends Component {
             });
 
         return m('.container', [
-            m('h2', app.translator.trans('flagrow-mason.admin.titles.fields')),
+            m('h2', app.translator.trans('fof-mason.admin.titles.fields')),
             m('.Mason-Container', [
                 m('.js-fields-container', fieldsList),
                 FieldEdit.component({
@@ -56,7 +56,7 @@ export default class MasonFieldsPane extends Component {
                     field: null,
                 }),
             ]),
-            m('h2', app.translator.trans('flagrow-mason.admin.titles.settings')),
+            m('h2', app.translator.trans('fof-mason.admin.titles.settings')),
             MasonSettings.component(),
         ]);
     }
@@ -64,7 +64,7 @@ export default class MasonFieldsPane extends Component {
     updateSort(sorting) {
         app.request({
             method: 'POST',
-            url: app.forum.attribute('apiUrl') + '/flagrow/mason/fields/order',
+            url: app.forum.attribute('apiUrl') + '/fof/mason/fields/order',
             data: {
                 sort: sorting,
             },

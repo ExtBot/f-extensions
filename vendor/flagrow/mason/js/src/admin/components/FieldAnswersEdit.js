@@ -1,3 +1,5 @@
+import sortable from 'html5sortable/dist/html5sortable.es.js';
+
 import app from 'flarum/app';
 import icon from 'flarum/helpers/icon';
 import Component from 'flarum/Component';
@@ -14,24 +16,22 @@ export default class FieldAnswersEdit extends Component {
     }
 
     config() {
-        this.$('.js-answers-container')
-            .sortable({
-                handle: '.js-answer-handle',
-            })
-            .on('sortupdate', () => {
-                const sorting = this.$('.js-answer-data')
-                    .map(function () {
-                        return $(this).data('id');
-                    })
-                    .get();
+        sortable(this.element.querySelector('.js-answers-container'), {
+            handle: '.js-answer-handle',
+        })[0].addEventListener('sortupdate', () => {
+            const sorting = this.$('.js-answer-data')
+                .map(function () {
+                    return $(this).data('id');
+                })
+                .get();
 
-                this.updateSort(sorting);
-            });
+            this.updateSort(sorting);
+        });
     }
 
     view() {
         if (!this.field.exists) {
-            return m('div', app.translator.trans('flagrow-mason.admin.fields.save-field-for-answers'));
+            return m('div', app.translator.trans('fof-mason.admin.fields.save-field-for-answers'));
         }
 
         let suggestedAnswers = [];
@@ -67,7 +67,7 @@ export default class FieldAnswersEdit extends Component {
                         this.showUserAnswers = !this.showUserAnswers;
                     },
                 }, [
-                    m('.Mason-Box-Header-Title', app.translator.trans('flagrow-mason.admin.buttons.show-user-answers', {
+                    m('.Mason-Box-Header-Title', app.translator.trans('fof-mason.admin.buttons.show-user-answers', {
                         count: userAnswers.length,
                     })),
                     m('div', [
@@ -85,20 +85,20 @@ export default class FieldAnswersEdit extends Component {
             ] : null),
             m('form', [
                 m('.Form-group', [
-                    m('label', 'New answer'),
+                    m('label', app.translator.trans('fof-mason.admin.fields.new-answer')),
                     m('input.FormControl', {
                         value: this.new_content,
                         oninput: m.withAttr('value', value => {
                             this.new_content = value;
                         }),
-                        placeholder: app.translator.trans('flagrow-mason.admin.fields.new-answer-placeholder'),
+                        placeholder: app.translator.trans('fof-mason.admin.fields.new-answer-placeholder'),
                     }),
                 ]),
                 m('.Form-group', [
                     Button.component({
                         type: 'submit',
                         className: 'Button Button--primary',
-                        children: app.translator.trans('flagrow-mason.admin.buttons.add-answer'),
+                        children: app.translator.trans('fof-mason.admin.buttons.add-answer'),
                         loading: this.processing,
                         disabled: !this.new_content,
                         onclick: this.saveField.bind(this),
