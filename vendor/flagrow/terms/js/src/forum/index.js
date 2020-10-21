@@ -1,4 +1,3 @@
-import {extend} from 'flarum/extend';
 import app from 'flarum/app';
 import Model from 'flarum/Model';
 import User from 'flarum/models/User';
@@ -7,6 +6,10 @@ import addAcceptModal from './addAcceptModal';
 import addFieldsToRegister from './addFieldsToRegister';
 import addUpdateAlert from './addUpdateAlert';
 import addUserPoliciesStateControl from './addUserPoliciesStateControl';
+
+export * from './components';
+export * from '../common/models';
+export * from '../common/helpers';
 
 app.initializers.add('fof-terms', () => {
     app.store.models['fof-terms-policies'] = Policy;
