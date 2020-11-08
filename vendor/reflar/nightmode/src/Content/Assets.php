@@ -11,6 +11,7 @@
 
 namespace FoF\NightMode\Content;
 
+use Flarum\Foundation\Application;
 use Flarum\Frontend\Compiler\CompilerInterface;
 use Flarum\Frontend\Document;
 use Flarum\User\User;
@@ -19,6 +20,10 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 class Assets extends \Flarum\Frontend\Content\Assets
 {
+    /**
+     * @param Document $document
+     * @param Request  $request
+     */
     public function __invoke(Document $document, Request $request)
     {
         $locale = $request->getAttribute('locale');
@@ -32,8 +37,8 @@ class Assets extends \Flarum\Frontend\Content\Assets
             'css' => [$this->assets->makeLocaleCss($locale)],
         ];
 
-        if ($this->app->inDebugMode()) {
-            $this->commit(array_flatten($compilers));
+        if (app(Application::class)->inDebugMode()) {
+            $this->commit(Arr::flatten($compilers));
             $this->commit([$dayCss, $nightCss]);
         }
 
@@ -54,6 +59,13 @@ class Assets extends \Flarum\Frontend\Content\Assets
         $document->payload['fof-nightmode.assets.night'] = $nightCss->getUrl();
     }
 
+    /**
+     * @param string|null $url
+     * @param string      $type
+     * @param string      $auto
+     *
+     * @return string
+     */
     protected function generateTag(?string $url, string $type, string $auto)
     {
         return sprintf(
@@ -64,23 +76,31 @@ class Assets extends \Flarum\Frontend\Content\Assets
         );
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return int
+     */
     protected function getPreference(Request $request)
     {
         /**
          * @var User $actor
          */
         $actor = $request->getAttribute('actor');
-        $default = (int) $this->app['flarum.settings']->get('fof-nightmode.default_theme');
+        $default = (int) app('flarum.settings')->get('fof-nightmode.default_theme');
 
         if ($actor->getPreference('fofNightMode_perDevice')) {
             return (int) Arr::get($request->getCookieParams(), 'flarum_nightmode', $default);
-        } else {
-            return (int) $actor->getPreference('fofNightMode', $default);
         }
+
+        return (int) $actor->getPreference('fofNightMode', $default);
     }
 
     // --- original ---
 
+    /**
+     * @param array $compilers
+     */
     private function commit(array $compilers)
     {
         foreach ($compilers as $compiler) {
