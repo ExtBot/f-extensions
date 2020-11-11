@@ -4,44 +4,43 @@ import TextEditor from 'flarum/components/TextEditor';
 import UploadButton from './components/UploadButton';
 import DragAndDrop from './components/DragAndDrop';
 import PasteClipboard from './components/PasteClipboard';
+import Uploader from "./handler/Uploader";
 
 export default function () {
-    extend(TextEditor.prototype, 'init', function () {
-        if (!app.forum.attribute('fof-upload.canUpload')) return;
-
-        this.fofUploadButton = new UploadButton;
-        this.fofUploadButton.textAreaObj = this;
-    });
-
+    extend(TextEditor.prototype, 'oninit', function () {
+        this.uploader = new Uploader();
+    })
     extend(TextEditor.prototype, 'controlItems', function (items) {
         if (!app.forum.attribute('fof-upload.canUpload')) return;
 
-        items.add('fof-upload', this.fofUploadButton.render());
+        let button = UploadButton.component({
+            upload: files => this.uploader.upload(files)
+        });
+
+        this.uploader.on('uploaded', () => button.success());
+
+        items.add('fof-upload', button);
     });
 
-    extend(TextEditor.prototype, 'config', function (output, isInitialized, context) {
-        if (isInitialized) return;
-
+    extend(TextEditor.prototype, 'oncreate', function (f_, vnode) {
         if (!app.forum.attribute('fof-upload.canUpload')) return;
 
-        const dragAndDrop = new DragAndDrop(this.fofUploadButton, this.$().parents('.Composer')[0]);
+        this.uploader.on('success', image => this.attrs.composer.editor.insertAtCursor(image + '\n'));
+
+        const dragAndDrop = new DragAndDrop(
+            files => this.uploader.upload(files),
+            this.$().parents('.Composer')[0]
+        );
 
         const unloadHandler = () => {
             dragAndDrop.unload();
         };
 
-        if (context.onunload) {
-            extend(context, 'onunload', unloadHandler);
-        } else {
-            context.onunload = unloadHandler;
-        }
-    });
+        this.$('textarea').bind('onunload', unloadHandler);
 
-    extend(TextEditor.prototype, 'configTextarea', function (output, element, isInitialized) {
-        if (isInitialized) return;
-
-        if (!app.forum.attribute('fof-upload.canUpload')) return;
-
-        new PasteClipboard(this.fofUploadButton, element);
+        new PasteClipboard(
+            files => this.uploader.upload(files),
+            this.$('textarea')[0]
+        );
     });
 }
