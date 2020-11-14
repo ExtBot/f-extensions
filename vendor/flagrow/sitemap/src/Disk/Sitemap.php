@@ -13,6 +13,7 @@
 namespace FoF\Sitemap\Disk;
 
 use Carbon\Carbon;
+use Flarum\Foundation\Paths;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -50,7 +51,7 @@ class Sitemap
      */
     public function write(): array
     {
-        $directory = $this->tmpDir ?? public_path('sitemaps');
+        $directory = $this->tmpDir ?? app(Paths::class)->public.DIRECTORY_SEPARATOR.'sitemaps';
 
         if (!is_dir($directory)) {
             mkdir($directory, 0777, true);
