@@ -11,13 +11,15 @@
 
 namespace FoF\Byobu\Database;
 
-use Flarum\Extension\ExtensionManager;
 use Flarum\User\User;
+use FoF\Byobu\Concerns\ExtensionsDiscovery;
 use Illuminate\Database\Eloquent\Builder as Eloquent;
 use Illuminate\Database\Query\Builder as Query;
 
 trait RecipientsConstraint
 {
+    use ExtensionsDiscovery;
+
     /**
      * @param Query|Eloquent $query
      * @param User           $user
@@ -79,9 +81,6 @@ trait RecipientsConstraint
 
     protected function flagsInstalled(): bool
     {
-        /** @var ExtensionManager $manager */
-        $manager = app(ExtensionManager::class);
-
-        return $manager->isEnabled('flarum-flags');
+        return $this->extensionIsEnabled('flarum-flags');
     }
 }
