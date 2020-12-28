@@ -1,9 +1,13 @@
 import Component from 'flarum/common/Component';
-import Select from 'flarum/common/components/Select';
+import Dropdown from 'flarum/common/components/Dropdown';
 import Button from 'flarum/common/components/Button';
+import Select from 'flarum/common/components/Select';
 import Alert from 'flarum/common/components/Alert';
 import Stream from 'flarum/common/utils/Stream';
 import withAttr from 'flarum/common/utils/withAttr';
+import icon from 'flarum/common/helpers/icon';
+
+import tagIcon from 'flarum/tags/common/helpers/tagIcon';
 
 import WebhookEditModal from './WebhookEditModal';
 
@@ -18,6 +22,8 @@ export default class SettingsListItem extends Component {
         this.service = Stream(this.webhook.service());
         this.events = Stream(this.webhook.events());
         this.error = Stream(this.webhook.error());
+
+        this.loading = {};
     }
 
     view() {
@@ -32,18 +38,52 @@ export default class SettingsListItem extends Component {
             errors.push(app.translator.trans('fof-webhooks.admin.errors.url_invalid'));
         }
 
+        const tagsEnabled = app.initializers.has('flarum-tags');
+        const tag = webhook.tag();
+        const tagIdLoading = !!this.loading['tag_id'];
+
         return (
             <div className="Webhooks--row">
                 <div className="Webhook-input">
-                    <Select options={services} value={service} onchange={this.update('service')} />
+                    <Select options={services} value={service} onchange={this.update('service')} disabled={this.loading['service']} />
 
                     <input
                         className="FormControl Webhook-url"
                         type="url"
                         value={this.url()}
                         onchange={withAttr('value', this.update('url'))}
+                        disabled={this.loading['url']}
                         placeholder={app.translator.trans('fof-webhooks.admin.settings.help.url')}
                     />
+
+                    {tagsEnabled && (
+                        <Dropdown
+                            buttonClassName="Button"
+                            label={
+                                tag ? (
+                                    <span>
+                                        {!tagIdLoading && tagIcon(tag, { className: 'Button-icon' })} {tag.name()}
+                                    </span>
+                                ) : (
+                                    app.translator.trans('fof-webhooks.admin.settings.item.tag_any_label')
+                                )
+                            }
+                            icon={tagIdLoading ? 'fas fa-spinner fa-spin' : tag ? true : 'fas fa-tag'}
+                            caretIcon={null}
+                        >
+                            <Button icon={'fas fa-tag'} onclick={() => this.update('tag_id')(null)}>
+                                {app.translator.trans('fof-webhooks.admin.settings.item.tag_any_label')}
+                            </Button>
+
+                            <hr />
+
+                            {app.store.all('tags').map((tag) => (
+                                <Button icon={true} onclick={() => this.update('tag_id')(tag.id())}>
+                                    {tagIcon(tag, { className: 'Button-icon' })} {tag.name()}
+                                </Button>
+                            ))}
+                        </Dropdown>
+                    )}
 
                     <Button
                         type="button"
@@ -77,11 +117,20 @@ export default class SettingsListItem extends Component {
 
     update(field) {
         return (value) => {
+            this.loading[field] = true;
+
             return this.webhook
                 .save({
                     [field]: value,
                 })
-                .then(() => m.redraw());
+                .catch(() => {})
+                .then(() => {
+                    this.loading[field] = false;
+
+                    if (this[field]) this[field](value);
+
+                    m.redraw();
+                });
         };
     }
 
