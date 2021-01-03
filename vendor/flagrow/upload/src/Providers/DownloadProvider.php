@@ -1,5 +1,15 @@
 <?php
 
+/*
+ * This file is part of fof/upload.
+ *
+ * Copyright (c) 2020 FriendsOfFlarum.
+ * Copyright (c) 2016 - 2019 Flagrow
+ *
+ * For the full copyright and license information, please view the LICENSE.md
+ * file that was distributed with this source code.
+ */
+
 namespace FoF\Upload\Providers;
 
 use Flarum\Foundation\AbstractServiceProvider;
@@ -18,8 +28,6 @@ class DownloadProvider extends AbstractServiceProvider
         DownloadHandler::addDownloader(
             $this->app->make(DefaultDownloader::class)
         );
-
-        $this->loadViewsFrom(__DIR__ . '/../../resources/templates', 'fof-upload.templates');
 
         /** @var Settings $settings */
         $settings = $this->app->make(Settings::class);

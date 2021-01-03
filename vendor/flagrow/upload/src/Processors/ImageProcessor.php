@@ -1,5 +1,15 @@
 <?php
 
+/*
+ * This file is part of fof/upload.
+ *
+ * Copyright (c) 2020 FriendsOfFlarum.
+ * Copyright (c) 2016 - 2019 Flagrow
+ *
+ * For the full copyright and license information, please view the LICENSE.md
+ * file that was distributed with this source code.
+ */
+
 namespace FoF\Upload\Processors;
 
 use Flarum\Foundation\Paths;
@@ -20,18 +30,25 @@ class ImageProcessor implements Processable
     protected $settings;
 
     /**
-     * @param Settings $settings
+     * @var Paths
      */
-    public function __construct(Settings $settings)
+    protected $paths;
+
+    /**
+     * @param Settings $settings
+     * @param Paths    $paths
+     */
+    public function __construct(Settings $settings, Paths $paths)
     {
         $this->settings = $settings;
+        $this->paths = $paths;
     }
 
     /**
      * @param File         $file
      * @param UploadedFile $upload
      */
-    public function process(File $file, UploadedFile $upload, String $mimeType)
+    public function process(File $file, UploadedFile $upload, string $mimeType)
     {
         if ($mimeType == 'image/jpeg' || $mimeType == 'image/png') {
             try {
@@ -80,7 +97,7 @@ class ImageProcessor implements Processable
     {
         if ($this->settings->get('watermark')) {
             $image->insert(
-                app(Paths::class)->storage.DIRECTORY_SEPARATOR.$this->settings->get('watermark'),
+                $this->paths->storage.DIRECTORY_SEPARATOR.$this->settings->get('watermark'),
                 $this->settings->get('watermarkPosition', 'bottom-right')
             );
         }
