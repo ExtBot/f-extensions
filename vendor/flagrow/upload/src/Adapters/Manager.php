@@ -17,6 +17,7 @@ use Flarum\Foundation\Paths;
 use Flarum\Settings\SettingsRepositoryInterface;
 use FoF\Upload\Adapters;
 use FoF\Upload\Events\Adapter\Collecting;
+use FoF\Upload\Events\Adapter\Instantiate;
 use FoF\Upload\Helpers\Util;
 use GuzzleHttp\Client as Guzzle;
 use Illuminate\Contracts\Events\Dispatcher;
@@ -72,14 +73,19 @@ class Manager
     public function instantiate()
     {
         return $this->adapters()
+            // Drops adapters that cannot be instantiated due to missing packages.
             ->filter(function ($available) {
                 return $available;
             })
+            // Attempt (or override) instantiation of adapters.
             ->map(function ($_, $adapter) {
                 $method = Str::camel($adapter);
 
-                return $this->{$method}($this->util);
-            });
+                return $this->events->until(new Instantiate($adapter, $this->util))
+                    ?? $this->{$method}($this->util);
+            })
+            // Drops adapters that returned null while instantiating.
+            ->filter();
     }
 
     /**
@@ -89,6 +95,10 @@ class Manager
      */
     protected function awsS3(Util $util)
     {
+        if (!$this->settings->get('fof-upload.awsS3Key')) {
+            return null;
+        }
+
         return new Adapters\AwsS3(
             new AwsS3Adapter(
                 new S3Client([
@@ -113,6 +123,10 @@ class Manager
      */
     protected function imgur(Util $util)
     {
+        if (!$this->settings->get('fof-upload.imgurClientId')) {
+            return null;
+        }
+
         return new Adapters\Imgur(
             new Guzzle([
                 'base_uri' => 'https://api.imgur.com/3/',
@@ -142,6 +156,10 @@ class Manager
      */
     protected function qiniu(Util $util)
     {
+        if (!$this->settings->get('fof-upload.qiniuKey')) {
+            return null;
+        }
+
         $client = new QiniuAdapter(
             $this->settings->get('fof-upload.qiniuKey'),
             $this->settings->get('fof-upload.qiniuSecret'),
