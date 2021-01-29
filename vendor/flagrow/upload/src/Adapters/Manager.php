@@ -81,15 +81,15 @@ class Manager
             ->get($adapter);
 
         if (!$configured) {
-            throw new ValidationException("No adapter configured for $adapter");
+            throw new ValidationException(['upload' => "No adapter configured for $adapter"]);
         }
 
         $method = Str::camel($adapter);
 
         $driver = $this->events->until(new Instantiate($adapter, $this->util));
 
-        if (!$driver && !method_exists([$this, $method])) {
-            throw new ValidationException("Cannot instantiate adapter $adapter");
+        if (!$driver && !method_exists($this, $method)) {
+            throw new ValidationException(['upload' => "Cannot instantiate adapter $adapter"]);
         }
 
         return $driver ?? $this->{$method}($this->util);
