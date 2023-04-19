@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "00aa8e74003717902ea1ff93f4e88e8d",
+    "content-hash": "20dc031729489b10603da35cf4871e8c",
     "packages": [
         {
             "name": "amaurycarrade/flarum-ext-syndication",
@@ -152,50 +152,6 @@
             "notification-url": "https://packagist.org/downloads/",
             "description": "Display online users on the left sidebar.",
             "time": "2018-08-05T16:48:43+00:00"
-        },
-        {
-            "name": "auth0/auth0-php",
-            "version": "5.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/auth0/auth0-PHP.git",
-                "reference": "c8aa6ea5dce87d112f3ff62d2b379202dd0bd217"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/auth0/auth0-PHP/zipball/c8aa6ea5dce87d112f3ff62d2b379202dd0bd217",
-                "reference": "c8aa6ea5dce87d112f3ff62d2b379202dd0bd217",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "firebase/php-jwt": "^5.0",
-                "guzzlehttp/guzzle": "~6.0",
-                "php": "^5.5 || ^7.0"
-            },
-            "require-dev": {
-                "josegonzalez/dotenv": "^2.0",
-                "phpunit/phpunit": "^4.8 || ^5.7"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Auth0\\SDK\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Auth0",
-                    "email": "support@auth0.com",
-                    "homepage": "http://www.auth0.com/"
-                }
-            ],
-            "description": "Auth0 PHP SDK.",
-            "time": "2018-06-13T18:07:09+00:00"
         },
         {
             "name": "avatar4eg/flarum-ext-geotags",
@@ -1813,52 +1769,6 @@
                 "flarum"
             ],
             "time": "2018-08-23T18:34:19+00:00"
-        },
-        {
-            "name": "firebase/php-jwt",
-            "version": "v5.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/firebase/php-jwt.git",
-                "reference": "9984a4d3a32ae7673d6971ea00bae9d0a1abba0e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/9984a4d3a32ae7673d6971ea00bae9d0a1abba0e",
-                "reference": "9984a4d3a32ae7673d6971ea00bae9d0a1abba0e",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": " 4.8.35"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Firebase\\JWT\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Neuman Vong",
-                    "email": "neuman+pear@twilio.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Anant Narayanan",
-                    "email": "anant@php.net",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
-            "homepage": "https://github.com/firebase/php-jwt",
-            "time": "2017-06-27T22:17:23+00:00"
         },
         {
             "name": "fixer112/flarum-frontpage",
@@ -3895,41 +3805,41 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "1.4.2",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c"
+                "reference": "e4490cabc77465aaee90b20cfc9a770f8c04be6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
-                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/e4490cabc77465aaee90b20cfc9a770f8c04be6b",
+                "reference": "e4490cabc77465aaee90b20cfc9a770f8c04be6b",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4.0",
-                "psr/http-message": "~1.0"
+                "psr/http-message": "~1.0",
+                "ralouphie/getallheaders": "^2.0.5 || ^3.0.0"
             },
             "provide": {
                 "psr/http-message-implementation": "1.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.0"
+                "ext-zlib": "*",
+                "phpunit/phpunit": "~4.8.36 || ^5.7.27 || ^6.5.14 || ^7.5.20 || ^8.5.8 || ^9.3.10"
+            },
+            "suggest": {
+                "laminas/laminas-httphandlerrunner": "Emit PSR-7 responses"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.4-dev"
-                }
-            },
             "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\Psr7\\": "src/"
-                },
                 "files": [
                     "src/functions_include.php"
-                ]
+                ],
+                "psr-4": {
+                    "GuzzleHttp\\Psr7\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -3937,12 +3847,33 @@
             ],
             "authors": [
                 {
+                    "name": "Graham Campbell",
+                    "email": "hello@gjcampbell.co.uk",
+                    "homepage": "https://github.com/GrahamCampbell"
+                },
+                {
                     "name": "Michael Dowling",
                     "email": "mtdowling@gmail.com",
                     "homepage": "https://github.com/mtdowling"
                 },
                 {
+                    "name": "George Mponos",
+                    "email": "gmponos@gmail.com",
+                    "homepage": "https://github.com/gmponos"
+                },
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/Nyholm"
+                },
+                {
+                    "name": "Márk Sági-Kazár",
+                    "email": "mark.sagikazar@gmail.com",
+                    "homepage": "https://github.com/sagikazarmark"
+                },
+                {
                     "name": "Tobias Schultze",
+                    "email": "webmaster@tubo-world.de",
                     "homepage": "https://github.com/Tobion"
                 }
             ],
@@ -3950,13 +3881,32 @@
             "keywords": [
                 "http",
                 "message",
+                "psr-7",
                 "request",
                 "response",
                 "stream",
                 "uri",
                 "url"
             ],
-            "time": "2017-03-20T17:10:46+00:00"
+            "support": {
+                "issues": "https://github.com/guzzle/psr7/issues",
+                "source": "https://github.com/guzzle/psr7/tree/1.9.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/Nyholm",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/guzzlehttp/psr7",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-04-17T16:00:37+00:00"
         },
         {
             "name": "henter/wechat-oauth",
@@ -5401,55 +5351,6 @@
             "time": "2017-06-19T01:22:40+00:00"
         },
         {
-            "name": "mprove/flarum-ext-auth0",
-            "version": "v1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mprove-io/flarum-ext-auth0.git",
-                "reference": "11e149518a0637bbdf10153f2e4a2f08a60b92db"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mprove-io/flarum-ext-auth0/zipball/11e149518a0637bbdf10153f2e4a2f08a60b92db",
-                "reference": "11e149518a0637bbdf10153f2e4a2f08a60b92db",
-                "shasum": ""
-            },
-            "require": {
-                "auth0/auth0-php": "~5.0",
-                "flarum/core": "^0.1.0-beta.6"
-            },
-            "type": "flarum-extension",
-            "extra": {
-                "flarum-extension": {
-                    "title": "SSO Auth0",
-                    "icon": {
-                        "image": "icon.png",
-                        "backgroundColor": "#e4e4e4",
-                        "backgroundRepeat": "no-repeat",
-                        "backgroundPosition": "center"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Mprove\\Auth\\Auth0\\": "src/",
-                    "Auth0\\SDK\\": "../../auth0/auth0-php/src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Maxim Kvasha",
-                    "email": "kmi.maxim@gmail.com"
-                }
-            ],
-            "description": "Auth0 extension for Flarum",
-            "time": "2017-08-29T17:26:57+00:00"
-        },
-        {
             "name": "mtdowling/cron-expression",
             "version": "v1.2.1",
             "source": {
@@ -5492,59 +5393,6 @@
                 "schedule"
             ],
             "time": "2017-01-23T04:29:33+00:00"
-        },
-        {
-            "name": "nearata/flarum-ext-groupstyle",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Nearata/flarum-ext-groupstyle.git",
-                "reference": "7501ff435e1afb332880e2355c813ebe04847138"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Nearata/flarum-ext-groupstyle/zipball/7501ff435e1afb332880e2355c813ebe04847138",
-                "reference": "7501ff435e1afb332880e2355c813ebe04847138",
-                "shasum": ""
-            },
-            "require": {
-                "flarum/core": "^0.1.0-beta-7"
-            },
-            "type": "flarum-extension",
-            "extra": {
-                "flarum-extension": {
-                    "title": "Group Style",
-                    "icon": {
-                        "name": "",
-                        "backgroundColor": "",
-                        "color": ""
-                    }
-                },
-                "flagrow": {
-                    "discuss": ""
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Nearata\\GroupStyle\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nearata",
-                    "email": "nearata@protonmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Group based styling",
-            "keywords": [
-                "flarum"
-            ],
-            "time": "2018-06-19T16:51:51+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -6334,25 +6182,25 @@
         },
         {
             "name": "psr/http-message",
-            "version": "1.0.1",
+            "version": "1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-message.git",
-                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363"
+                "reference": "cb6ce4845ce34a8ad9e68117c10ee90a29919eba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363",
-                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/cb6ce4845ce34a8ad9e68117c10ee90a29919eba",
+                "reference": "cb6ce4845ce34a8ad9e68117c10ee90a29919eba",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": "^7.2 || ^8.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -6380,7 +6228,10 @@
                 "request",
                 "response"
             ],
-            "time": "2016-08-06T14:39:51+00:00"
+            "support": {
+                "source": "https://github.com/php-fig/http-message/tree/1.1"
+            },
+            "time": "2023-04-04T09:50:52+00:00"
         },
         {
             "name": "psr/log",
@@ -6557,6 +6408,50 @@
             "notification-url": "https://packagist.org/downloads/",
             "description": "A new way of sharing discussions on social networks!",
             "time": "2017-07-02T09:22:43+00:00"
+        },
+        {
+            "name": "ralouphie/getallheaders",
+            "version": "3.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ralouphie/getallheaders.git",
+                "reference": "120b605dfeb996808c31b6477290a714d356e822"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/120b605dfeb996808c31b6477290a714d356e822",
+                "reference": "120b605dfeb996808c31b6477290a714d356e822",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpunit/phpunit": "^5 || ^6.5"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/getallheaders.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ralph Khattar",
+                    "email": "ralph.khattar@gmail.com"
+                }
+            ],
+            "description": "A polyfill for getallheaders.",
+            "support": {
+                "issues": "https://github.com/ralouphie/getallheaders/issues",
+                "source": "https://github.com/ralouphie/getallheaders/tree/develop"
+            },
+            "time": "2019-03-08T08:55:37+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -9363,7 +9258,6 @@
         "hyn/flarum-default-group": 20,
         "sledov/flarum-ext-quill": 20,
         "tristiank3604/partialdev-flarum-ui": 20,
-        "nearata/flarum-ext-groupstyle": 20,
         "hyn/flarum-cache": 20,
         "amaurycarrade/flarum-ext-syndication": 20,
         "davis/flarum-ext-socialprofile": 20,
@@ -9410,7 +9304,6 @@
         "davis/flarum-ext-securehttps": 20,
         "wiseclock/flarum-ext-reply2see": 20,
         "oe800/flarum-ext-bbcode-special": 20,
-        "mprove/flarum-ext-auth0": 20,
         "radixi0/flarum-ext-sharing": 20,
         "isaa/flarum-isaa-opengraph": 20,
         "oe800/flarum-ext-bbcode-alerts": 20,
@@ -9426,5 +9319,6 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
 }
